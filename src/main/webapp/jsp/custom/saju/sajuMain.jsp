@@ -26,7 +26,7 @@
 
 <div class="div-flex">
     <div class="logo">
-        <h1>매일 운세 달력</h1>
+        <h1>매일 운세 달력 TEST</h1>
     </div>
     <div class="content">
         <table class="info-table">

@@ -13,7 +13,7 @@
 	<version>0.0.1-SNAPSHOT</version>
 	<packaging>war</packaging>
 	<name>SJC_V1</name>
-	<description>Demo project for Spring Boot TEST</description>
+	<description>Demo project for Spring Boot reTest ~~~~ </description>
 	<properties>
 		<java.version>21</java.version>
 	</properties>
