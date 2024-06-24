@@ -26,7 +26,7 @@
 
 <div class="div-flex">
     <div class="logo">
-        <h1>매일 운세 달력test</h1>
+        <h1>매일 운세 달력 김영욱 바봉~~~~ 바보하지말래도 할거당~~~~~~~~ 짜진~~ㄴ</h1>
     </div>
     <div class="content">
         <table class="info-table">
