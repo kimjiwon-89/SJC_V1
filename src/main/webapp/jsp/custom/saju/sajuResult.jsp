@@ -59,6 +59,7 @@
 		justify-content: center;
 		margin: 20px;
 		font-size: 20px;
+		align-items: center;
 	}
 	
 	/* #currentDate에 flex-grow: 1을 사용하여 가능한 공간을 모두 차지하게 하고 텍스트를 중앙에 정렬합니다. */
