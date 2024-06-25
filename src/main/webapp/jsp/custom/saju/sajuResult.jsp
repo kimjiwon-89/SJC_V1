@@ -44,22 +44,17 @@
 	.calendar-container {
 		width: 100%;
 	}
-	
-	/* 7일 */
-	#calendar {
-	    display: grid;
-	    grid-template-columns: repeat(7, 1fr);
-	    grid-gap: 2px;
-        max-width: 1200px;
-/* 	    margin: 20px; */
-	}
-	
 	.calendar-header {
 		display: flex;
 		justify-content: center;
 		margin: 20px;
 		font-size: 20px;
 		align-items: center;
+	}
+	
+	#calendar {
+		max-width: 1200px;
+		margin: 20px;
 	}
 	
 	/* #currentDate에 flex-grow: 1을 사용하여 가능한 공간을 모두 차지하게 하고 텍스트를 중앙에 정렬합니다. */
@@ -84,31 +79,24 @@
 	}
 	
 	/* 가장 위 날짜 */
-	.weekday {
-		border: 1px solid #ccc;
-		padding: 10px;
-		text-align: center;
-		background-color: #f0f0f0;
+	.calendar-wrapper thead th {
+	    border: 1px solid #ccc;
+	    padding: 10px;
+	    text-align: center;
+	    background-color: #f0f0f0;
 	}
 	
-	/* 공휴일 */
+	/* 공휴일 red*/
 	.holiday {
 		color: #dc3545 !important;
 	}
-	/* 토 */
+	/* 토 blue */
 	.satday {
 		color: #0d6efd !important;
 	}
-	/* 활성화되지 않은 색상 */
+	/* 활성화되지 않은 색상 연하게 */
 	.inactive {
-        filter: opacity(0.5);	
-	}
-	.detail-day {
-		font-size: 12px;
-	    display: flex;
-	    justify-content: space-between;
-	    align-items: center;
-   	 	font-weight: bold;
+        filter: opacity(0.7);	
 	}
 	/* 달력 한 칸 */
 	.day {
@@ -117,6 +105,15 @@
 	    padding: 5px;
 	    text-align: center;
 	    min-height: 70px;
+   	 	vertical-align: top;
+	}
+	/* 상단에 고정시킬 날짜와 공휴일 이름 */
+	.detail-day {
+		font-size: 12px;
+	    display: flex;
+	    justify-content: space-between;
+	    align-items: center;
+   	 	font-weight: bold;
 	}
 	
 	/* 오늘 날짜 */
@@ -124,44 +121,65 @@
 		background: rgb(76 175 80 / 40%);
 	}
 	
-	/* 날짜 안 운세 */
+	/* 운세 영역*/
 	.day-result {
 	    display: block;
 	    font-size: 14px;
 	}
-	
-		
-		
 </style>
 
 <div class="div-flex">
-   <div class="logo">
-       <h1>매일 운세 달력</h1>
-   </div>
-   <div class="content">
-      <div class="profile-tab">
-          <div class="photos">
-              <img src="" class="saju-img" id="saju_1">
-              <img src="" class="saju-img"  id="saju_2">
-          </div>
-          <div class="profile-info">
-              <p>${ bean.lunIljin }</p>
-              <p>생년월일: ${ bean.solYear }-${ bean.solMonth }-${ bean.solDay }  (음력 ${ bean.lunYear }-${ bean.lunMonth }-${ bean.lunDay })</p>
-              <p>출생시간: ${ bean.birthTime }</p>
-          </div>
-      </div>
-   </div>
-   <div class="content">
-      광고 자리^^
-   </div>
-    <div class="content" id="resultCalendar">
-      <div class="calendar-container">
+	<div class="logo">
+		<h1>매일 운세 달력</h1>
+	</div>
+	<div class="content">
+	   <div class="profile-tab">
+			<div class="photos">
+				<img src="" class="saju-img" id="saju_1">
+				<img src="" class="saju-img"  id="saju_2">
+			</div>
+			<div class="profile-info">
+				<p>${ bean.lunIljin }</p>
+				<p>생년월일: ${ bean.solYear }-${ bean.solMonth }-${ bean.solDay }  (음력 ${ bean.lunYear }-${ bean.lunMonth }-${ bean.lunDay })</p>
+				<p>출생시간: ${ bean.birthTime }</p>
+			</div>
+		</div>
+	</div>
+	<div class="content">
+		광고 자리^^
+	</div>
+	<div class="content" id="resultCalendar">
+		<div class="calendar-container">
 		<div class="calendar-header">
 			<button class="btn" id="prevMonth">&lt;</button>
 			<span id="currentDate"></span>
 			<button class="btn" id="nextMonth">&gt;</button>
 		</div>
-          <div id='calendar'></div>
-       </div>
-   </div>
+		<div class='calendar-wrapper'>
+			<table>
+				<colgroup>
+					<col style="width: 14.2857%;">
+					<col style="width: 14.2857%;">
+					<col style="width: 14.2857%;">
+					<col style="width: 14.2857%;">
+					<col style="width: 14.2857%;">
+					<col style="width: 14.2857%;">
+					<col style="width: 14.2857%;">
+				</colgroup>			
+				<thead>
+					<tr>
+						<th>일</th>
+						<th>월</th>
+						<th>화</th>
+						<th>수</th>
+						<th>목</th>
+						<th>금</th>
+						<th>토</th>
+					</tr>
+				</thead>
+				<tbody id="calendar"></tbody>
+			</table>
+		</div>
+		</div>
+	</div>
 </div>

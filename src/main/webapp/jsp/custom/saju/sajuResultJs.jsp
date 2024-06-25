@@ -54,69 +54,69 @@ function fnSetCalendar() {
 	updateCalendar();
 }
 
-const weekdays = ['일', '월', '화', '수', '목', '금', '토'];
 /* 캘린더 업데이트 */
 function updateCalendar() {
+	var dateArr = new Set();	//사주 조회를 위한 YYYY-MM
+	var yearArr = new Set();	//사주 조회를 위한 YYYY
+	
 	//현재 월 셋팅
-	currentDateElement.textContent = currentDate.format('YYYY-MM');
+	currentDateElement.textContent = currentDate.format('YYYY.MM');
 	//비우기
 	calendarElement.innerHTML = '';
-	
-    // 요일 헤더 생성
-	weekdays.forEach(weekday => {
-		const weekdayElement = document.createElement('div');
-		weekdayElement.classList.add('weekday');
-		weekdayElement.textContent = weekday;
-		calendarElement.appendChild(weekdayElement);
-	});
 	
 	//달력 한달치의 시작부터 끝나는 날까지 셋팅
 	const startOfMonth = currentDate.startOf('month');
 	const endOfMonth = currentDate.endOf('month');
-	
-	var dateArr = new Set();	//사주 조회를 위한 YYYY-MM
-	var yearArr = new Set();	//사주 조회를 위한 YYYY
 	let date = startOfMonth.startOf('week');
-	while (date.isBefore(endOfMonth.endOf('week'))) {
-		const dayElement = document.createElement('div');
-		dayElement.classList.add('day', date.format('YYYY-MM-DD'));
-		
-		//->
-		// 요소 생성 (일 / 메모)
-		const innerDiv = document.createElement('div');
-		innerDiv.classList.add('detail-day');
-		
-		//일요일 0
-		if( date.get("day") == 0 ) {
-			innerDiv.classList.add('holiday');
-		//토요일 6
-		}else if( date.get("day") == 6 ) {
-			innerDiv.classList.add('satday');
-		}
-		
-		//->
-		// 첫 번째 요소 생성 (왼쪽에 배치, 일)
-		const leftElement = document.createElement('div');
-		leftElement.textContent = date.format('D');		//날짜 추가
-		leftElement.classList.add('locdate'); 			// 왼쪽 요소에 클래스 추가
-		// 두 번째 요소 생성 (오른쪽에 배치, 공휴일 이름)
-		const rightElement = document.createElement('div');
-		rightElement.textContent = '';
-		rightElement.classList.add('dateName'); 		// 오른쪽 요소에 클래스 추가
-		innerDiv.appendChild(leftElement);
-		innerDiv.appendChild(rightElement);
+	while (date.isBefore(endOfMonth.endOf('week'), 'day')) {
+		console.log(date.format("YYYY-MM"))
+		const row = document.createElement('tr');
 
-		dayElement.appendChild(innerDiv);
+		for (let i = 0; i < 7; i++) {
+			const cell = document.createElement('td');
+			cell.classList.add('day', date.format('YYYY-MM-DD'));
+
+			const dayElement = document.createElement('span');
+			dayElement.classList.add('detail-day');
+			
+			if( date.get("day") == 0 ) {
+				dayElement.classList.add('holiday');
+			//토요일 6
+			}else if( date.get("day") == 6 ) {
+				dayElement.classList.add('satday');
+			}
+			
+			const leftElement = document.createElement('span');
+			leftElement.textContent = date.format('D');		//날짜 추가
+			leftElement.classList.add('locdate'); 			// 왼쪽 요소에 클래스 추가
+			
+			// 두 번째 요소 생성 (오른쪽에 배치, 공휴일 이름)
+			const rightElement = document.createElement('span');
+			rightElement.textContent = '';
+			rightElement.classList.add('dateName'); 		// 오른쪽 요소에 클래스 추가
+			
+			dayElement.appendChild(leftElement);
+			dayElement.appendChild(rightElement);
+
+			cell.appendChild(dayElement);
+			
+			//CSS 위한 클래스 추가
+			if(date.format('M') != currentDate.format("M")) dayElement.classList.add('inactive');
+			if(date.format('MM-DD') == toDayDate.format("MM-DD")) cell.classList.add('today');
 		
-		//CSS 위한 클래스 추가
-		if(date.format('M') != currentDate.format("M")) dayElement.classList.add('inactive');
-		if(date.format('MM-DD') == toDayDate.format("MM-DD")) dayElement.classList.add('today');
-	
-		calendarElement.appendChild(dayElement);
+// 			s.appendChild(dayElement);
+			
+			row.appendChild(cell);
+			
+			//사주 셋팅 위한 변수 선언, 중복 제거할 SET
+			yearArr.add(date.format('YYYY'));
+			dateArr.add(date.format('YYYY-MM'));
+			
+			date = date.add(1, 'day');
+		}
+		calendarElement.appendChild(row); 
 		
-		yearArr.add(date.format('YYYY'));
-		dateArr.add(date.format('YYYY-MM'));
-		date = date.add(1, 'day');
+		
 	}
 	
 	// 달력 셋팅 후 통신 시작
@@ -209,7 +209,9 @@ async function fnSetLuniljin(dateArr, yearArr) {
 // 캘린더에 추가
 function setSajuInfoToCalendar(obj) {
 	//각 날짜에 셋팅
-	var html = "<span class='day-result'>" + obj.skyScore + "<br>" + obj.groundScore +"</span>"
+	var inactive="";
+	if( currentDate.format("MM") !== obj.calDate.split("-")[1] ) inactive="inactive";
+	var html = "<span class='day-result " + inactive + "'>" + obj.skyScore + "<br>" + obj.groundScore +"</span>"
 	$("."+obj.calDate).append(html);
 }      
 
