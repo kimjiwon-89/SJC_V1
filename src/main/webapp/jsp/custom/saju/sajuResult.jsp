@@ -71,16 +71,16 @@
 	
 	/*월 변경 버튼*/
 	.btn{
-	 background-color: #4CAF50;
-    color: white;
-    border: none;
-    border-radius: 4px;
-    padding: 5px 10px;
-    transition: background-color 0.3s;
-    height: 40px;
+		background-color: #4CAF50;
+	    color: white;
+	    border: none;
+	    border-radius: 4px;
+	    padding: 5px 10px;
+	    transition: background-color 0.3s;
+	    height: 40px;
 	}
 	.btn:hover{
-	background-color: #45a049;
+		background-color: #45a049;
 	}
 	
 	/* 가장 위 날짜 */
@@ -88,25 +88,35 @@
 		border: 1px solid #ccc;
 		padding: 10px;
 		text-align: center;
-		font-weight: bold;
 		background-color: #f0f0f0;
 	}
 	
+	/* 공휴일 */
 	.holiday {
-		color: red;
+		color: #dc3545 !important;
 	}
-	
+	/* 토 */
+	.satday {
+		color: #0d6efd !important;
+	}
+	/* 활성화되지 않은 색상 */
+	.inactive {
+        filter: opacity(0.5);	
+	}
+	.detail-day {
+		font-size: 12px;
+	    display: flex;
+	    justify-content: space-between;
+	    align-items: center;
+   	 	font-weight: bold;
+	}
 	/* 달력 한 칸 */
 	.day {
-		color: #ccc;
+	    color: black;
 	    border: 1px solid #ccc;
 	    padding: 5px;
 	    text-align: center;
 	    min-height: 70px;
-	}
-	/* 조회 달 */
-	.active {
-		color : black
 	}
 	
 	/* 오늘 날짜 */
