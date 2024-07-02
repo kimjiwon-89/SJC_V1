@@ -109,13 +109,15 @@
 	}
 	/* 상단에 고정시킬 날짜와 공휴일 이름 */
 	.detail-day {
-		font-size: 12px;
+		font-size: 1em;
 	    display: flex;
 	    justify-content: space-between;
 	    align-items: center;
    	 	font-weight: bold;
 	}
-	
+	.dateName {
+	    font-size: 0.8em !important;
+	}
 	/* 오늘 날짜 */
 	.today {
 		background: rgb(76 175 80 / 40%);
@@ -135,13 +137,20 @@
 	<div class="content">
 	   <div class="profile-tab">
 			<div class="photos">
-				<img src="" class="saju-img" id="saju_1">
-				<img src="" class="saju-img"  id="saju_2">
+<!-- 				<img src="" class="saju-img" id="saju_1"> -->
+<!-- 				<img src="" class="saju-img"  id="saju_2"> -->
+				<c:set var="splitted" value="${fn:split(bean.lunIljin, '(')[1]}" />
+				<c:set var="firstChar" value="${fn:substring(splitted, 0, 1)}" />
+				<c:set var="secondChar" value="${fn:substring(splitted, 1, 2)}" />			
+				<span class="saju-img" id="saju_1">${ firstChar }</span>
+				<span class="saju-img"  id="saju_2">${ secondChar }</span>
 			</div>
 			<div class="profile-info">
-				<p>${ bean.lunIljin }</p>
-				<p>생년월일: ${ bean.solYear }-${ bean.solMonth }-${ bean.solDay }  (음력 ${ bean.lunYear }-${ bean.lunMonth }-${ bean.lunDay })</p>
-				<p>출생시간: ${ bean.birthTime }</p>
+				
+				<span class="text-left block"> <span class="bold">생년월일: </span>${ bean.solYear }-${ bean.solMonth }-${ bean.solDay }</span>
+				<span class="text-left block"> <span class="bold">음력: </span>${ bean.lunYear }-${ bean.lunMonth }-${ bean.lunDay }</span>
+				<span class="text-left block"> <span class="bold">출생시간: </span>${ bean.birthTime }</span>
+				<span class="text-left block"> <span class="bold">성별: </span>${ bean.gender eq 'M' ? '남' : '여' }</span>
 			</div>
 		</div>
 	</div>

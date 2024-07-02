@@ -56,19 +56,19 @@
                 	<div class="select-container">
                 		<div class="select-wrapper">
 							<select class="ipt select2 wd-70p mgr-5" id="birthTime" name="birthTime">
-								<option value="">모름</option>
-								<option value="자시">자시 (23:30 - 01:29)</option>
-								<option value="축시">축시 (01:30 - 03:29)</option>
-								<option value="인시">인시 (03:30 - 05:29)</option>
-								<option value="묘시">묘시 (05:30 - 07:29)</option>
-								<option value="진시">진시 (07:30 - 09:29)</option>
-								<option value="사시">사시 (09:30 - 11:29)</option>
-								<option value="오시">오시 (11:30 - 13:29)</option>
-								<option value="미시">미시 (13:30 - 15:29)</option>
-								<option value="신시">신시 (15:30 - 17:29)</option>
-								<option value="유시">유시 (17:30 - 19:29)</option>
-								<option value="술시">술시 (19:30 - 21:29)</option>
-								<option value="해시">해시 (21:30 - 23:29)</option>
+								<option value="모름">모름</option>
+								<option value="자시 (23:30 - 01:29)">자시 (23:30 - 01:29)</option>
+								<option value="축시 (01:30 - 03:29)">축시 (01:30 - 03:29)</option>
+								<option value="인시 (03:30 - 05:29)">인시 (03:30 - 05:29)</option>
+								<option value="묘시 (05:30 - 07:29)">묘시 (05:30 - 07:29)</option>
+								<option value="진시 (07:30 - 09:29)">진시 (07:30 - 09:29)</option>
+								<option value="사시 (09:30 - 11:29)">사시 (09:30 - 11:29)</option>
+								<option value="오시 (11:30 - 13:29)">오시 (11:30 - 13:29)</option>
+								<option value="미시 (13:30 - 15:29)">미시 (13:30 - 15:29)</option>
+								<option value="신시 (15:30 - 17:29)">신시 (15:30 - 17:29)</option>
+								<option value="유시 (17:30 - 19:29)">유시 (17:30 - 19:29)</option>
+								<option value="술시 (19:30 - 21:29)">술시 (19:30 - 21:29)</option>
+								<option value="해시 (21:30 - 23:29)">해시 (21:30 - 23:29)</option>
 							</select>
 						</div>
 
@@ -79,10 +79,10 @@
                 <th>성별</th>
                 <td>
                     <label class="ipt-radio-label">
-                    	<input class="ipt-radio" type="radio" name="gender" value="man"> 남
+                    	<input class="ipt-radio" type="radio" name="gender" value="M"> 남
                    	</label>
                     <label class="ipt-radio-label">
-                    	<input class="ipt-radio" type="radio" name="gender" value="woman"> 여
+                    	<input class="ipt-radio" type="radio" name="gender" value="W"> 여
                    	</label>
                 </td>
             </tr>

@@ -1,13 +1,87 @@
 @charset "UTF-8";
 
-body {
-    background-color: #E6E6E6 !important;
-	font-family: 'Noto sans KR', sans-serif !important;
-    overflow-x: hidden; 
-    overflow-y: scroll; 
-	
+/* 얇은 글씨 */
+@font-face {
+    font-family: 'LeferiPoint-WhiteA';
+    src: url('https://fastly.jsdelivr.net/gh/projectnoonnu/noonfonts_2201-2@1.0/LeferiPoint-WhiteA.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
 }
 
+/* 굵은 글씨 */
+@font-face {
+    font-family: 'LeferiPoint-BlackA';
+    src: url('https://fastly.jsdelivr.net/gh/projectnoonnu/noonfonts_2201-2@1.0/LeferiPoint-BlackA.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+
+
+/* 잠실 글씨 */
+
+@font-face {
+    font-family: 'TheJamsil1Thin';
+    src: url('https://fastly.jsdelivr.net/gh/projectnoonnu/noonfonts_2302_01@1.0/TheJamsil1Thin.woff2') format('woff2');
+    font-weight: 100;
+    font-style: normal;
+}
+@font-face {
+    font-family: 'TheJamsil2Light';
+    src: url('https://fastly.jsdelivr.net/gh/projectnoonnu/noonfonts_2302_01@1.0/TheJamsil2Light.woff2') format('woff2');
+    font-weight: 300;
+    font-style: normal;
+}
+@font-face {
+    font-family: 'TheJamsil3Regular';
+    src: url('https://fastly.jsdelivr.net/gh/projectnoonnu/noonfonts_2302_01@1.0/TheJamsil3Regular.woff2') format('woff2');
+    font-weight: 400;
+    font-style: normal;
+}
+@font-face {
+    font-family: 'TheJamsil4Medium';
+    src: url('https://fastly.jsdelivr.net/gh/projectnoonnu/noonfonts_2302_01@1.0/TheJamsil4Medium.woff2') format('woff2');
+    font-weight: 500;
+    font-style: normal;
+}
+@font-face {
+    font-family: 'TheJamsil5Bold';
+    src: url('https://fastly.jsdelivr.net/gh/projectnoonnu/noonfonts_2302_01@1.0/TheJamsil5Bold.woff2') format('woff2');
+    font-weight: 700;
+    font-style: normal;
+}
+@font-face {
+    font-family: 'TheJamsil6ExtraBold';
+    src: url('https://fastly.jsdelivr.net/gh/projectnoonnu/noonfonts_2302_01@1.0/TheJamsil6ExtraBold.woff2') format('woff2');
+    font-weight: 800;
+    font-style: normal;
+}
+@font-face {
+    font-family: 'TheJamsil5Bold';
+    src: url('https://fastly.jsdelivr.net/gh/projectnoonnu/noonfonts_2302_01@1.0/TheJamsil5Bold.woff2') format('woff2');
+    font-weight: 700;
+    font-style: normal;
+}
+
+/* 한자 폰트 */
+@font-face {
+  font-family: "hanja"; 
+  src: url("../font/CangJiGaoDeGuoMiaoHei-CJgaodeguomh-2.ttf");
+}     
+body {
+    background-color: #E6E6E6 !important;
+	font-family: 'TheJamsil3Regular !important';
+    overflow-x: hidden; 
+    overflow-y: scroll; 
+    font-weight: 200 !important;
+    font-style: normal !important;
+	
+}
+.h1, .h2, .h3, .h4, .h5, .h6, h1, h2, h3, h4, h5, h6, th, button, .btn, .result-btn, .bold {
+    font-family: 'TheJamsil5Bold';
+}
+.hanja {
+	font-family: 'hanja';
+}
 .container {
     height: 100vh;
 }
@@ -51,6 +125,7 @@ table td {
 .text-right {text-align: right;}
 .text-left {text-align: left;}
 .text-center {text-align: center;}
+.block {display: block;}
 
 .wd-10p {width: 10% !important;}
 .wd-20p {width: 20% !important;}
@@ -97,7 +172,6 @@ input.ipt , select.ipt {
 }
 .logo {
     margin: 30px;
-    font-family: '나눔고딕', serif;
     font-size: 36px;
     font-weight: bold;
     color: #333;
@@ -132,10 +206,12 @@ input.ipt , select.ipt {
     background-color: #4CAF50;
     color: white;
     border: none;
-    border-radius: 4px;
-    width: 80px;
-    padding: 5px 10px;
-    transition: background-color 0.3s;
+    border-radius: 5px;
+    width: auto;
+    padding: 10px;
+    height: auto;
+    text-align: center;
+    margin: 0;
 }
 .result-btn:hover{
     background-color: #45a049;
@@ -151,29 +227,45 @@ input.ipt , select.ipt {
 
 /* SAJU2 이미지 불러오기 */
 /* 천간 */
-.saju-img.sky_1 { content: url(../img/saju/sky_1.png) }
-.saju-img.sky_2 { content: url(../img/saju/sky_2.png) }
-.saju-img.sky_3 { content: url(../img/saju/sky_3.png) }
-.saju-img.sky_4 { content: url(../img/saju/sky_4.png) }
-.saju-img.sky_5 { content: url(../img/saju/sky_5.png) }
-.saju-img.sky_6 { content: url(../img/saju/sky_6.png) }
-.saju-img.sky_7 { content: url(../img/saju/sky_7.png) }
-.saju-img.sky_8 { content: url(../img/saju/sky_8.png) }
-.saju-img.sky_9 { content: url(../img/saju/sky_9.png) }
-.saju-img.sky_10 { content: url(../img/saju/sky_10.png) }
+.saju-img {
+/*     background: #198754; */ */
+    width: 50%;
+    height: 50%;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    font-family: hanja;
+    font-size: 2em;
+    color: #fff;
+    border-radius: 5px;
+    padding: 3px;
+}
+
+
+.saju-img.sky_1  { background : green;}
+.saju-img.sky_2  { background : green;}
+.saju-img.sky_3  { background : red;}
+.saju-img.sky_4  { background : red;}
+.saju-img.sky_5  { background : #ffc107;}
+.saju-img.sky_6  { background : #ffc107;}
+.saju-img.sky_7  { background : white; color: black; border: 1px solid black;}
+.saju-img.sky_8  { background : white; color: black; border: 1px solid black;}
+.saju-img.sky_9  { background : black;}
+.saju-img.sky_10 { background : black;}
 
 /* 지지 */
-.saju-img.ground_1 { content: url(../img/saju/ground_1.png) }
-.saju-img.ground_2 { content: url(../img/saju/ground_2.png) }
-.saju-img.ground_3 { content: url(../img/saju/ground_3.png) }
-.saju-img.ground_4 { content: url(../img/saju/ground_4.png) }
-.saju-img.ground_5 { content: url(../img/saju/ground_5.png) }
-.saju-img.ground_6 { content: url(../img/saju/ground_6.png) }
-.saju-img.ground_7 { content: url(../img/saju/ground_7.png) }
-.saju-img.ground_8 { content: url(../img/saju/ground_8.png) }
-.saju-img.ground_9 { content: url(../img/saju/ground_9.png) }
-.saju-img.ground_10 { content: url(../img/saju/ground_10.png) }
-.saju-img.ground_11 { content: url(../img/saju/ground_11.png) }
+.saju-img.ground_1  { background : #ffc107;}
+.saju-img.ground_2  { background : green;}
+.saju-img.ground_3  { background : green;}
+.saju-img.ground_4  { background : #ffc107;}
+.saju-img.ground_5  { background : red;}
+.saju-img.ground_6  { background : red;}
+.saju-img.ground_7  { background : #ffc107;}
+.saju-img.ground_8  { background : white; color: black; border: 1px solid black;}
+.saju-img.ground_9  { background : white; color: black; border: 1px solid black;}
+.saju-img.ground_10 { background : #ffc107;}
+.saju-img.ground_11 { background : black;}
+.saju-img.ground_12 { background : black;}
 
 
 /* 스크롤 색상 */
