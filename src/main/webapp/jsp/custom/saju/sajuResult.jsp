@@ -99,7 +99,7 @@
 	}
 	/* 활성화되지 않은 색상 연하게 */
 	.inactive {
-        filter: opacity(0.7);	
+        filter: opacity(0.5);	
 	}
 	/* 달력 한 칸 */
 	.day {
