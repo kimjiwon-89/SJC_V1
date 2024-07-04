@@ -16,7 +16,7 @@
         }
         .select-wrapper {
             flex: 7; /* 첫 번째 Select2의 너비 비율 설정 */
-            margin-right: 10px;
+            margin-right: 2px;
         }
         .select-wrapper:last-child {
             flex: 3; /* 두 번째 Select2의 너비 비율 설정 */
@@ -89,7 +89,7 @@
         </table>
         
         <div class="mgt-10">
-           <button class="result-btn" onclick="search()">조회하기</button>
+           <button style= "font-family: TheJamsil4Medium" class="result-btn" onclick="search()">조회하기</button>
         </div>
     </div>
     <div class="content">
