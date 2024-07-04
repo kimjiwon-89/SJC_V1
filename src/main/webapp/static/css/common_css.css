@@ -74,8 +74,12 @@ body {
     overflow-y: scroll; 
     font-weight: 200 !important;
     font-style: normal !important;
-	
 }
+
+.container {
+	padding : 0 !important;
+}
+
 .h1, .h2, .h3, .h4, .h5, .h6, h1, h2, h3, h4, h5, h6, th, button, .btn, .result-btn, .bold {
     font-family: 'TheJamsil5Bold';
 }

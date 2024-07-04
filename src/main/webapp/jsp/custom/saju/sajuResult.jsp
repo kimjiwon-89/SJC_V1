@@ -27,7 +27,7 @@
        flex-direction: column;
        align-items: center;
        margin-right: 20px;
-       width: calc(20% - 10px);
+       width: 48px;
    }
    .profile-info p {
        margin: 5px 0;
@@ -39,11 +39,14 @@
    }
 
 
-
 	 /* CSS 달력  */
 	.calendar-container {
 		width: 100%;
 	}
+	#resultCalendar{
+		padding: 5px;
+	}
+	
 	.calendar-header {
 		display: flex;
 		justify-content: center;
