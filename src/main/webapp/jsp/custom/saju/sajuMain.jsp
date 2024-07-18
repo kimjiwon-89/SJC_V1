@@ -90,6 +90,7 @@
         
         <div class="mgt-10">
            <button style= "font-family: TheJamsil4Medium" class="result-btn" onclick="search()">조회하기</button>
+           <button style= "font-family: TheJamsil4Medium" class="result-btn" onclick="search2()">우기버튼</button>
         </div>
     </div>
     <div class="content">

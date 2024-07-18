@@ -37,7 +37,6 @@ public class SajuCont {
     @RequestMapping("/main")
     public ModelAndView sajuMainPage() {
        ModelAndView mv = new ModelAndView();
-//       mv.addObject("viewName", "custom/saju/sajuMain");
        mv.setViewName("layout/common_layout");
        return mv;
     }
@@ -64,6 +63,21 @@ public class SajuCont {
        
        mv.setViewName("custom/saju/sajuResult");
        return mv;
+    }
+    
+    @RequestMapping("/sajuEtc")
+    public ModelAndView sajuEtc(HttpServletRequest req) {
+    	ModelAndView mv = new ModelAndView();
+    	try {
+    		Map<String, Object> map = RequestUtil.getReqParamToMap(req);
+    		mv.addObject("bean", map);
+    		
+    	} catch (ServletException e) {
+    		e.printStackTrace();
+    	}
+    	
+    	mv.setViewName("custom/saju/sajuEtc");
+    	return mv;
     }
     
     

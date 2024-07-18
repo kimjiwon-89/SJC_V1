@@ -49,25 +49,14 @@
 </head>
 <body>
 	<div class="container body-wrapper">
-<%-- 		<jsp:include page='common_header.jsp' flush="false"/> --%>
     	<script src="${rootPath}/webjars/bootstrap/5.3.0/js/bootstrap.bundle.min.js"></script>
     	
 		<!-- 컨텐츠영역 -->
 		<div class="div-flex-wrap" id="content" style="">
-<%-- 			<jsp:include page='../${viewName}.jsp' flush="false"/> --%>
 		</div>
-		
-		<!-- Page Javascript File -->
-	<%-- 	<jsp:include page='${viewName}Js.jsp' flush="false"/> --%>
-	
-		<!-- Common Js File -->
-	<%-- 	<%@include file="./contents_commonJs.jsp" %> --%>
-	
 	</div>
-	
 </body>
 </html>
-
 
 <script>
 	$("#content").load("/saju/sajuMain");
@@ -87,8 +76,4 @@
 		
 		
 	}
-	
-	
-	
-	
 </script>

@@ -47,7 +47,8 @@ function search() {
 
 /* 뭘 만드시죠 ? */
 function search2() {
-   $("#content").load("/saju/sajuEtc");
+   if(!checkDate() ) return;
+   $("#content").load("/saju/main2", data);
 }
 
 //날짜 확인
