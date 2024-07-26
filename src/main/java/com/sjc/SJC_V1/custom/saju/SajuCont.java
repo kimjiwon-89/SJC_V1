@@ -13,8 +13,8 @@ import org.springframework.web.servlet.ModelAndView;
 
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.sjc.SJC_V1.model.DAILY_GROUND_MATCH;
-import com.sjc.SJC_V1.model.DAILY_SKY_MATCH;
+import com.sjc.SJC_V1.model.DailySkyBean;
+import com.sjc.SJC_V1.model.DailyGroundBean;
 import com.sjc.SJC_V1.util.RequestUtil;
 
 import jakarta.servlet.ServletException;
@@ -97,8 +97,8 @@ public class SajuCont {
 			String myGround = (String)map.get("myGround");
 			
 	        //해당 날짜 셋팅
-	        List<DAILY_SKY_MATCH> skyScoreList = sajuService.findSkyMatch(mySky);
-			List<DAILY_GROUND_MATCH> groundScoreList = sajuService.findGroundMatch(myGround);
+	        List<DailySkyBean> skyScoreList = sajuService.findSkyMatch(mySky);
+			List<DailyGroundBean> groundScoreList = sajuService.findGroundMatch(myGround);
 			
 			result.put("skyScoreList", skyScoreList);
 			result.put("groundScoreList", groundScoreList);
@@ -141,7 +141,7 @@ public class SajuCont {
     		String r1 = (String) map.get("result1[lunIljin]");
     		String r2 = (String) map.get("result2[lunIljin]");
     		
-//    		result = sajuService.findChemiResult(r1, r2);
+    		result = sajuService.findChemiResult(r1.substring(0,1), r2.substring(0,1));
     		
     	} catch (ServletException e) {
     		e.printStackTrace();

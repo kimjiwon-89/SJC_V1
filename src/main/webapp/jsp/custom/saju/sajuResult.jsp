@@ -26,6 +26,7 @@
 	}
 	.result-table td{
 		border: 1px solid #ccc;
+    	padding: 0 !important;
 	}
 
 	 /* CSS 달력  */
@@ -92,7 +93,8 @@
 	}
 	/* 달력 한 칸 */
 	.day {
-	    min-height: 60px;
+	    min-height: 80px;
+        padding: .5rem .5rem;
 	}
 	/* 상단에 고정시킬 날짜와 공휴일 이름 */
 	.detail-day {

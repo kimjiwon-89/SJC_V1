@@ -7,7 +7,8 @@ import jakarta.persistence.Id;
 import jakarta.persistence.Table;
 
 @Entity
-public class DAILY_GROUND_MATCH {
+@Table(name = "chemistry_match")
+public class ChemiBean {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -15,8 +16,6 @@ public class DAILY_GROUND_MATCH {
     private String daystem1;
     private String daystem2;
     private String matchscore;
-    private String date;
-    
     
 	public Long getSeq() {
 		return seq;
@@ -41,11 +40,5 @@ public class DAILY_GROUND_MATCH {
 	}
 	public void setMatchscore(String matchscore) {
 		this.matchscore = matchscore;
-	}
-	public String getDate() {
-		return date;
-	}
-	public void setDate(String date) {
-		this.date = date;
 	}
 }

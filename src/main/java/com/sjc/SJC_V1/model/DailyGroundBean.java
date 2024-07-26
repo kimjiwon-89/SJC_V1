@@ -7,7 +7,8 @@ import jakarta.persistence.Id;
 import jakarta.persistence.Table;
 
 @Entity
-public class DAILY_SKY_MATCH {
+@Table(name = "daily_ground_match")
+public class DailyGroundBean {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

@@ -49,7 +49,7 @@ function chSearch() {
     					type: "POST",
     					data: _param,
     					success:function(data){
-    						console.log(data);
+    						$("#ch_result").text(data);
     					},
     					error:function(data){
     					},

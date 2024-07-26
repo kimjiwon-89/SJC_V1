@@ -5,8 +5,8 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.sjc.SJC_V1.model.DAILY_GROUND_MATCH;
-import com.sjc.SJC_V1.model.DAILY_SKY_MATCH;
+import com.sjc.SJC_V1.model.DailySkyBean;
+import com.sjc.SJC_V1.model.DailyGroundBean;
 
 @Service
 public class SajuService {
@@ -14,18 +14,18 @@ public class SajuService {
     @Autowired
     private SajuDao sajuDao;
 
-
-	public List<DAILY_SKY_MATCH> findSkyMatch(String mySky) {
+    //천간 궁합
+	public List<DailySkyBean> findSkyMatch(String mySky) {
 		return sajuDao.findSkyMatches(mySky);
 	}
 
-
-	public List<DAILY_GROUND_MATCH> findGroundMatch(String myGround) {
+	//지지 궁합
+	public List<DailyGroundBean> findGroundMatch(String myGround) {
 		return sajuDao.findGroundMatch(myGround);
 	}
 
 
-//	public String findChemiResult(String r1, String r2) {
-//		return sajuDao.findChemiResult(r1, r2);
-//	}
+	public String findChemiResult(String r1, String r2) {
+		return sajuDao.findChemiResult(r1, r2);
+	}
 }
