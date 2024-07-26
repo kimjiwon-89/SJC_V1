@@ -173,7 +173,7 @@ function fnCallDateInfoAPI(callback) {
 				 param.solDay   	= solDay;
 				 param.birthday  	= $("#birthday").val();
 				 param.birthTime	= $("#birthTime").val();
-				 param.gender   	= $("input[name='gender']").val();
+				 param.gender   	=  $('input[name="gender"]:checked').val();
 		              
 				callback(param);
 			} else {

@@ -79,7 +79,7 @@
                 <th>성별</th>
                 <td>
                     <label class="ipt-radio-label">
-                    	<input class="ipt-radio" type="radio" name="gender" value="M"> 남
+                    	<input class="ipt-radio" type="radio" name="gender" value="M" checked> 남
                    	</label>
                     <label class="ipt-radio-label">
                     	<input class="ipt-radio" type="radio" name="gender" value="W"> 여
