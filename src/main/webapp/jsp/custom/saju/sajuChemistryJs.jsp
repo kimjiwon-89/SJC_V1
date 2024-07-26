@@ -22,136 +22,68 @@ $(document).ready(function(){
 //         dropdownAutoWidth: true, 						// 드롭다운 너비 자동 설정
         width: 'resolve', // 자동으로 부모의 너비를 따르게 설정
 	});
-   
-	//input 이벤트 추가
-	$('#birthday').on('input', function() {
-		let input = $(this).val();
-		let formattedDate = formatDateString(input);
-		$(this).val(formattedDate);
-	});
-
 });
 
-/* 조회, 결과 페이지 이동 */
-function search() {
-   if(!checkDate() ) return;
-   
-	fnCallDateInfoAPI(function(data) {
-    	if(data) {
-			$("#content").load("/saju/sajuResult", data);
-		} else {
-			alert('정보를 불러오지 못했습니다.');
-		}
-	});
-}
-
-/* 궁합 사이트 이동 */
-function search2() {
-	//기본 데이터를 선택했다면 그대로 넘기도록 함
-	const dateInput = document.getElementById('birthday').value;
-	const smonth = document.getElementById('smonth').value;
-	
-	var data = {
-		gender		: $('input[name="gender"]:checked').val(),
-		birthday	: document.getElementById('birthday').value,
-		smonth 		: document.getElementById('smonth').value
+function chSearch() {
+	var param = {
+		dateInput 	: document.getElementById('birthday1').value,
+		smonth 		: document.getElementById('smonth1').value,
+	}
+	var param2 = {
+		dateInput 	: document.getElementById('birthday2').value,
+		smonth 		: document.getElementById('smonth2').value,
 	}
 	
-	
-	$("#content").load("/saju/sajuChemistry", data);
+	var result1;
+	fnCallDateInfoAPI(function(data) {
+    	if(data) {
+    		result1 = data;
+    		
+    		//2번쨰 궁합 재전송
+    		fnCallDateInfoAPI(function(data2) {
+    	    	if(data2) {
+    	    		var _param = {result1:data, result2:data2}
+    	    		
+    	    		$.ajax({
+    					url: '${rootPath}/saju/getChemiResult',
+    					type: "POST",
+    					data: _param,
+    					success:function(data){
+    						console.log(data);
+    					},
+    					error:function(data){
+    					},
+    					complete:function(data){
+    					}
+    	    		});
+    	    		console.log(result1);
+    	    		console.log(result2);
+    	    		
+    	    		
+    	       	} else {
+    	        	alert('정보를 불러오지 못했습니다.');
+    	       	}
+    		}, param);
+    		
+       	} else {
+        	alert('정보를 불러오지 못했습니다.');
+       	}
+	}, param);
 }
 
-//날짜 확인
-function checkDate() {
-    const dateInput = document.getElementById('birthday').value;
-    const datePattern = /^\d{4}-\d{2}-\d{2}$/;
-
-    //1. yyyy-mm-dd 형식 확인
-    if (!datePattern.test(dateInput)) {
-        alert('날짜 형식이 유효하지 않습니다. \n yyyy-mm-dd 형식으로 입력해 주세요.');
-        return false;
-    }
-    
-    if (!datePattern.test(dateInput)) {
-        return false;
-    }
-
-    //2. 실존하는 Date 확인
-    const parts = dateInput.split("-");
-    const year = parseInt(parts[0], 10);
-    const month = parseInt(parts[1], 10);
-    const day = parseInt(parts[2], 10);
-
-    if (year < 1 || year > 9999) {
-       alert(year + "는 올바르지 않은 연도입니다.");
-        return false;
-    }
-
-    if (month < 1 || month > 12) {
-       alert(month + "는 올바르지 않은 월입니다.");
-        return false;
-    }
-
-    const daysInMonth = new Date(year, month, 0).getDate();
-    if (day < 1 || day > daysInMonth) {
-       alert(day + "는 올바르지 않은 일입니다.");
-        return false;
-    }
-    
-    
-    const date = new Date(dateInput);
-
-    if (date.getFullYear() !== year || date.getMonth() + 1 !== month || date.getDate() !== day) {
-       alert("올바르지 않은 입력입니다.");
-        return false;
-    }
-
-    //3. 오늘 날짜보다 크다면
-    const currentDate = new Date();
-    if (date > currentDate) {
-        return false;
-    }
-
-    return true;
-}
-
-//yyyy-mm-dd 형태로 수정
-function formatDateString(input) {
-    // 숫자만 남기고 나머지는 제거
-    input = input.replace(/[^0-9]/g, '');
-
-    // yyyy-mm-dd 형식에 맞게 포맷팅
-    let formatted = '';
-    if (input.length >= 4) {
-        formatted = input.slice(0, 4);
-        if (input.length >= 6) {
-            formatted += '-' + input.slice(4, 6);
-            if (input.length > 6) {
-                formatted += '-' + input.slice(6, 8);
-            }
-        } else if (input.length > 4) {
-            formatted += '-' + input.slice(4);
-        }
-    } else {
-        formatted = input;
-    }
-
-    return formatted;
-}
 
 //API 호출
-function fnCallDateInfoAPI(callback) {
-	const dateInput = document.getElementById('birthday').value;
-	const smonth = document.getElementById('smonth').value;
+function fnCallDateInfoAPI(callback, param) {
+	const dateInput = param.dateInput;
+	const smonth = param.smonth;
 	const parts = dateInput.split("-");
 	const year = parts[0];
 	const month = parts[1];
 	const day = parts[2];
 	
-	
 	var url = 'http://apis.data.go.kr/B090041/openapi/service/LrsrCldInfoService/getLunCalInfo';				//양력일 조회
 	if(smonth == 'lun') url = 'http://apis.data.go.kr/B090041/openapi/service/LrsrCldInfoService/getSolCalInfo';//음력일 조회
-   
+ 
 	var xhr = new XMLHttpRequest();
 	var queryParams = '?' + encodeURIComponent('serviceKey') + '='+'Njev63C4hP6FAMTWCtsUYfhOsPQt42h2%2BfzDRfsobDdGO3T%2BGGeIXcjypeDrX3RdMF3YK8KnRuF22H8p44VLIw%3D%3D'; /*Service Key*/
 	queryParams += '&' + encodeURIComponent(smonth+'Year') + '=' + encodeURIComponent(year); /**/
@@ -175,16 +107,13 @@ function fnCallDateInfoAPI(callback) {
 				var solDay = xmlDoc.getElementsByTagName("solDay")[0].childNodes[0].nodeValue;		//양력 일
 				 
 				 var param={};
-				 param.lunIljin    	= lunIljin;
+				 param.lunIljin    	= lunIljin.split("(")[0];
 				 param.lunYear    	= lunYear;
 				 param.lunMonth   	= lunMonth;
 				 param.lunDay   	= lunDay;
 				 param.solYear    	= solYear;
 				 param.solMonth   	= solMonth;
 				 param.solDay   	= solDay;
-				 param.birthday  	= $("#birthday").val();
-				 param.birthTime	= $("#birthTime").val();
-				 param.gender   	= $('input[name="gender"]:checked').val();
 		              
 				callback(param);
 			} else {

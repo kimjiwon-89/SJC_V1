@@ -29,4 +29,7 @@ public interface SajuDao extends JpaRepository<DAILY_SKY_MATCH, Long> {
     @Query("SELECT d FROM DAILY_GROUND_MATCH d WHERE d.daystem1 = :myGround")
 	List<DAILY_GROUND_MATCH> findGroundMatch(String myGround);
 
+//    @Query("SELECT d.matchscore FROM chemistry_match d WHERE d.daystem1 = :r1 and d.daystem2 = :r2")
+//	String findChemiResult(String r1, String r2);
+
 }

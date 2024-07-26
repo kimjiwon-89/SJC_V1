@@ -11,33 +11,22 @@
 <%@include file="sajuResultJs.jsp"%>
 
 <style>
-   img.saju-img {
-       width: calc(80% - 5px);
-       max-width: 50px
-   }
+
+	/* 한자 영역 너비 */
+	.ml-auto {
+	    width: 60px;
+	}
+	/* 이미지 거리 */
    .saju-img:first-child {
       margin-bottom: 1px;
    }
-   .profile-tab {
-       display: flex;
-       align-items: center;
-   }
-   .profile-tab .photos {
-       display: flex;
-       flex-direction: column;
-       align-items: center;
-       margin-right: 20px;
-       width: 48px;
-   }
-   .profile-info p {
-       margin: 5px 0;
-       text-align: left;
-   }
    
-   .profile-info {
-       width: 80%;
-   }
-
+	.result-table {
+		table-layout: fixed; 
+	}
+	.result-table td{
+		border: 1px solid #ccc;
+	}
 
 	 /* CSS 달력  */
 	.calendar-container {
@@ -60,12 +49,12 @@
 		margin: 20px;
 	}
 	
-	/* #currentDate에 flex-grow: 1을 사용하여 가능한 공간을 모두 차지하게 하고 텍스트를 중앙에 정렬합니다. */
+	/* #currentDate에 flex-grow: 1을 사용하여 가능한 공간을 모두 차지하게 하고 텍스트를 중앙에 정렬. */
 	#currentDate {
-			flex-grow: 1;
-			text-align: center;
-			font-size: 1.5em;
-		}
+		flex-grow: 1;
+		text-align: center;
+		font-size: 1.5em;
+	}
 	
 	/*월 변경 버튼*/
 	.btn{
@@ -103,12 +92,7 @@
 	}
 	/* 달력 한 칸 */
 	.day {
-	    color: black;
-	    border: 1px solid #ccc;
-	    padding: 5px;
-	    text-align: center;
-	    min-height: 70px;
-   	 	vertical-align: top;
+	    min-height: 60px;
 	}
 	/* 상단에 고정시킬 날짜와 공휴일 이름 */
 	.detail-day {
@@ -119,7 +103,7 @@
    	 	font-weight: bold;
 	}
 	.dateName {
-	    font-size: 0.8em !important;
+	    font-size: 1em !important;
 	}
 	/* 오늘 날짜 */
 	.today {
@@ -129,36 +113,61 @@
 	/* 운세 영역*/
 	.day-result {
 	    display: block;
-	    font-size: 14px;
+	    font-size: 0.8em;
 	}
 </style>
+
+<c:set var="splitted" value="${fn:split(bean.lunIljin, '(')[1]}" />
+<c:set var="firstChar" value="${fn:substring(splitted, 0, 1)}" />
+<c:set var="secondChar" value="${fn:substring(splitted, 1, 2)}" />			
 
 <div class="div-flex">
 	<div class="logo">
 		<h1>매일 운세 달력</h1>
 	</div>
 	<div class="content">
-	   <div class="profile-tab">
-			<div class="photos">
-<!-- 				<img src="" class="saju-img" id="saju_1"> -->
-<!-- 				<img src="" class="saju-img"  id="saju_2"> -->
-				<c:set var="splitted" value="${fn:split(bean.lunIljin, '(')[1]}" />
-				<c:set var="firstChar" value="${fn:substring(splitted, 0, 1)}" />
-				<c:set var="secondChar" value="${fn:substring(splitted, 1, 2)}" />			
+	   <div class="d-flex wd-100p">
+			<div class="p-2 d-flex f1 flex-column justify-content-center">
 				<span class="saju-img" id="saju_1">${ firstChar }</span>
 				<span class="saju-img"  id="saju_2">${ secondChar }</span>
 			</div>
-			<div class="profile-info">
-				
+			<div class="p-2 f7 justify-content-center">
+				<table class="table info-table">
+					<colgroup>
+						<col style="width: 30%">
+						<col style="width: *">
+					</colgroup>        				
+		            <tbody>
+		                <tr>
+		                    <th scope="row">생년월일</th>
+		                    <td>${ bean.solYear }-${ bean.solMonth }-${ bean.solDay }</td>
+		                </tr>
+		                <tr>
+		                    <th scope="row">음력</th>
+		                    <td>${ bean.lunYear }-${ bean.lunMonth }-${ bean.lunDay }</td>
+		                </tr>
+		                <tr>
+		                    <th scope="row">출생시간</th>
+		                    <td>${ bean.birthTime }</td>
+		                </tr>
+		                <tr>
+		                    <th scope="row">성별</th>
+		                    <td>${ bean.gender eq 'M' ? '남' : '여' }</td>
+		                </tr>
+		            </tbody>
+		        </table>			
+			
+				<%-- 
 				<span class="text-left block"> <span class="bold">생년월일: </span>${ bean.solYear }-${ bean.solMonth }-${ bean.solDay }</span>
 				<span class="text-left block"> <span class="bold">음력: </span>${ bean.lunYear }-${ bean.lunMonth }-${ bean.lunDay }</span>
 				<span class="text-left block"> <span class="bold">출생시간: </span>${ bean.birthTime }</span>
 				<span class="text-left block"> <span class="bold">성별: </span>${ bean.gender eq 'M' ? '남' : '여' }</span>
+				 --%>
 			</div>
 		</div>
 	</div>
 	<div class="content">
-		광고 자리^^
+<!-- 		광고 자리^^ -->
 	</div>
 	<div class="content" id="resultCalendar">
 		<div class="calendar-container">
@@ -168,7 +177,7 @@
 			<button class="btn" id="nextMonth">&gt;</button>
 		</div>
 		<div class='calendar-wrapper'>
-			<table>
+			<table class="table result-table">
 				<colgroup>
 					<col style="width: 14.2857%;">
 					<col style="width: 14.2857%;">

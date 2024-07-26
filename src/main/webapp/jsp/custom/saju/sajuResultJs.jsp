@@ -69,16 +69,20 @@ function updateCalendar() {
 	const endOfMonth = currentDate.endOf('month');
 	let date = startOfMonth.startOf('week');
 	while (date.isBefore(endOfMonth.endOf('week'), 'day')) {
-		console.log(date.format("YYYY-MM"))
 		const row = document.createElement('tr');
 
 		for (let i = 0; i < 7; i++) {
-			const cell = document.createElement('td');
+			//td day 추가
+			const tdEl = document.createElement('td');
+			
+			const cell = document.createElement('div');
 			cell.classList.add('day', date.format('YYYY-MM-DD'));
 
+			//day 안에 날짜 | 결과
 			const dayElement = document.createElement('span');
 			dayElement.classList.add('detail-day');
 			
+			//공휴일 색상 클래스 추가
 			if( date.get("day") == 0 ) {
 				dayElement.classList.add('holiday');
 			//토요일 6
@@ -86,14 +90,15 @@ function updateCalendar() {
 				dayElement.classList.add('satday');
 			}
 			
+			//좌측 요소 (날짜)
 			const leftElement = document.createElement('span');
 			leftElement.textContent = date.format('D');		//날짜 추가
 			leftElement.classList.add('locdate'); 			// 왼쪽 요소에 클래스 추가
 			
-			// 두 번째 요소 생성 (오른쪽에 배치, 공휴일 이름)
+			//우측 요소 (결과)
 			const rightElement = document.createElement('span');
 			rightElement.textContent = '';
-			rightElement.classList.add('dateName'); 		// 오른쪽 요소에 클래스 추가
+			rightElement.classList.add('day-result');
 			
 			dayElement.appendChild(leftElement);
 			dayElement.appendChild(rightElement);
@@ -101,12 +106,11 @@ function updateCalendar() {
 			cell.appendChild(dayElement);
 			
 			//CSS 위한 클래스 추가
-			if(date.format('M') != currentDate.format("M")) dayElement.classList.add('inactive');
-			if(date.format('MM-DD') == toDayDate.format("MM-DD")) cell.classList.add('today');
-		
-// 			s.appendChild(dayElement);
+			if(date.format('M') 	!= currentDate.format("M"))		dayElement.classList.add('inactive');
+			if(date.format('MM-DD')	== toDayDate.format("MM-DD"))	cell.classList.add('today');
 			
-			row.appendChild(cell);
+			tdEl.appendChild(cell);
+			row.appendChild(tdEl);
 			
 			//사주 셋팅 위한 변수 선언, 중복 제거할 SET
 			yearArr.add(date.format('YYYY'));
@@ -121,6 +125,7 @@ function updateCalendar() {
 	
 	// 달력 셋팅 후 통신 시작
 	uiProgress("#resultCalendar", true);
+	
    //배열로 변환
 	dateArr = [...dateArr];
 	yearArr = [...yearArr];
@@ -211,8 +216,8 @@ function setSajuInfoToCalendar(obj) {
 	//각 날짜에 셋팅
 	var inactive="";
 	if( currentDate.format("MM") !== obj.calDate.split("-")[1] ) inactive="inactive";
-	var html = "<span class='day-result " + inactive + "'>" + obj.skyScore + "<br>" + obj.groundScore +"</span>"
-	$("."+obj.calDate).append(html);
+	
+	$('.'+obj.calDate +' .day-result').text(obj.skyScore).addClass(inactive);
 }      
 
 
@@ -330,11 +335,6 @@ function fnSetHolidayInfo(year, month ) {
 			        		data.locdate = data.locdate.toString().replace(/(\d{4})(\d{2})(\d{2})/, '$1-$2-$3');//날짜
 							holidayArr.push(data);
 							
-// 							var locdate = data.locdate.toString().replace(/(\d{4})(\d{2})(\d{2})/, '$1-$2-$3');//날짜
-// 							var dateKind = data.dateKind;											//종류 (특일 뷴류)
-// 							var isHoliday = data.isHoliday== "Y" ? true : false;					//공공기관 휴일 여부	(Y/N)
-// 							var dateName = data.dateName;											//명칭
-							
 							resolve(holidayArr);
 			        	}
 			        });
@@ -348,10 +348,15 @@ function fnSetHolidayInfo(year, month ) {
 	});
 }
 
+//공휴일 셋팅
 function fnSetHolidaySet(dataArr) {
 	$.each(dataArr, function(idx, data){
-		$("."+ data.locdate + " .detail-day").addClass("holiday");
+		$("."+ data.locdate + " .locdate").addClass("holiday");
+		
+		$("."+ data.locdate).append('<span class="dateName holiday">' + data.dateName  + ' </span>');
+		
 		$("."+ data.locdate + " .dateName").text(data.dateName);
+		
 		if(data.locdate.split("-")[1] ==  currentDate.format("MM") ) {
 		} else {
 			$("."+data.locdate).addClass("inactive")

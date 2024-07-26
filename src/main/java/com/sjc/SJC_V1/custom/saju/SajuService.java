@@ -23,4 +23,9 @@ public class SajuService {
 	public List<DAILY_GROUND_MATCH> findGroundMatch(String myGround) {
 		return sajuDao.findGroundMatch(myGround);
 	}
+
+
+//	public String findChemiResult(String r1, String r2) {
+//		return sajuDao.findChemiResult(r1, r2);
+//	}
 }

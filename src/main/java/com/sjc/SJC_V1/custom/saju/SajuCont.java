@@ -28,7 +28,7 @@ public class SajuCont {
     private SajuService sajuService;
     
     /**
-       * Description : 메인 페이지
+       * Description : 메인 레이아웃
        * @Author   : jwkim-pc
        * @Date       : 2024. 6. 7.
        * @Method   : sajuMainPage 
@@ -42,16 +42,30 @@ public class SajuCont {
     }
     
     
+    /**
+    	* Description : 메인 JSP 이동
+    	* @Author	: jwkim-pc
+    	* @Date	 	: 2024. 7. 26.
+    	* @Method	: sajuMain 
+    	* @return 	: ModelAndView
+     */
     @RequestMapping("/sajuMain")
-    public ModelAndView MainPage() {
+    public ModelAndView sajuMain() {
     	ModelAndView mv = new ModelAndView();
     	mv.setViewName("custom/saju/sajuMain");
     	return mv;
     }
     
     
-    @RequestMapping("/main2")
-    public ModelAndView sajuMainPage2(HttpServletRequest req) {
+    /**
+    	* Description : 결과 페이지 이동
+    	* @Author	: jwkim-pc
+    	* @Date	 	: 2024. 7. 26.
+    	* @Method	: sajuResult 
+    	* @return 	: ModelAndView
+     */
+    @RequestMapping("/sajuResult")
+    public ModelAndView sajuResult(HttpServletRequest req) {
        ModelAndView mv = new ModelAndView();
       try {
          Map<String, Object> map = RequestUtil.getReqParamToMap(req);
@@ -64,22 +78,6 @@ public class SajuCont {
        mv.setViewName("custom/saju/sajuResult");
        return mv;
     }
-    
-    @RequestMapping("/sajuEtc")
-    public ModelAndView sajuEtc(HttpServletRequest req) {
-    	ModelAndView mv = new ModelAndView();
-    	try {
-    		Map<String, Object> map = RequestUtil.getReqParamToMap(req);
-    		mv.addObject("bean", map);
-    		
-    	} catch (ServletException e) {
-    		e.printStackTrace();
-    	}
-    	
-    	mv.setViewName("custom/saju/sajuEtc");
-    	return mv;
-    }
-    
     
 	/**
 		* Description : 사주 궁합 계산
@@ -109,4 +107,49 @@ public class SajuCont {
 		}
 		return result;
 	}
+	
+    
+    /**
+    	* Description : 궁합보기 페이지 이동
+    	* @Author	: jwkim
+    	* @Date	 	: 2024. 7. 26.
+    	* @Method	: sajuChemistry 
+    	* @return 	: ModelAndView
+     */
+    @RequestMapping("/sajuChemistry")
+    public ModelAndView sajuChemistry(HttpServletRequest req) {
+    	ModelAndView mv = new ModelAndView();
+    	try {
+    		Map<String, Object> map = RequestUtil.getReqParamToMap(req);
+    		mv.addObject("bean", map);
+    		
+    	} catch (ServletException e) {
+    		e.printStackTrace();
+    	}
+    	
+    	mv.setViewName("custom/saju/sajuChemistry");
+    	return mv;
+    }
+    
+    
+    @RequestMapping("/getChemiResult")
+    public String getChemiResult(HttpServletRequest req) {
+    	String result="";
+    	try {
+    		Map<String, Object> map = RequestUtil.getReqParamToMap(req);
+
+    		String r1 = (String) map.get("result1[lunIljin]");
+    		String r2 = (String) map.get("result2[lunIljin]");
+    		
+//    		result = sajuService.findChemiResult(r1, r2);
+    		
+    	} catch (ServletException e) {
+    		e.printStackTrace();
+    	}
+    	
+    	return result;
+    }
+	
+	
+	
 }

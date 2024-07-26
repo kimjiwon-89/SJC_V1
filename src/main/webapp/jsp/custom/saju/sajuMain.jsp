@@ -10,38 +10,24 @@
 <!-- JS파일 분리 -->
 <%@include file="sajuMainJs.jsp"%>
 
-<style>
-        .select-container {
-            display: flex;
-        }
-        .select-wrapper {
-            flex: 7; /* 첫 번째 Select2의 너비 비율 설정 */
-            margin-right: 2px;
-        }
-        .select-wrapper:last-child {
-            flex: 3; /* 두 번째 Select2의 너비 비율 설정 */
-            margin-right: 0;
-        }
-</style>
-
 <div class="div-flex">
     <div class="logo">
         <h1>매일 운세 달력</h1>
     </div>
     <div class="content">
-        <table class="info-table">
+        <table class="table info-table">
 			<colgroup>
-				<col style="width: 40%">
-				<col style="width: *">
+				<col style="width: 25%">
+				<col style="width: *"> 
 			</colgroup>        
             <tr>
                 <th>생년월일</th>
                 <td>
-	                <div class="select-container">
-		                <div class="select-wrapper">
+	                <div class="d-flex">
+		                <div class="p-1 f7">
 		                    <input class="ipt wd-100p" type="text" id="birthday" placeholder="YYYY-MM-DD">
 						</div>
-						 <div class="select-wrapper">
+						 <div class="p-1 f3">
 		                    <select class="ipt select2 wd-20p" id="smonth" name="smonth">
 									<option value="sol">양력</option>
 									<option value="lun">음력</option>
@@ -53,8 +39,8 @@
             <tr>
                 <th height="48px">출생시간</th> 
                 <td>
-                	<div class="select-container">
-                		<div class="select-wrapper">
+                	<div class="d-flex">
+                		<div class="p-1 f1">
 							<select class="ipt select2 wd-70p mgr-5" id="birthTime" name="birthTime">
 								<option value="모름">모름</option>
 								<option value="자시 (23:30 - 01:29)">자시 (23:30 - 01:29)</option>
@@ -71,29 +57,32 @@
 								<option value="해시 (21:30 - 23:29)">해시 (21:30 - 23:29)</option>
 							</select>
 						</div>
-
                 	</div>
                 </td>
             </tr>
             <tr>
                 <th>성별</th>
                 <td>
-                    <label class="ipt-radio-label">
-                    	<input class="ipt-radio" type="radio" name="gender" value="M" checked> 남
-                   	</label>
-                    <label class="ipt-radio-label">
-                    	<input class="ipt-radio" type="radio" name="gender" value="W"> 여
-                   	</label>
+                	<div class="d-flex">
+                		<div class="p-1 f1">
+		                    <label class="ipt-radio-label">
+		                    	<input class="ipt-radio" type="radio" name="gender" value="M" checked> 남
+		                   	</label>
+		                    <label class="ipt-radio-label">
+		                    	<input class="ipt-radio" type="radio" name="gender" value="W"> 여
+		                   	</label>
+                		</div>
+                	</div>
                 </td>
             </tr>
         </table>
         
         <div class="mgt-10">
            <button style= "font-family: TheJamsil4Medium" class="result-btn" onclick="search()">조회하기</button>
-           <button style= "font-family: TheJamsil4Medium" class="result-btn" onclick="search2()">우기버튼</button>
+           <button style= "font-family: TheJamsil4Medium" class="result-btn" onclick="search2()">궁합보기</button>
         </div>
     </div>
     <div class="content">
-      광고 자리^^
+<!--       광고 자리^^ -->
    </div>
 </div>
