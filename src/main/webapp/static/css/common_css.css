@@ -212,6 +212,7 @@ input.ipt , select.ipt {
 }
 .btn:hover {
 	background-color: #45a049;
+	color : white !important;
 }
 
 /*조회하기 버튼*/
@@ -236,6 +237,11 @@ input.ipt , select.ipt {
 	vertical-align: middle;
 	border: none; /* 모든 테두리 제거 */
 	text-align:left;
+}
+/* th 영역은 최소 너비만 차지하도록 */
+.info-table th {
+    white-space: nowrap;
+    min-width: 100px;
 }
 /* 기본 부트스트랩 margin 삭제 */
 .info-table {

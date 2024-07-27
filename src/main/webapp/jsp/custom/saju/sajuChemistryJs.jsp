@@ -22,9 +22,18 @@ $(document).ready(function(){
 //         dropdownAutoWidth: true, 						// 드롭다운 너비 자동 설정
         width: 'resolve', // 자동으로 부모의 너비를 따르게 설정
 	});
+   
+	//input 이벤트 추가
+	$('input[name="birthday"]').on('input', function() {
+		let input = $(this).val();
+		let formattedDate = formatDateString(input);
+		$(this).val(formattedDate);
+	});
 });
 
 function chSearch() {
+   if(!checkDate() ) return;
+   $("#ch_result").text("");
 	var param = {
 		dateInput 	: document.getElementById('birthday1').value,
 		smonth 		: document.getElementById('smonth1').value,
@@ -56,14 +65,11 @@ function chSearch() {
     					complete:function(data){
     					}
     	    		});
-    	    		console.log(result1);
-    	    		console.log(result2);
-    	    		
     	    		
     	       	} else {
     	        	alert('정보를 불러오지 못했습니다.');
     	       	}
-    		}, param);
+    		}, param2);
     		
        	} else {
         	alert('정보를 불러오지 못했습니다.');
@@ -120,7 +126,7 @@ function fnCallDateInfoAPI(callback, param) {
 				console.error('서버 응답 오류:', this.statusText);
 				callback(null); // 실패 시 콜백 함수에 null 전달
 			}
-		}
+		} 
 	};
 	xhr.send('');
 }

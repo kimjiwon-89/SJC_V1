@@ -173,6 +173,9 @@ async function fnSetLuniljin(dateArr, yearArr) {
 	    success: function ( data ) {
     		var skyScoreList = data.skyScoreList;
     		var groundScoreList = data.groundScoreList;
+    		
+    		//둘 다 리스트가 비어있다면 제대로 실행 못한 것
+    		if(skyScoreList.length == 0 || groundScoreList.length == 0 ) uiProgress("#resultCalendar", false);
    			
    			//캘린더 리스트 만큼 돈다
    			for(var i in lunIljinMap) {

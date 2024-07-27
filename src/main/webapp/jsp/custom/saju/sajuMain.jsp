@@ -25,7 +25,7 @@
                 <td>
 	                <div class="d-flex">
 		                <div class="p-1 f7">
-		                    <input class="ipt wd-100p" type="text" id="birthday" placeholder="YYYY-MM-DD">
+		                    <input class="ipt wd-100p" type="text" id="birthday" name="birthday" placeholder="YYYY-MM-DD">
 						</div>
 						 <div class="p-1 f3">
 		                    <select class="ipt select2 wd-20p" id="smonth" name="smonth">

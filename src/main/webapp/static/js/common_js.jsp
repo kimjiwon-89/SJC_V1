@@ -37,5 +37,61 @@
 	}
 	 
 	
+
+	//날짜 확인
+	function checkDate() {
+	    const birthEl = document.getElementsByName('birthday');
+
+	    for (var i = 0; i < birthEl.length; i++) {
+			const dateInput = birthEl[i].value;
+		    const datePattern = /^\d{4}-\d{2}-\d{2}$/;
+	
+		    //1. yyyy-mm-dd 형식 확인
+		    if (!datePattern.test(dateInput)) {
+		        alert('날짜 형식이 유효하지 않습니다. \n yyyy-mm-dd 형식으로 입력해 주세요.');
+		        return false;
+		    }
+	
+		    //2. 실존하는 Date 확인
+		    const parts = dateInput.split("-");
+		    const year = parseInt(parts[0], 10);
+		    const month = parseInt(parts[1], 10);
+		    const day = parseInt(parts[2], 10);
+	
+		    if (year < 1 || year > 9999) {
+		       alert(year + "는 올바르지 않은 연도입니다.");
+		        return false;
+		    }
+	
+		    if (month < 1 || month > 12) {
+		       alert(month + "는 올바르지 않은 월입니다.");
+		        return false;
+		    }
+	
+		    const daysInMonth = new Date(year, month, 0).getDate();
+		    if (day < 1 || day > daysInMonth) {
+		       alert(day + "는 올바르지 않은 일입니다.");
+		        return false;
+		    }
+		    
+		    
+		    const date = new Date(dateInput);
+	
+		    if (date.getFullYear() !== year || date.getMonth() + 1 !== month || date.getDate() !== day) {
+		       alert("올바르지 않은 입력입니다.");
+		        return false;
+		    }
+	
+		    //3. 오늘 날짜보다 크다면
+		    const currentDate = new Date();
+		    if (date > currentDate) {
+		    	alert("오늘 날짜보다 큰 날짜입니다.");
+		        return false;
+		    }
+	    	
+	    }
+	    
+	    return true;
+	}
 	
 </script>

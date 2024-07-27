@@ -9,6 +9,7 @@
 
 <!-- JS파일 분리 -->
 <%@include file="sajuResultJs.jsp"%>
+<script src="https://kit.fontawesome.com/60d85a80ee.js" crossorigin="anonymous"></script>
 
 <style>
 
@@ -133,11 +134,11 @@
 				<span class="saju-img" id="saju_1">${ firstChar }</span>
 				<span class="saju-img"  id="saju_2">${ secondChar }</span>
 			</div>
-			<div class="p-2 f7 justify-content-center">
+			<div class="p-2 f8 justify-content-center">
 				<table class="table info-table">
 					<colgroup>
-						<col style="width: 30%">
-						<col style="width: *">
+						<col style="width: auto;">
+						<col style="width: 100%;">
 					</colgroup>        				
 		            <tbody>
 		                <tr>
@@ -158,13 +159,6 @@
 		                </tr>
 		            </tbody>
 		        </table>			
-			
-				<%-- 
-				<span class="text-left block"> <span class="bold">생년월일: </span>${ bean.solYear }-${ bean.solMonth }-${ bean.solDay }</span>
-				<span class="text-left block"> <span class="bold">음력: </span>${ bean.lunYear }-${ bean.lunMonth }-${ bean.lunDay }</span>
-				<span class="text-left block"> <span class="bold">출생시간: </span>${ bean.birthTime }</span>
-				<span class="text-left block"> <span class="bold">성별: </span>${ bean.gender eq 'M' ? '남' : '여' }</span>
-				 --%>
 			</div>
 		</div>
 	</div>
@@ -174,9 +168,9 @@
 	<div class="content" id="resultCalendar">
 		<div class="calendar-container">
 		<div class="calendar-header">
-			<button class="btn" id="prevMonth">&lt;</button>
+			<button class="btn" id="prevMonth"><i class="fa-solid fa-angle-left"></i></button>
 			<span id="currentDate"></span>
-			<button class="btn" id="nextMonth">&gt;</button>
+			<button class="btn" id="nextMonth"><i class="fa-solid fa-angle-right"></i></button>
 		</div>
 		<div class='calendar-wrapper'>
 			<table class="table result-table">

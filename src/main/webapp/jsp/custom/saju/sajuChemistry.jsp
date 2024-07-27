@@ -34,7 +34,7 @@
 		                <td>
 			                <div class="d-flex">
 				                <div class="p-1 f7">
-				                    <input class="ipt wd-100p" type="text" id="birthday1" placeholder="YYYY-MM-DD" value="${ bean.birthday }">
+				                    <input class="ipt wd-100p" type="text" name="birthday" id="birthday1" placeholder="YYYY-MM-DD" value="${ bean.birthday }">
 								</div>
 								 <div class="p-1 f3">
 				                    <select class="ipt select2 wd-20p" id="smonth1" name="smonth1">
@@ -79,7 +79,7 @@
 		                <td>
 			                <div class="d-flex">
 				                <div class="p-1 f7">
-				                    <input class="ipt wd-100p" type="text" id="birthday2" placeholder="YYYY-MM-DD">
+				                    <input class="ipt wd-100p" type="text" name="birthday" id="birthday2" placeholder="YYYY-MM-DD">
 								</div>
 								 <div class="p-1 f3">
 				                    <select class="ipt select2 wd-20p" id="smonth2" name="smonth2">
