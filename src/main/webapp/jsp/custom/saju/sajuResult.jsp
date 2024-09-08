@@ -7,8 +7,6 @@
 <%@taglib uri="http://www.springframework.org/tags" prefix="spring"%>
 <%@taglib uri="http://www.springframework.org/tags/form" prefix="form"%>
 
-<!-- JS파일 분리 -->
-<%@include file="sajuResultJs.jsp"%>
 <script src="https://kit.fontawesome.com/60d85a80ee.js" crossorigin="anonymous"></script>
 
 <style>
@@ -130,10 +128,7 @@
 	</div>
 	<div class="content">
 	   <div class="d-flex wd-100p">
-			<div class="p-2 d-flex f1 flex-column justify-content-center">
-				<span class="saju-img" id="saju_1">${ firstChar }</span>
-				<span class="saju-img"  id="saju_2">${ secondChar }</span>
-			</div>
+
 			<div class="p-2 f8 justify-content-center">
 				<table class="table info-table">
 					<colgroup>
@@ -163,7 +158,38 @@
 		</div>
 	</div>
 	<div class="content">
-<!-- 		광고 자리^^ -->
+<!-- 		<div class="p-2 d-flex f1 flex-column justify-content-center"> -->
+<%-- 			<span class="saju-img" id="saju_1">${ firstChar }</span> --%>
+<%-- 			<span class="saju-img"  id="saju_2">${ secondChar }</span> --%>
+<!-- 		</div> -->
+
+ 		<div class="row">
+            <div class="col">
+                <div class="d-flex flex-column">
+                    <div id="time_saju1" class="mb-2 saju-img"></div>
+                    <div id="time_saju2" class="saju-img"></div>
+                </div>
+            </div>
+            <div class="col">
+                <div class="d-flex flex-column">
+                    <div id="day_saju1" class="mb-2 saju-img"></div>
+                    <div id="day_saju2" class="saju-img"></div>
+                </div>
+            </div>
+            <div class="col">
+                <div class="d-flex flex-column">
+                    <div id="month_saju1" class="mb-2 saju-img"></div>
+                    <div id="month_saju2" class="saju-img"></div>
+                </div>
+            </div>
+            <div class="col">
+                <div class="d-flex flex-column">
+                    <div id="year_saju1" class="mb-2 saju-img"></div>
+                    <div id="year_saju2" class="saju-img"></div>
+                </div>
+            </div>
+        </div>
+
 	</div>
 	<div class="content" id="resultCalendar">
 		<div class="calendar-container">
@@ -200,3 +226,6 @@
 		</div>
 	</div>
 </div>
+
+<!-- JS파일 분리 -->
+<%@include file="sajuResultJs.jsp"%>

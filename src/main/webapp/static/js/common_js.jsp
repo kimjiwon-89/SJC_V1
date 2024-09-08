@@ -7,10 +7,55 @@
 
 <script>
 	//기본으로 쓰일 변수 선언
-	const skyArr = ["갑", "을", "병", "정", "무", "기", "경", "신", "임", "계"];
-	const groundArr = ["축", "인", "묘", "진", "사", "오", "미", "신", "유", "술", "해", "자"];
-
+	const skyobkj = {
+		"갑" : "saju-green",
+		"을" : "saju-green",
+		"병" : "saju-red",
+		"정" : "saju-red",
+		"무" : "saju-yellow",
+		"기" : "saju-yellow",
+		"경" : "saju-white",
+		"신" : "saju-white",
+		"임" : "saju-black",
+		"계" : "saju-black",
+		"甲" : "saju-green",
+		"乙" : "saju-green",
+		"丙" : "saju-red",
+		"丁" : "saju-red",
+		"戊" : "saju-yellow",
+		"己" : "saju-yellow",
+		"庚" : "saju-white",
+		"辛" : "saju-white",
+		"壬" : "saju-black",
+		"癸" : "saju-black",
+	}
 	
+	const groundObj = {
+		"자" : "saju-black",
+		"축" : "saju-yellow",
+		"인" : "saju-green",
+		"묘" : "saju-green",
+		"진" : "saju-yellow",
+		"사" : "saju-red",
+		"오" : "saju-red",
+		"미" : "saju-yellow",
+		"신" : "saju-white",
+		"유" : "saju-white",
+		"술" : "saju-yellow",
+		"해" : "saju-black",
+		"子" : "saju-black",
+		"丑" : "saju-yellow",
+		"寅" : "saju-green",
+		"卯" : "saju-green",
+		"辰" : "saju-yellow",
+		"巳" : "saju-red",
+		"午" : "saju-red",
+		"未" : "saju-yellow",
+		"申" : "saju-white",
+		"酉" : "saju-white",
+		"戌" : "saju-yellow",
+		"亥" : "saju-black",
+	}
 
 	//DATE Type yyyy-mm-dd형태 format 
 	function formatDate(date) {
@@ -93,5 +138,31 @@
 	    
 	    return true;
 	}
+	
+	
+	//server 통신 위한 form 소스
+	function formCallServer(data, url) {
+		//form 형태로 데이터 생성
+		const form = document.createElement('form');
+		form.method = 'POST';
+		form.action = url;
+
+		// Map 데이터를 FormData로 변환하여 Form에 추가
+		$.each(data, function(key, value){
+		    const input = document.createElement('input');
+		    input.type = 'hidden';
+		    input.name = key;
+		    input.value = value;
+		    form.appendChild(input);
+		})
+
+		// Form을 동적으로 document에 추가하고 제출
+		document.body.appendChild(form);
+		form.submit();
+	}
+	
+	
+	
+	
 	
 </script>

@@ -38,7 +38,8 @@ function search() {
    
 	fnCallDateInfoAPI(function(data) {
     	if(data) {
-			$("#content").load("/saju/sajuResult", data);
+    		formCallServer(data, "/saju/sajuResult");
+// 			$("#content").load("/saju/sajuResult", data);
 		} else {
 			alert('정보를 불러오지 못했습니다.');
 		}
@@ -57,8 +58,8 @@ function search2() {
 		smonth 		: document.getElementById('smonth').value
 	}
 	
-	
-	$("#content").load("/saju/sajuChemistry", data);
+	formCallServer(data, "/saju/sajuChemistry");
+// 	$("#content").load("/saju/sajuChemistry", data);
 }
 
 //yyyy-mm-dd 형태로 수정
@@ -119,7 +120,10 @@ function fnCallDateInfoAPI(callback) {
 				var solYear = xmlDoc.getElementsByTagName("solYear")[0].childNodes[0].nodeValue;	//양력 년도
 				var solMonth = xmlDoc.getElementsByTagName("solMonth")[0].childNodes[0].nodeValue;	//양력 월
 				var solDay = xmlDoc.getElementsByTagName("solDay")[0].childNodes[0].nodeValue;		//양력 일
-				 
+				
+				var lunWolgeon = xmlDoc.getElementsByTagName("lunWolgeon")[0].childNodes[0].nodeValue;	//양력 월주
+				var lunSecha = xmlDoc.getElementsByTagName("lunSecha")[0].childNodes[0].nodeValue;		//양력 년주
+				
 				 var param={};
 				 param.lunIljin    	= lunIljin;
 				 param.lunYear    	= lunYear;
@@ -128,6 +132,8 @@ function fnCallDateInfoAPI(callback) {
 				 param.solYear    	= solYear;
 				 param.solMonth   	= solMonth;
 				 param.solDay   	= solDay;
+				 param.monthSaju   	= lunWolgeon;
+				 param.yearSaju   	= lunSecha;
 				 param.birthday  	= $("#birthday").val();
 				 param.birthTime	= $("#birthTime").val();
 				 param.gender   	= $('input[name="gender"]:checked').val();

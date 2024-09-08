@@ -27,19 +27,19 @@ public class SajuCont {
     @Autowired
     private SajuService sajuService;
     
-    /**
-       * Description : 메인 레이아웃
-       * @Author   : jwkim-pc
-       * @Date       : 2024. 6. 7.
-       * @Method   : sajuMainPage 
-       * @return    : ModelAndView
-     */
-    @RequestMapping("/main")
-    public ModelAndView sajuMainPage() {
-       ModelAndView mv = new ModelAndView();
-       mv.setViewName("layout/common_layout");
-       return mv;
-    }
+//    /**
+//       * Description : 메인 레이아웃
+//       * @Author   : jwkim-pc
+//       * @Date       : 2024. 6. 7.
+//       * @Method   : sajuMainPage 
+//       * @return    : ModelAndView
+//     */
+//    @RequestMapping("/main")
+//    public ModelAndView sajuMainPage() {
+//       ModelAndView mv = new ModelAndView();
+//       mv.setViewName("layout/common_layout");
+//       return mv;
+//    }
     
     
     /**
@@ -49,10 +49,11 @@ public class SajuCont {
     	* @Method	: sajuMain 
     	* @return 	: ModelAndView
      */
-    @RequestMapping("/sajuMain")
+    @RequestMapping("/main")
     public ModelAndView sajuMain() {
     	ModelAndView mv = new ModelAndView();
-    	mv.setViewName("custom/saju/sajuMain");
+    	mv.addObject("viewName", "saju/sajuMain");
+        mv.setViewName("layout/common_layout");
     	return mv;
     }
     
@@ -75,7 +76,8 @@ public class SajuCont {
          e.printStackTrace();
       }
        
-       mv.setViewName("custom/saju/sajuResult");
+       mv.addObject("viewName", "saju/sajuResult");
+       mv.setViewName("layout/common_layout");
        return mv;
     }
     
@@ -127,7 +129,8 @@ public class SajuCont {
     		e.printStackTrace();
     	}
     	
-    	mv.setViewName("custom/saju/sajuChemistry");
+    	mv.addObject("viewName", "saju/sajuChemistry");
+        mv.setViewName("layout/common_layout");
     	return mv;
     }
     

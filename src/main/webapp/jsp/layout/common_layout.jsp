@@ -44,26 +44,28 @@
 	</style>
 	
 
-	<jsp:include page="${rootPath}/static/js/common_js.jsp" />
 
 </head>
 <body>
 	<div class="container body-wrapper">
     	<script src="${rootPath}/webjars/bootstrap/5.3.0/js/bootstrap.bundle.min.js"></script>
+		<jsp:include page="${rootPath}/static/js/common_js.jsp" />
     	
 		<!-- 컨텐츠영역 -->
 		<div class="div-flex-wrap" id="content" style="">
+			<jsp:include page='../custom/${viewName}.jsp' flush="false"/>
 		</div>
+
 	</div>
 </body>
 </html>
 
+
 <script>
-	$("#content").load("/saju/sajuMain");
+// 	$("#content").load("/saju/sajuMain");
 	
 	//로딩함수 호출 함수
 	function uiProgress(_sel, status) {
-		
 		if(status) {
 		    var html  = '<div class="loader-wrapper">';
 				html +=	'<div id="loader" class="loader"></div>';
@@ -73,7 +75,5 @@
 		} else {
 			$(".loader-wrapper").remove();
 		}
-		
-		
 	}
 </script>

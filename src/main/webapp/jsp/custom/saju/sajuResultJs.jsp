@@ -9,13 +9,45 @@
 
 <script>
 $(document).ready(function(){
-	   
-	//1. 이미지 셋팅
-	lunImgSet();
+
+	//1. 사주 셋팅 (시, 일, 월, 년)
+	fnSetSajuName();
 	
 	//2. 캘린더 셋팅 및 공휴일 셋팅
 	fnSetCalendar();
 });
+
+//Parameter로 받아온 사주 정보를 추출하여 셋팅한다.
+//시주를 제외한 나머지는 split 작업이 필요함
+function fnSetSajuName() {
+	var timeSaju;
+	var daySaju 	= fnTransAPIdata("${ bean.lunIljin }");
+	var monthSaju	= fnTransAPIdata("${ bean.monthSaju }");
+	var yearSaju 	= fnTransAPIdata("${ bean.yearSaju }");
+	
+	fnSetSajuInfo("day_saju", daySaju);
+	fnSetSajuInfo("month_saju", monthSaju);
+	fnSetSajuInfo("year_saju", yearSaju);
+	
+}
+
+//원하는 형태의 한자만 추출
+function fnTransAPIdata(data) {
+	var splitData = data.split("(")[1].replace(")", "");
+	return splitData;
+}
+
+//원하는 데이터의 아이디 값을 셋팅
+function fnSetSajuInfo(id, data) {
+	let data1 = data.substring(0, 1);
+	let data2 = data.substring(1, 2);
+	
+	let data1_class = skyobkj[data1];
+	let data2_class = groundObj[data2];
+	
+	$("#"+id+"1").text(data1).addClass(data1_class);
+	$("#"+id+"2").text(data2).addClass(data2_class);
+}
 
 //지간 순대로 인덱스 추출하여 이미지 셋팅, 이후에 CSS로 수정할 것
 function lunImgSet() {

@@ -7,9 +7,6 @@
 <%@taglib uri="http://www.springframework.org/tags" prefix="spring"%>
 <%@taglib uri="http://www.springframework.org/tags/form" prefix="form"%>
 
-<!-- JS파일 분리 -->
-<%@include file="sajuMainJs.jsp"%>
-
 <div class="div-flex">
     <div class="logo">
         <h1>매일 운세 달력</h1>
@@ -86,3 +83,8 @@
 <!--       광고 자리^^ -->
    </div>
 </div>
+
+
+<!-- JS파일 분리 -->
+<%@include file="sajuMainJs.jsp"%>
+

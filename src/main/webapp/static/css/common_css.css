@@ -260,30 +260,11 @@ input.ipt , select.ipt {
 }
 
 
-.saju-img.sky_1  { background : green;}
-.saju-img.sky_2  { background : green;}
-.saju-img.sky_3  { background : red;}
-.saju-img.sky_4  { background : red;}
-.saju-img.sky_5  { background : #ffc107;}
-.saju-img.sky_6  { background : #ffc107;}
-.saju-img.sky_7  { background : white; color: black; border: 1px solid black;}
-.saju-img.sky_8  { background : white; color: black; border: 1px solid black;}
-.saju-img.sky_9  { background : black;}
-.saju-img.sky_10 { background : black;}
-
-/* 지지 */
-.saju-img.ground_1  { background : #ffc107;}
-.saju-img.ground_2  { background : green;}
-.saju-img.ground_3  { background : green;}
-.saju-img.ground_4  { background : #ffc107;}
-.saju-img.ground_5  { background : red;}
-.saju-img.ground_6  { background : red;}
-.saju-img.ground_7  { background : #ffc107;}
-.saju-img.ground_8  { background : white; color: black; border: 1px solid black;}
-.saju-img.ground_9  { background : white; color: black; border: 1px solid black;}
-.saju-img.ground_10 { background : #ffc107;}
-.saju-img.ground_11 { background : black;}
-.saju-img.ground_12 { background : black;}
+.saju-img.saju-green  { background : green;}
+.saju-img.saju-red  { background : red;}
+.saju-img.saju-yellow  { background : #ffc107;}
+.saju-img.saju-white  { background : white; color: black; border: 1px solid black;}
+.saju-img.saju-black { background : black;}
 
 
 /* 스크롤 색상 */
