@@ -12,7 +12,7 @@ import org.apache.logging.log4j.Logger;
 public class RunApplication extends SpringBootServletInitializer {
 	private static final Logger logger = LogManager.getLogger(RunApplication.class);
 	
-    /** RUN
+    /**
      * @param args
      */
     public static void main(String[] args) {
