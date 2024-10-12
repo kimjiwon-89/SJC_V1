@@ -3,7 +3,6 @@ package com.sjc.SJC_V1.custom.saju;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-import java.util.stream.Collectors;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -11,10 +10,8 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.ModelAndView;
 
-import com.fasterxml.jackson.core.type.TypeReference;
-import com.fasterxml.jackson.databind.ObjectMapper;
-import com.sjc.SJC_V1.model.DailySkyBean;
-import com.sjc.SJC_V1.model.DailyGroundBean;
+import com.sjc.SJC_V1.model.DailySkyDto;
+import com.sjc.SJC_V1.model.DailyGroundDto;
 import com.sjc.SJC_V1.util.RequestUtil;
 
 import jakarta.servlet.ServletException;
@@ -99,8 +96,8 @@ public class SajuCont {
 			String myGround = (String)map.get("myGround");
 			
 	        //해당 날짜 셋팅
-	        List<DailySkyBean> skyScoreList = sajuService.findSkyMatch(mySky);
-			List<DailyGroundBean> groundScoreList = sajuService.findGroundMatch(myGround);
+	        List<DailySkyDto> skyScoreList = sajuService.findSkyMatch(mySky);
+			List<DailyGroundDto> groundScoreList = sajuService.findGroundMatch(myGround);
 			
 			result.put("skyScoreList", skyScoreList);
 			result.put("groundScoreList", groundScoreList);

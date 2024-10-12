@@ -1,4 +1,4 @@
-package com.sjc.SJC_V1.model;
+package com.sjc.SJC_V1.entity;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -17,7 +17,6 @@ public class DailySkyBean {
     private String daystem2;
     private String matchscore;
     private String date;
-    
     
 	public Long getSeq() {
 		return seq;
@@ -49,4 +48,5 @@ public class DailySkyBean {
 	public void setDate(String date) {
 		this.date = date;
 	}
+    
 }
