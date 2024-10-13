@@ -1,12 +1,12 @@
-package com.sjc.SJC_V1.custom.saju;
+package com.sjc.custom.saju;
 
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.sjc.SJC_V1.model.DailyGroundDto;
-import com.sjc.SJC_V1.model.DailySkyDto;
+import com.sjc.model.DailyGroundDto;
+import com.sjc.model.DailySkyDto;
 
 @Service
 public class SajuService {

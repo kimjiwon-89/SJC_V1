@@ -1,4 +1,4 @@
-package com.sjc.SJC_V1.custom.saju;
+package com.sjc.custom.saju;
 
 import java.util.HashMap;
 import java.util.List;
@@ -10,9 +10,9 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.ModelAndView;
 
-import com.sjc.SJC_V1.model.DailySkyDto;
-import com.sjc.SJC_V1.model.DailyGroundDto;
-import com.sjc.SJC_V1.util.RequestUtil;
+import com.sjc.model.DailyGroundDto;
+import com.sjc.model.DailySkyDto;
+import com.sjc.util.RequestUtil;
 
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServletRequest;
@@ -24,28 +24,13 @@ public class SajuCont {
     @Autowired
     private SajuService sajuService;
     
-//    /**
-//       * Description : 메인 레이아웃
-//       * @Author   : jwkim-pc
-//       * @Date       : 2024. 6. 7.
-//       * @Method   : sajuMainPage 
-//       * @return    : ModelAndView
-//     */
-//    @RequestMapping("/main")
-//    public ModelAndView sajuMainPage() {
-//       ModelAndView mv = new ModelAndView();
-//       mv.setViewName("layout/common_layout");
-//       return mv;
-//    }
-    
-    
     /**
     	* Description : 메인 JSP 이동
     	* @Author	: jwkim-pc
     	* @Date	 	: 2024. 7. 26.
     	* @Method	: sajuMain 
     	* @return 	: ModelAndView
-     */
+    */
     @RequestMapping("/main")
     public ModelAndView sajuMain() {
     	ModelAndView mv = new ModelAndView();
@@ -61,7 +46,7 @@ public class SajuCont {
     	* @Date	 	: 2024. 7. 26.
     	* @Method	: sajuResult 
     	* @return 	: ModelAndView
-     */
+    */
     @RequestMapping("/sajuResult")
     public ModelAndView sajuResult(HttpServletRequest req) {
        ModelAndView mv = new ModelAndView();
@@ -84,7 +69,7 @@ public class SajuCont {
 		* @Date	 	: 2024. 6. 20.
 		* @Method	: getSajuCalcResult 
 		* @return 	: AjaxBean
-	 */
+	*/
 	@RequestMapping("getSajuCalcResult")
 	public @ResponseBody Map<String, Object> getSajuCalcResult(HttpServletRequest req) {
 		Map<String, Object> result = new HashMap<String,Object>();
@@ -114,7 +99,7 @@ public class SajuCont {
     	* @Date	 	: 2024. 7. 26.
     	* @Method	: sajuChemistry 
     	* @return 	: ModelAndView
-     */
+    */
     @RequestMapping("/sajuChemistry")
     public ModelAndView sajuChemistry(HttpServletRequest req) {
     	ModelAndView mv = new ModelAndView();

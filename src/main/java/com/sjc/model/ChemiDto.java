@@ -1,23 +1,24 @@
-package com.sjc.SJC_V1.model;
+package com.sjc.model;
 
-import com.sjc.SJC_V1.entity.DailySkyBean;
+import com.sjc.entity.ChemiBean;
 
-public class DailySkyDto {
+/**
+ * DTO : API 요청 응답에 사용되는 객체, 특정 필드만 담아 전송하도록 함
+ */
+public class ChemiDto {
 
     private Long seq;
     private String daystem1;
     private String daystem2;
     private String matchscore;
-    private String date;
-
-    public DailySkyDto() {}
     
-    public DailySkyDto(DailySkyBean dailySkyBean) {
-    	seq = dailySkyBean.getSeq();
-    	daystem1 = dailySkyBean.getDaystem1();
-    	daystem2 = dailySkyBean.getDaystem2();
-    	matchscore = dailySkyBean.getMatchscore();
-    	date = dailySkyBean.getDate();
+    public ChemiDto() {}
+    
+    public ChemiDto(ChemiBean chemiBean) {
+    	seq = chemiBean.getSeq();
+    	daystem1 = chemiBean.getDaystem1();
+    	daystem2 = chemiBean.getDaystem2();
+    	matchscore = chemiBean.getMatchscore();
     }
 
 	public Long getSeq() {
@@ -51,12 +52,5 @@ public class DailySkyDto {
 	public void setMatchscore(String matchscore) {
 		this.matchscore = matchscore;
 	}
-
-	public String getDate() {
-		return date;
-	}
-
-	public void setDate(String date) {
-		this.date = date;
-	}
+    
 }

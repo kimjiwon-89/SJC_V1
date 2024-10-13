@@ -1,4 +1,4 @@
-package com.sjc.SJC_V1.custom;
+package com.sjc.custom;
 
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;

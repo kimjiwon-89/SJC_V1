@@ -1,4 +1,4 @@
-package com.sjc.SJC_V1.common.config;
+package com.sjc.common.config;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;

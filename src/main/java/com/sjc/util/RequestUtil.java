@@ -1,4 +1,4 @@
-package com.sjc.SJC_V1.util;
+package com.sjc.util;
 
 import java.util.Enumeration;
 import java.util.HashMap;

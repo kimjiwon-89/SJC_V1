@@ -1,4 +1,4 @@
-package com.sjc.SJC_V1;
+package com.sjc;
 
 import org.springframework.boot.builder.SpringApplicationBuilder;
 import org.springframework.boot.web.servlet.support.SpringBootServletInitializer;

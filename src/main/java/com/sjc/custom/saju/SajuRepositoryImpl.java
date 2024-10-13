@@ -1,4 +1,4 @@
-package com.sjc.SJC_V1.custom.saju;
+package com.sjc.custom.saju;
 
 import java.util.List;
 
@@ -6,12 +6,12 @@ import org.springframework.stereotype.Repository;
 
 import com.querydsl.core.types.Projections;
 import com.querydsl.jpa.impl.JPAQueryFactory;
-import com.sjc.SJC_V1.entity.QChemiBean;
-import com.sjc.SJC_V1.entity.QDailyGroundBean;
-import com.sjc.SJC_V1.entity.QDailySkyBean;
-import com.sjc.SJC_V1.model.ChemiDto;
-import com.sjc.SJC_V1.model.DailyGroundDto;
-import com.sjc.SJC_V1.model.DailySkyDto;
+import com.sjc.entity.QChemiBean;
+import com.sjc.entity.QDailyGroundBean;
+import com.sjc.entity.QDailySkyBean;
+import com.sjc.model.ChemiDto;
+import com.sjc.model.DailyGroundDto;
+import com.sjc.model.DailySkyDto;
 
 import jakarta.persistence.EntityManager;
 import jakarta.transaction.Transactional;

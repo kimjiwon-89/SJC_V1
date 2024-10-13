@@ -157,7 +157,7 @@
 	                        <goal>process</goal>
 	                    </goals>
 	                    <configuration>
-	                        <outputDirectory>target/generated-sources/java</outputDirectory>
+	                        <outputDirectory>src/main/generated/queryDsl</outputDirectory>
 	                        <processor>com.querydsl.apt.jpa.JPAAnnotationProcessor</processor>
 	                    </configuration>
 	                </execution>
