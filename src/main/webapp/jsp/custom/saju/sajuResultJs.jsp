@@ -20,10 +20,12 @@ $(document).ready(function(){
 //Parameter로 받아온 사주 정보를 추출하여 셋팅한다.
 //시주를 제외한 나머지는 split 작업이 필요함
 function fnSetSajuName() {
-	var timeSaju;
 	var daySaju 	= fnTransAPIdata("${ bean.lunIljin }");
 	var monthSaju	= fnTransAPIdata("${ bean.monthSaju }");
 	var yearSaju 	= fnTransAPIdata("${ bean.yearSaju }");
+	
+	var timeSaju1 = "${ timePillar.stem1_c }";
+	var timeSaju2 = "${ timePillar.stem2_c }";
 	
 	fnSetSajuInfo("day_saju", daySaju);
 	fnSetSajuInfo("month_saju", monthSaju);

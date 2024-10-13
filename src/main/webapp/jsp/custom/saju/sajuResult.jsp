@@ -166,8 +166,8 @@
  		<div class="row">
             <div class="col">
                 <div class="d-flex flex-column">
-                    <div id="time_saju1" class="mb-2 saju-img"></div>
-                    <div id="time_saju2" class="saju-img"></div>
+                    <div id="time_saju1" class="mb-2 saju-img">${ timePillar.stem1_c }</div>
+                    <div id="time_saju2" class="saju-img">${ timePillar.stem2_c }</div>
                 </div>
             </div>
             <div class="col">

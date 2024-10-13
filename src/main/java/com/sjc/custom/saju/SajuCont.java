@@ -1,5 +1,7 @@
 package com.sjc.custom.saju;
 
+import java.time.LocalTime;
+import java.time.format.DateTimeFormatter;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -12,6 +14,7 @@ import org.springframework.web.servlet.ModelAndView;
 
 import com.sjc.model.DailyGroundDto;
 import com.sjc.model.DailySkyDto;
+import com.sjc.model.TimePillarDto;
 import com.sjc.util.RequestUtil;
 
 import jakarta.servlet.ServletException;
@@ -53,6 +56,15 @@ public class SajuCont {
       try {
          Map<String, Object> map = RequestUtil.getReqParamToMap(req);
          mv.addObject("bean", map);
+         
+         //시주 정보 조회
+         //SajuMain에서 Value값이 Stime이기에 일치하는 정보를 우선 전부 불러옴
+         String strBirthTime = (String) map.get("birthTime");
+         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("HH:mm:ss");
+         LocalTime birthTime = LocalTime.parse(strBirthTime, formatter);
+         
+         TimePillarDto timePillar = sajuService.getTimePillarInfo(birthTime);  
+         mv.addObject("timePillar", timePillar);
          
       } catch (ServletException e) {
          e.printStackTrace();

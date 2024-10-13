@@ -40,18 +40,18 @@
                 		<div class="p-1 f1">
 							<select class="ipt select2 wd-70p mgr-5" id="birthTime" name="birthTime">
 								<option value="모름">모름</option>
-								<option value="자시 (23:30 - 01:29)">자시 (23:30 - 01:29)</option>
-								<option value="축시 (01:30 - 03:29)">축시 (01:30 - 03:29)</option>
-								<option value="인시 (03:30 - 05:29)">인시 (03:30 - 05:29)</option>
-								<option value="묘시 (05:30 - 07:29)">묘시 (05:30 - 07:29)</option>
-								<option value="진시 (07:30 - 09:29)">진시 (07:30 - 09:29)</option>
-								<option value="사시 (09:30 - 11:29)">사시 (09:30 - 11:29)</option>
-								<option value="오시 (11:30 - 13:29)">오시 (11:30 - 13:29)</option>
-								<option value="미시 (13:30 - 15:29)">미시 (13:30 - 15:29)</option>
-								<option value="신시 (15:30 - 17:29)">신시 (15:30 - 17:29)</option>
-								<option value="유시 (17:30 - 19:29)">유시 (17:30 - 19:29)</option>
-								<option value="술시 (19:30 - 21:29)">술시 (19:30 - 21:29)</option>
-								<option value="해시 (21:30 - 23:29)">해시 (21:30 - 23:29)</option>
+								<option value="23:30:00">자시 (23:30 - 01:29)</option>
+								<option value="01:30:00">축시 (01:30 - 03:29)</option>
+								<option value="03:30:00">인시 (03:30 - 05:29)</option>
+								<option value="05:30:00">묘시 (05:30 - 07:29)</option>
+								<option value="07:30:00">진시 (07:30 - 09:29)</option>
+								<option value="09:30:00">사시 (09:30 - 11:29)</option>
+								<option value="11:30:00">오시 (11:30 - 13:29)</option>
+								<option value="13:30:00">미시 (13:30 - 15:29)</option>
+								<option value="15:30:00">신시 (15:30 - 17:29)</option>
+								<option value="17:30:00">유시 (17:30 - 19:29)</option>
+								<option value="19:30:00">술시 (19:30 - 21:29)</option>
+								<option value="21:30:00">해시 (21:30 - 23:29)</option>
 							</select>
 						</div>
                 	</div>

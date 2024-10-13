@@ -1,5 +1,6 @@
 package com.sjc.custom.saju;
 
+import java.time.LocalTime;
 import java.util.List;
 
 import org.springframework.stereotype.Repository;
@@ -9,9 +10,10 @@ import com.querydsl.jpa.impl.JPAQueryFactory;
 import com.sjc.entity.QChemiBean;
 import com.sjc.entity.QDailyGroundBean;
 import com.sjc.entity.QDailySkyBean;
-import com.sjc.model.ChemiDto;
+import com.sjc.entity.QTimepillarBean;
 import com.sjc.model.DailyGroundDto;
 import com.sjc.model.DailySkyDto;
+import com.sjc.model.TimePillarDto;
 
 import jakarta.persistence.EntityManager;
 import jakarta.transaction.Transactional;
@@ -67,6 +69,20 @@ public class SajuRepositoryImpl implements SajuRepositoryCustom{
 				.select(chemiBean.matchscore)	//조회
 				.from(chemiBean)	//테이블
 				.where(chemiBean.daystem1.eq(r1).and(chemiBean.daystem2.eq(r2)))
+				.fetchFirst();
+	}
+
+	@Override
+	public TimePillarDto getTimePillarInfo(LocalTime birthTime) {
+		QTimepillarBean timepillarBean = QTimepillarBean.timepillarBean;
+		return queryFactory
+				.select(Projections.fields(TimePillarDto.class, 
+						timepillarBean.stem1_c,
+						timepillarBean.stem1_k,
+						timepillarBean.stem2_c,
+						timepillarBean.stem2_k ))
+				.from(timepillarBean)
+				.where(timepillarBean.stime.eq(birthTime))
 				.fetchFirst();
 	}
 	
