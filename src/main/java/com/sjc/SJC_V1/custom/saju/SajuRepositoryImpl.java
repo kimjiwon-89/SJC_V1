@@ -42,7 +42,7 @@ public class SajuRepositoryImpl implements SajuRepositoryCustom{
 		QDailySkyBean dailySkyBean = QDailySkyBean.dailySkyBean;
 		
 		return queryFactory
-				.select(Projections.fields(DailySkyDto.class, dailySkyBean.daystem1, dailySkyBean.daystem2))	//조회
+				.select(Projections.fields(DailySkyDto.class, dailySkyBean.daystem1, dailySkyBean.daystem2, dailySkyBean.matchscore))	//조회
 				.from(dailySkyBean) //테이블
 				.where(dailySkyBean.daystem1.eq(mySky))	//조건
 				.fetch();	//쿼리 실행
@@ -53,7 +53,7 @@ public class SajuRepositoryImpl implements SajuRepositoryCustom{
 	public List<DailyGroundDto> findGroundMatch(String myGround) {
 		QDailyGroundBean dailyGroundBean = QDailyGroundBean.dailyGroundBean;
 		return queryFactory
-				.select(Projections.fields(DailyGroundDto.class, dailyGroundBean.daystem1, dailyGroundBean.daystem2))	//조회
+				.select(Projections.fields(DailyGroundDto.class, dailyGroundBean.daystem1, dailyGroundBean.daystem2, dailyGroundBean.matchscore))	//조회
 				.from(dailyGroundBean)	//테이블
 				.where(dailyGroundBean.daystem1.eq(myGround))	//조건
 				.fetch();	//쿼리 실행
