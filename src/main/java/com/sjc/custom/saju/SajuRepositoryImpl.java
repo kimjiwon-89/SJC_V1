@@ -73,7 +73,7 @@ public class SajuRepositoryImpl implements SajuRepositoryCustom{
 	}
 
 	@Override
-	public TimePillarDto getTimePillarInfo(LocalTime birthTime) {
+	public TimePillarDto getTimePillarInfo(LocalTime birthTime, char stem) {
 		QTimepillarBean timepillarBean = QTimepillarBean.timepillarBean;
 		return queryFactory
 				.select(Projections.fields(TimePillarDto.class, 
@@ -82,7 +82,12 @@ public class SajuRepositoryImpl implements SajuRepositoryCustom{
 						timepillarBean.stem2_c,
 						timepillarBean.stem2_k ))
 				.from(timepillarBean)
-				.where(timepillarBean.stime.eq(birthTime))
+				.where(timepillarBean.stime.eq(birthTime)
+						.and(
+								timepillarBean.daystem1.eq(stem)
+								.or(timepillarBean.daystem2.eq(stem))
+							)
+						)
 				.fetchFirst();
 	}
 	

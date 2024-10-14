@@ -9,6 +9,9 @@
 
 <script>
 $(document).ready(function(){
+	//0. 태어난 시간 셋팅
+	var birthTime = "${ bean.birthTime }";
+	$("#birthTime").text(birthTimeObj.get(birthTime));
 
 	//1. 사주 셋팅 (시, 일, 월, 년)
 	fnSetSajuName();
@@ -24,12 +27,13 @@ function fnSetSajuName() {
 	var monthSaju	= fnTransAPIdata("${ bean.monthSaju }");
 	var yearSaju 	= fnTransAPIdata("${ bean.yearSaju }");
 	
-	var timeSaju1 = "${ timePillar.stem1_c }";
-	var timeSaju2 = "${ timePillar.stem2_c }";
+	var timeSaju1 = "${ timePillar.stem1_c }";	//갑을병정...
+	var timeSaju2 = "${ timePillar.stem2_c }";	//자축인묘...
 	
 	fnSetSajuInfo("day_saju", daySaju);
 	fnSetSajuInfo("month_saju", monthSaju);
 	fnSetSajuInfo("year_saju", yearSaju);
+	fnSetSajuInfo("time_saju", timeSaju1+timeSaju2);
 	
 }
 

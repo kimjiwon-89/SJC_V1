@@ -15,7 +15,14 @@ $(window).on("load", function() { /* 로직 추가 */ });
 
 /* HTML 요소가 등록 된 후에 실행, 주 사용 이벤트 */
 $(document).ready(function(){
-   //1. select2 실행
+	//0. 태어난 시간 셋팅
+	const birthDaySel = $("#birthTime");
+	birthTimeObj.forEach((value, key) => {
+        const option = new Option(value, key);  // 새로운 option 생성
+        birthDaySel.append(option);             	// select 박스에 추가
+    });
+	
+   	//1. select2 실행
     $('.select2').select2({
         minimumResultsForSearch: Infinity,	 			// 검색 필터 제거
         dropdownCssClass: 'custom-select2-dropdown', 	// 커스텀 CSS 클래스 지정

@@ -31,7 +31,7 @@ public class SajuService {
 		return sajuRepository.findChemiResult(r1, r2);
 	}
 
-	public TimePillarDto getTimePillarInfo(LocalTime birthTime) {
-		return sajuRepository.getTimePillarInfo(birthTime);
+	public TimePillarDto getTimePillarInfo(LocalTime birthTime, char stem) {
+		return sajuRepository.getTimePillarInfo(birthTime, stem);
 	}
 }

@@ -63,7 +63,10 @@ public class SajuCont {
          DateTimeFormatter formatter = DateTimeFormatter.ofPattern("HH:mm:ss");
          LocalTime birthTime = LocalTime.parse(strBirthTime, formatter);
          
-         TimePillarDto timePillar = sajuService.getTimePillarInfo(birthTime);  
+         String str_stem = (String) map.get("lunIljin");
+         char stem = str_stem.charAt(0);
+         
+         TimePillarDto timePillar = sajuService.getTimePillarInfo(birthTime, stem);  
          mv.addObject("timePillar", timePillar);
          
       } catch (ServletException e) {

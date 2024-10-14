@@ -146,7 +146,7 @@
 		                </tr>
 		                <tr>
 		                    <th scope="row">출생시간</th>
-		                    <td>${ bean.birthTime }</td>
+		                    <td id="birthTime"></td>
 		                </tr>
 		                <tr>
 		                    <th scope="row">성별</th>

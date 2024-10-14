@@ -16,5 +16,5 @@ public interface SajuRepositoryCustom {
 	//사람 궁합
 	public String findChemiResult(String r1, String r2);
 	//시주 조회
-	public TimePillarDto getTimePillarInfo(LocalTime birthTime);
+	public TimePillarDto getTimePillarInfo(LocalTime birthTime, char stem);
 }

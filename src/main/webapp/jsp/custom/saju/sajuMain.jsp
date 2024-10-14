@@ -39,7 +39,8 @@
                 	<div class="d-flex">
                 		<div class="p-1 f1">
 							<select class="ipt select2 wd-70p mgr-5" id="birthTime" name="birthTime">
-								<option value="모름">모름</option>
+								<option value="">모름</option>
+							<!-- 
 								<option value="23:30:00">자시 (23:30 - 01:29)</option>
 								<option value="01:30:00">축시 (01:30 - 03:29)</option>
 								<option value="03:30:00">인시 (03:30 - 05:29)</option>
@@ -52,6 +53,7 @@
 								<option value="17:30:00">유시 (17:30 - 19:29)</option>
 								<option value="19:30:00">술시 (19:30 - 21:29)</option>
 								<option value="21:30:00">해시 (21:30 - 23:29)</option>
+							 -->
 							</select>
 						</div>
                 	</div>
