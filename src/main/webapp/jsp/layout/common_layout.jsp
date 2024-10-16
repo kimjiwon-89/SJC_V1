@@ -33,7 +33,7 @@
 	<!-- Common css -->
 	<link rel="stylesheet" type="text/css" media="screen" href="${rootPath}/static/css/common_css.css?v=${pageHash}">
     <link rel="stylesheet" href="${rootPath}/webjars/bootstrap/5.3.0/css/bootstrap.min.css">
-	<link rel="stylesheet" type="text/css" media="screen" href="${rootPath}/static/css/custom_css.css?v=${pageHash}">
+	<link rel="stylesheet" type="text/css" media="screen" href="${rootPath}/static/css/common_v2.css?v=${pageHash}">
     
     <!-- select2 - selectBox API -->
 	<link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />

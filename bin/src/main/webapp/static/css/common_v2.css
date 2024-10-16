@@ -6,6 +6,10 @@
 .main-wrap {max-width: 480px; padding: 20px; background-color: #fff;}
 .main-wrap > div[class$="wrap"] {margin-bottom: 20px;}
 
+
+/*
+	사주 조회 start
+*/
 /* 상단 영역(타이틀, 사용자 정보) */
 .title-wrap {height: 60px; display: flex; align-items: center;}
 .title-wrap > h1 {font-size: 40px; font-weight: 200;}
@@ -181,3 +185,21 @@ padding: 0 10px; height: 40px; display: flex; align-items: center; justify-conte
 	.day {
 	height: 14.285vw;}
 }
+
+/*
+	사주 조회 end
+*/
+
+/*
+	로그인 start
+*/
+.login-title-wrap {
+	
+}
+.login-select-wrap {width: 100%;}
+.login-btn {width: 100%; height: 50px; display: flex; align-items: center; justify-content: center;}
+.kakao-login {}
+.naver-login {}
+.google-login {}
+.email-login {}
+

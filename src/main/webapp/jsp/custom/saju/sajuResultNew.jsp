@@ -36,7 +36,7 @@
 <c:set var="firstChar" value="${fn:substring(splitted, 0, 1)}" />
 <c:set var="secondChar" value="${fn:substring(splitted, 1, 2)}" />
 
-<div class="main-wrap">
+<div class="main-wrap new-result-saju">
 	<div class="title-wrap">
 		<h1>everysaju</h1>
 	</div>
