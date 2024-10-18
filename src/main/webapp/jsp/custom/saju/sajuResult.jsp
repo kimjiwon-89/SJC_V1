@@ -100,7 +100,7 @@
 			<span>대운 자세히 보기</span>
 			<i class="fa-solid fa-angle-down"></i>
 		</div>
-		<div class="daeun-cont on" id="daeun_cont">
+		<div class="daeun-cont " id="daeun_cont">
 			<c:forEach begin="1" end="3" var="wrap">
 				<div class="daeun-wrap">
 					<div class="daeun-title">대운수: 8(역)</div>
