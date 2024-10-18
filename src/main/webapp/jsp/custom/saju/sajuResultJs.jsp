@@ -8,57 +8,73 @@
 <%@taglib uri="http://www.springframework.org/tags/form" prefix="form"%>
 
 <script>
+const bean = JSON.parse('${ bean }');
+
 $(document).ready(function(){
-	//0. 태어난 시간 셋팅
-	var birthTime = "${ bean.birthTime }";
-	$("#birthTime").text(birthTimeObj.get(birthTime));
 
 	//1. 사주 셋팅 (시, 일, 월, 년)
-	fnSetSajuName();
+ 	fnSetSajuName();
 	
 	//2. 캘린더 셋팅 및 공휴일 셋팅
-	fnSetCalendar();
+ 	fnSetCalendar();
+
 });
 
 //Parameter로 받아온 사주 정보를 추출하여 셋팅한다.
 //시주를 제외한 나머지는 split 작업이 필요함
 function fnSetSajuName() {
-	var daySaju 	= fnTransAPIdata("${ bean.lunIljin }");
-	var monthSaju	= fnTransAPIdata("${ bean.monthSaju }");
-	var yearSaju 	= fnTransAPIdata("${ bean.yearSaju }");
-	
-	var timeSaju1 = "${ timePillar.stem1_c }";	//갑을병정...
-	var timeSaju2 = "${ timePillar.stem2_c }";	//자축인묘...
+	var daySaju 	= bean.lunIljin;
+	var monthSaju	= bean.monthSaju;
+	var yearSaju 	= bean.yearSaju;
 	
 	fnSetSajuInfo("day_saju", daySaju);
 	fnSetSajuInfo("month_saju", monthSaju);
 	fnSetSajuInfo("year_saju", yearSaju);
-	fnSetSajuInfo("time_saju", timeSaju1+timeSaju2);
-	
-}
 
-//원하는 형태의 한자만 추출
-function fnTransAPIdata(data) {
-	var splitData = data.split("(")[1].replace(")", "");
-	return splitData;
+	//시주값이 있을 때
+	if("${ timePillar }" != ""){
+		var timeSaju = "${ timePillar.stem1_k }";	//갑을병정...
+		timeSaju += "${ timePillar.stem2_k }";
+		timeSaju += "(";
+		timeSaju += "${ timePillar.stem1_c }";
+		timeSaju += "${ timePillar.stem2_c }";
+		timeSaju += ")";
+		fnSetSajuInfo("time_saju", timeSaju);
+	}
+	
+	//일주는 프로필에 한 번 더 추가됨
+	$("#user-day").text(daySaju.substring(0,2) + "(" + '동물명 정해주세요' + ")");	
+	
+	//양음력
+	var smonth = "양력";
+	if(bean.smonth !== "sol") smonth = "음력";
+	
+	var gender = "남자";
+	if(bean.gender !== "M") gender = "여자";
+	
+	$("#birth-info").text(smonth + " " + bean.birthday.replaceAll("-",".") + " " + bean.birthTime + "(" + birthTimeObj.get(bean.birthTime).split(" ")[0] + ") " + gender)
+	
 }
 
 //원하는 데이터의 아이디 값을 셋팅
 function fnSetSajuInfo(id, data) {
-	let data1 = data.substring(0, 1);
-	let data2 = data.substring(1, 2);
+	let data1 = data.substring(3, 4);
+	let data1_kr = data.substring(0, 1);
 	
+	let data2 = data.substring(4, 5);
+	let data2_kr = data.substring(1, 2);
+
 	let data1_class = skyobkj[data1];
 	let data2_class = groundObj[data2];
 	
-	$("#"+id+"1").text(data1).addClass(data1_class);
-	$("#"+id+"2").text(data2).addClass(data2_class);
+	$("#"+id+"1").text(data1 + "(" + data1_kr +  ")").addClass(data1_class);
+	$("#"+id+"2").text(data2 + "(" + data2_kr +  ")").addClass(data2_class);
 }
 
 //지간 순대로 인덱스 추출하여 이미지 셋팅, 이후에 CSS로 수정할 것
 function lunImgSet() {
 	//천간
-	var luni = "${ bean.lunIljin }";
+	var luni = bean.lunIljin;
 	
 	//이미지 셋팅
 	var num1 = skyArr.indexOf(luni.substring(0,1)) + 1;
@@ -138,8 +154,14 @@ function updateCalendar() {
 			rightElement.textContent = '';
 			rightElement.classList.add('day-result');
 			
+			//하단 요초 추가(한자영)
+			const bottomElement = document.createElement('span');
+// 			bottomElement.textContent = "壬申";
+			bottomElement.classList.add("bottom-result");
+			
 			dayElement.appendChild(leftElement);
 			dayElement.appendChild(rightElement);
+			dayElement.appendChild(bottomElement);
 
 			cell.appendChild(dayElement);
 			
@@ -190,11 +212,11 @@ async function fnSetLuniljin(dateArr, yearArr) {
 		}
 		
 	} catch (error) {
-           console.log(error);
+		console.log(error);
     }
 	
 	//사주는 내 정보만 불러와서 날짜에 각 조합에 맞게 셋팅해준다.
-	var luni = "${ bean.lunIljin }";
+	var luni = bean.lunIljin;
 	var sky = luni.substring(0,1);
 	var ground = luni.substring(1,2);
 	
@@ -214,7 +236,7 @@ async function fnSetLuniljin(dateArr, yearArr) {
     		
     		//둘 다 리스트가 비어있다면 제대로 실행 못한 것
     		if(skyScoreList.length == 0 || groundScoreList.length == 0 ) uiProgress("#resultCalendar", false);
-   			
+    		
    			//캘린더 리스트 만큼 돈다
    			for(var i in lunIljinMap) {
    				
@@ -237,7 +259,6 @@ async function fnSetLuniljin(dateArr, yearArr) {
 					skyScore 	: skyScore,
 					groundScore : groundScore,
    				}
-   				
    				setSajuInfoToCalendar(obj);
    				
    			}
@@ -258,7 +279,11 @@ function setSajuInfoToCalendar(obj) {
 	var inactive="";
 	if( currentDate.format("MM") !== obj.calDate.split("-")[1] ) inactive="inactive";
 	
+	//오늘날짜 활성화
 	$('.'+obj.calDate +' .day-result').text(obj.skyScore).addClass(inactive);
+	
+	//하단에 일간지 추가
+	$('.'+obj.calDate +' .bottom-result').text(obj.calLunIljin.split("(")[1].replace(")", ""))
 }      
 
 
@@ -281,7 +306,8 @@ function fnSetDateSaju( year, month, day ) {
 					var parser = new DOMParser();
 					var xmlDoc = parser.parseFromString(xmlString, "text/xml");
 					
-
+					var curYearMonthObj;
+					
 					var arr = xmlDoc.getElementsByTagName("item");
 					$.each(arr, function(i , data){
 						
@@ -316,7 +342,6 @@ function fnSetDateSaju( year, month, day ) {
 							if(cData.nodeName == "lunYear") lunYear = cData.textContent;
 							if(cData.nodeName == "lunMonth") lunMonth = cData.textContent;
 							if(cData.nodeName == "lunDay") lunDay = cData.textContent;
-							
 							//date 셋팅
 							if(cData.nodeName == "solYear") 	date = date.replace("yyyy", cData.textContent);
 							if(cData.nodeName == "solMonth")	date = date.replace("mm", cData.textContent);
@@ -333,11 +358,35 @@ function fnSetDateSaju( year, month, day ) {
 							lunDay 		: lunDay,
 							date		: date,
 						}
+						
 						lunIljinMap.push(obj);
-							
+						
+
+						//lunIljinMap이 이제 셋팅되었기에 현재 캘린더에 맞는 년/월 Map 셋팅해준다.
+						var curMonthVal = currentDateElement.textContent;	//현재 캘린더 show 날짜
+						var getMonth = year + '.' + month;	// 현재 조회중인 Map
+						if(curMonthVal == getMonth ) {
+							curYearMonthObj = obj;
+						}
 					});
 					
 					resolve(lunIljinMap);
+					
+					
+					//lunIljinMap이 이제 셋팅되었기에 현재 캘린더에 맞는 년/월 셋팅해준다.
+					if(curYearMonthObj != null) {
+						var lunSecha = curYearMonthObj.lunSecha.split("(");
+						var lunWolgeon = curYearMonthObj.lunWolgeon.split("(");
+						
+						var lunSecha_c = lunSecha[1].replace(")", "");
+						var lunSecha_k = lunSecha[0].replace("(", "");
+						
+						var lunWolgeon_c = lunWolgeon[1].replace(")", "");
+						var lunWolgeon_k = lunWolgeon[0].replace("(", "");
+						
+						$("#yearInfo").text(lunSecha_c + " " + lunWolgeon_c + "(" + lunSecha_k + "년 " + lunWolgeon_k + "월)" );
+					}
+					
 				} else {
 					reject('서버 응답 오류:', this.statusText);
 				}
@@ -407,4 +456,22 @@ function fnSetHolidaySet(dataArr) {
 	
 }
 	
+// 자세히보기
+$("#daeun_detail").click(function() {
+	const detailTarget = "daeun";
+	const status = $("#daeun_cont").hasClass("on");
+	const iconNode = $("#daeun_detail").find("i");
+	const contTarget = $("#daeun_cont");
+	
+	let updown = "";
+	if(status) {
+		updown = "down";
+		contTarget.removeClass("on");
+	} else {
+		updown = "up";
+		contTarget.addClass("on");
+	}
+	
+	iconNode.addClass("fa-angle-"+ updown);
+})
 </script>

@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.google.gson.Gson;
 import com.sjc.model.DailyGroundDto;
 import com.sjc.model.DailySkyDto;
 import com.sjc.model.TimePillarDto;
@@ -55,19 +56,23 @@ public class SajuCont {
        ModelAndView mv = new ModelAndView();
       try {
          Map<String, Object> map = RequestUtil.getReqParamToMap(req);
-         mv.addObject("bean", map);
+         Gson gson = new Gson();
+         mv.addObject("bean", gson.toJson(map));
+//         mv.addObject("bean", My	);
          
          //시주 정보 조회
          //SajuMain에서 Value값이 Stime이기에 일치하는 정보를 우선 전부 불러옴
          String strBirthTime = (String) map.get("birthTime");
-         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("HH:mm:ss");
-         LocalTime birthTime = LocalTime.parse(strBirthTime, formatter);
-         
-         String str_stem = (String) map.get("lunIljin");
-         char stem = str_stem.charAt(0);
-         
-         TimePillarDto timePillar = sajuService.getTimePillarInfo(birthTime, stem);  
-         mv.addObject("timePillar", timePillar);
+         if(!strBirthTime.isEmpty()) {
+        	 DateTimeFormatter formatter = DateTimeFormatter.ofPattern("HH:mm:ss");
+        	 LocalTime birthTime = LocalTime.parse(strBirthTime, formatter);
+        	 
+        	 String str_stem = (String) map.get("lunIljin");
+        	 char stem = str_stem.charAt(0);
+        	 
+        	 TimePillarDto timePillar = sajuService.getTimePillarInfo(birthTime, stem);  
+        	 mv.addObject("timePillar", timePillar);
+         }
          
       } catch (ServletException e) {
          e.printStackTrace();

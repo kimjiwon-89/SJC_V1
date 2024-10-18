@@ -102,7 +102,8 @@ input[type="password"]:focus {border: 2px solid var(--main-color);}
 /* 상단 영역(타이틀, 사용자 정보) */
 .new-result-saju .title-wrap {height: 60px;}
 .user-wrap {display: flex; align-items: center;}
-.user-wrap .user-img {width: 80px; height: 80px; overflow: hidden; border-radius: 50%;}
+/* .user-wrap .user-img {width: 80px; height: 80px; overflow: hidden; border-radius: 50%;} */
+.user-wrap .user-img {width: 80px; height: 80px; text-align: right;}
 .user-wrap .user-img > img {height: 100%; object-fit: cover; object-position: center;}
 .user-wrap .user-info {width: calc(100% - 80px); padding: 0 20px;}
 .user-wrap .user-info > span {display: block; font-size: 14px;}

@@ -144,6 +144,7 @@ function fnCallDateInfoAPI(callback) {
 				 param.birthday  	= $("#birthday").val();
 				 param.birthTime	= $("#birthTime").val();
 				 param.gender   	= $('input[name="gender"]:checked').val();
+				 param.smonth   	= $('#smonth').val();
 		              
 				callback(param);
 			} else {

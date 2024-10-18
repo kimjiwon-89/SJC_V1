@@ -360,3 +360,9 @@ input.ipt , select.ipt {
     max-height: 200px; /* 원하는 높이 설정 */
     overflow-y: auto; /* 스크롤 설정 */
 }
+
+/* 이미지가 비어있을 때는 -표시 */
+.saju-img:empty::before {
+    content: "-";
+    color: black;
+}

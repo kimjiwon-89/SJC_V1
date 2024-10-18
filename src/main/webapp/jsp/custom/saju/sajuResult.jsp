@@ -1,230 +1,184 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-   pageEncoding="UTF-8"%>
+	pageEncoding="UTF-8"%>
 <%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn"%>
 <%@taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
 <%@taglib uri="http://www.springframework.org/tags" prefix="spring"%>
 <%@taglib uri="http://www.springframework.org/tags/form" prefix="form"%>
 
-<script src="https://kit.fontawesome.com/60d85a80ee.js" crossorigin="anonymous"></script>
+<script src="https://kit.fontawesome.com/60d85a80ee.js"
+	crossorigin="anonymous"></script>
 
 <style>
 
-	/* 한자 영역 너비 */
-	.ml-auto {
-	    width: 60px;
-	}
-	/* 이미지 거리 */
-   .saju-img:first-child {
-      margin-bottom: 1px;
-   }
-   
-	.result-table {
-		table-layout: fixed; 
-	}
-	.result-table td{
-		border: 1px solid #ccc;
-    	padding: 0 !important;
-	}
+/* 한자 영역 너비 */
+.ml-auto {
+	width: 60px;
+}
+/* 이미지 거리 */
+.saju-img:first-child {
+	margin-bottom: 1px;
+}
 
-	 /* CSS 달력  */
-	.calendar-container {
-		width: 100%;
-	}
-	#resultCalendar{
-		padding: 5px;
-	}
-	
-	.calendar-header {
-		display: flex;
-		justify-content: center;
-		margin: 20px;
-		font-size: 20px;
-		align-items: center;
-	}
-	
-	#calendar {
-		max-width: 1200px;
-		margin: 20px;
-	}
-	
-	/* #currentDate에 flex-grow: 1을 사용하여 가능한 공간을 모두 차지하게 하고 텍스트를 중앙에 정렬. */
-	#currentDate {
-		flex-grow: 1;
-		text-align: center;
-		font-size: 1.5em;
-	}
-	
-	/*월 변경 버튼*/
-	.btn{
-		background-color: #4CAF50;
-	    color: white;
-	    border: none;
-	    border-radius: 4px;
-	    padding: 5px 10px;
-	    transition: background-color 0.3s;
-	    height: 40px;
-	}
-	.btn:hover{
-		background-color: #45a049;
-	}
-	
-	/* 가장 위 날짜 */
-	.calendar-wrapper thead th {
-	    border: 1px solid #ccc;
-	    padding: 10px;
-	    text-align: center;
-	    background-color: #f0f0f0;
-	}
-	
-	/* 공휴일 red*/
-	.holiday {
-		color: #dc3545 !important;
-	}
-	/* 토 blue */
-	.satday {
-		color: #0d6efd !important;
-	}
-	/* 활성화되지 않은 색상 연하게 */
-	.inactive {
-        filter: opacity(0.5);	
-	}
-	/* 달력 한 칸 */
-	.day {
-	    min-height: 80px;
-        padding: .5rem .5rem;
-	}
-	/* 상단에 고정시킬 날짜와 공휴일 이름 */
-	.detail-day {
-		font-size: 1em;
-	    display: flex;
-	    justify-content: space-between;
-	    align-items: center;
-   	 	font-weight: bold;
-	}
-	.dateName {
-	    font-size: 1em !important;
-	}
-	/* 오늘 날짜 */
-	.today {
-		background: rgb(76 175 80 / 40%);
-	}
-	
-	/* 운세 영역*/
-	.day-result {
-	    display: block;
-	    font-size: 0.8em;
-	}
+.result-table {
+	table-layout: fixed;
+}
+
+.result-table td {
+	border: 1px solid #ccc;
+	padding: 0 !important;
+}
+
 </style>
 
-<c:set var="splitted" value="${fn:split(bean.lunIljin, '(')[1]}" />
-<c:set var="firstChar" value="${fn:substring(splitted, 0, 1)}" />
-<c:set var="secondChar" value="${fn:substring(splitted, 1, 2)}" />			
-
-<div class="div-flex">
-	<div class="logo">
-		<h1>매일 운세 달력</h1>
+<div class="main-wrap new-result-saju">
+	<div class="title-wrap">
+		<h1>everysaju</h1>
 	</div>
-	<div class="content">
-	   <div class="d-flex wd-100p">
-
-			<div class="p-2 f8 justify-content-center">
+	<div class="user-wrap">
+		<div class="user-img">
+			<i class="fa-solid fa-user" style="font-size: 80px;"></i>
+<!-- 			<img src="https://media.istockphoto.com/id/157332035/ko/%EC%82%AC%EC%A7%84/%EC%8B%9C%ED%94%84-%EC%9E%88%EB%8F%84%EB%A1%9D-%EA%B0%84%EB%8B%A8%ED%95%9C-%EC%9E%90%EC%84%B8.jpg?s=612x612&w=is&k=20&c=N9QQdhrDllW-TrcQlwa3_1KWGSW3Vgti71mPW9Vmbws=" /> -->
+		</div>
+		<div class="user-info">
+			<span class="user-nm" id="">김댕댕</span>
+			<span class="user-year" id="user-day">을미(푸른 양)</span>
+			<span class="user-birth" id="birth-info">양력 2000.01.01 00:00:00(자) 남자</span>
+		</div>
+	</div>
+	<div class="content-wrap">
+		<!-- 팔자 -->
+		<div class="palja-cont">
+			<div class="content-area">
 				<table class="table info-table">
 					<colgroup>
-						<col style="width: auto;">
-						<col style="width: 100%;">
-					</colgroup>        				
-		            <tbody>
-		                <tr>
-		                    <th scope="row">생년월일</th>
-		                    <td>${ bean.solYear }-${ bean.solMonth }-${ bean.solDay }</td>
-		                </tr>
-		                <tr>
-		                    <th scope="row">음력</th>
-		                    <td>${ bean.lunYear }-${ bean.lunMonth }-${ bean.lunDay }</td>
-		                </tr>
-		                <tr>
-		                    <th scope="row">출생시간</th>
-		                    <td id="birthTime"></td>
-		                </tr>
-		                <tr>
-		                    <th scope="row">성별</th>
-		                    <td>${ bean.gender eq 'M' ? '남' : '여' }</td>
-		                </tr>
-		            </tbody>
-		        </table>			
+						<col style="width: 25%;">
+						<col style="width: 25%;">
+						<col style="width: 25%;">
+						<col style="width: 25%;">
+					</colgroup>
+					<tbody>
+						<tr class="lunar_title">
+							<th scope="row">시주(생시)</th>
+							<th scope="row">일주(생일)</th>
+							<th scope="row">월주(생월)</th>
+							<th scope="row">년주(생년)</th>
+						</tr>
+						<tr class="lunar_cont_top">
+							<td class="" id="time_saju1">丙(임)</td>
+							<td class="" id="day_saju1">丙(무)</td>
+							<td class="" id="month_saju1">丙(병)</td>
+							<td class="" id="year_saju1">丙(기)</td>
+						</tr>
+						<tr class="lunar_cont_bottom">
+							<td>편재</td>
+							<td>일간(나)</td>
+							<td>편인</td>
+							<td>겁재</td>
+						</tr>
+						<tr class="lunar_cont_top">
+							<td class="" id="time_saju2">丙(임)</td>
+							<td class="" id="day_saju2">丙(무)</td>
+							<td class="" id="month_saju2">丙(병)</td>
+							<td class="" id="year_saju2">丙(기)</td>
+						</tr>
+						<tr class="lunar_cont_bottom">
+							<td class="text_black">편재</td>
+							<td class="text_yellow">정인</td>
+							<td>편인</td>
+							<td>겁재</td>
+						</tr>
+					</tbody>
+				</table>
+			</div>
+		</div>
+	
+	
+		<!-- 대운 -->
+		<div class="detail-bar" id="daeun_detail">
+			<span>대운 자세히 보기</span>
+			<i class="fa-solid fa-angle-down"></i>
+		</div>
+		<div class="daeun-cont on" id="daeun_cont">
+			<c:forEach begin="1" end="3" var="wrap">
+				<div class="daeun-wrap">
+					<div class="daeun-title">대운수: 8(역)</div>
+					<!--  나란히 사용하려면 daeun-cont-set 사용, 가운데 정렬시 마지막 flex 추가 -->
+					<div class="daeun-cont-set">
+						<c:forEach begin="0" end="11" var="i">
+							<div class="daeun-line">
+								<div class="daeun-small-title">
+									<span>${i}8</span>
+									<span>편인</span>
+								</div>
+								<div class="daeun-in text_white"> <!-- 컬러 추가 -->
+									<span class="daeun-strong">丙</span> 
+									<span class="daeun-small">(병)</span>
+								</div>
+								<div class="daeun-in text_green">
+									<span class="daeun-strong">丙</span> 
+									<span class="daeun-small">(병)</span>
+								</div>
+								<div class="daeun-small-title">
+									<span>겁재</span>
+									<span>장생</span>
+								</div>
+							</div>
+						</c:forEach>
+					</div>
+				</div>
+			</c:forEach>
+		</div>
+		
+
+		<!-- 운세 달력 -->
+		<div class="cal-cont">
+			<div class="content-area" id="resultCalendar">
+				<div class="calendar-container">
+					<div class="calendar-header">
+						<button class="cal-btn" id="prevMonth">
+							<i class="fa-solid fa-angle-left"></i>
+						</button>
+						<div class="month-area">
+							<span class="month" id="currentDate"></span>
+							<span class="month-info" id="yearInfo">甲辰 壬申(갑진년 임신월)</span>
+						</div>
+						<button class="cal-btn" id="nextMonth">
+							<i class="fa-solid fa-angle-right"></i>
+						</button>
+					</div>
+					<div class='calendar-wrapper'>
+						<table class="table result-table">
+							<colgroup>
+								<col style="width: 14.2857%;">
+								<col style="width: 14.2857%;">
+								<col style="width: 14.2857%;">
+								<col style="width: 14.2857%;">
+								<col style="width: 14.2857%;">
+								<col style="width: 14.2857%;">
+								<col style="width: 14.2857%;">
+							</colgroup>
+							<thead>
+								<tr>
+									<th class="holiday">SUN</th>
+									<th>MON</th>
+									<th>TUE</th>
+									<th>WEN</th>
+									<th>THU</th>
+									<th>FRI</th>
+									<th class="satday">SAT</th>
+								</tr>
+							</thead>
+							<tbody id="calendar"></tbody>
+						</table>
+					</div>
+				</div>
 			</div>
 		</div>
 	</div>
-	<div class="content">
-<!-- 		<div class="p-2 d-flex f1 flex-column justify-content-center"> -->
-<%-- 			<span class="saju-img" id="saju_1">${ firstChar }</span> --%>
-<%-- 			<span class="saju-img"  id="saju_2">${ secondChar }</span> --%>
-<!-- 		</div> -->
 
- 		<div class="row">
-            <div class="col">
-                <div class="d-flex flex-column">
-                    <div id="time_saju1" class="mb-2 saju-img">${ timePillar.stem1_c }</div>
-                    <div id="time_saju2" class="saju-img">${ timePillar.stem2_c }</div>
-                </div>
-            </div>
-            <div class="col">
-                <div class="d-flex flex-column">
-                    <div id="day_saju1" class="mb-2 saju-img"></div>
-                    <div id="day_saju2" class="saju-img"></div>
-                </div>
-            </div>
-            <div class="col">
-                <div class="d-flex flex-column">
-                    <div id="month_saju1" class="mb-2 saju-img"></div>
-                    <div id="month_saju2" class="saju-img"></div>
-                </div>
-            </div>
-            <div class="col">
-                <div class="d-flex flex-column">
-                    <div id="year_saju1" class="mb-2 saju-img"></div>
-                    <div id="year_saju2" class="saju-img"></div>
-                </div>
-            </div>
-        </div>
 
-	</div>
-	<div class="content" id="resultCalendar">
-		<div class="calendar-container">
-		<div class="calendar-header">
-			<button class="btn" id="prevMonth"><i class="fa-solid fa-angle-left"></i></button>
-			<span id="currentDate"></span>
-			<button class="btn" id="nextMonth"><i class="fa-solid fa-angle-right"></i></button>
-		</div>
-		<div class='calendar-wrapper'>
-			<table class="table result-table">
-				<colgroup>
-					<col style="width: 14.2857%;">
-					<col style="width: 14.2857%;">
-					<col style="width: 14.2857%;">
-					<col style="width: 14.2857%;">
-					<col style="width: 14.2857%;">
-					<col style="width: 14.2857%;">
-					<col style="width: 14.2857%;">
-				</colgroup>			
-				<thead>
-					<tr>
-						<th>일</th>
-						<th>월</th>
-						<th>화</th>
-						<th>수</th>
-						<th>목</th>
-						<th>금</th>
-						<th>토</th>
-					</tr>
-				</thead>
-				<tbody id="calendar"></tbody>
-			</table>
-		</div>
-		</div>
-	</div>
 </div>
 
 <!-- JS파일 분리 -->

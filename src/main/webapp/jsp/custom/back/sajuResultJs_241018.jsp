@@ -9,19 +9,20 @@
 
 <script>
 $(document).ready(function(){
+	//0. 태어난 시간 셋팅
+	var birthTime = "${ bean.birthTime }";
+	$("#birthTime").text(birthTimeObj.get(birthTime));
 
 	//1. 사주 셋팅 (시, 일, 월, 년)
- 	fnSetSajuName();
+	fnSetSajuName();
 	
 	//2. 캘린더 셋팅 및 공휴일 셋팅
- 	fnSetCalendar();
-
+	fnSetCalendar();
 });
 
 //Parameter로 받아온 사주 정보를 추출하여 셋팅한다.
 //시주를 제외한 나머지는 split 작업이 필요함
 function fnSetSajuName() {
-	var timeSaju;
 	var daySaju 	= fnTransAPIdata("${ bean.lunIljin }");
 	var monthSaju	= fnTransAPIdata("${ bean.monthSaju }");
 	var yearSaju 	= fnTransAPIdata("${ bean.yearSaju }");
@@ -29,6 +30,13 @@ function fnSetSajuName() {
 	fnSetSajuInfo("day_saju", daySaju);
 	fnSetSajuInfo("month_saju", monthSaju);
 	fnSetSajuInfo("year_saju", yearSaju);
+
+	//시주값이 있을 때
+	if("${ timePillar }" != ""){
+		var timeSaju1 = "${ timePillar.stem1_c }";	//갑을병정...
+		var timeSaju2 = "${ timePillar.stem2_c }";	//자축인묘...
+		fnSetSajuInfo("time_saju", timeSaju1+timeSaju2);
+	}
 	
 }
 
@@ -408,22 +416,4 @@ function fnSetHolidaySet(dataArr) {
 	
 }
 	
-// 자세히보기
-$("#daeun_detail").click(function() {
-	const detailTarget = "daeun";
-	const status = $("#daeun_cont").hasClass("on");
-	const iconNode = $("#daeun_detail").find("i");
-	const contTarget = $("#daeun_cont");
-	
-	let updown = "";
-	if(status) {
-		updown = "down";
-		contTarget.removeClass("on");
-	} else {
-		updown = "up";
-		contTarget.addClass("on");
-	}
-	
-	iconNode.addClass("fa-angle-"+ updown);
-})
 </script>
