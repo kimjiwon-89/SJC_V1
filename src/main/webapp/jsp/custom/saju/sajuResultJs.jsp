@@ -43,7 +43,7 @@ function fnSetSajuName() {
 	}
 	
 	//일주는 프로필에 한 번 더 추가됨
-	$("#user-day").text(daySaju.substring(0,2) + "(" + '동물명 정해주세요' + ")");	
+	$("#user-day").text(daySaju.substring(0,2) + "(" + skyColorobj[daySaju.substring(0,1)] + " " + groundColorObj[daySaju.substring(1,2)] + ")");	
 	
 	//양음력
 	var smonth = "양력";
