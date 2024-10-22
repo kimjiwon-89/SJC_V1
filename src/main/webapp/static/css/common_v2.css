@@ -7,10 +7,14 @@
 .div-flex-wrap {align-items: flex-start;}
 h2, h3, h4, h5, h6 {font-family: var(--bs-body-font-family);
     font-size: var(--bs-body-font-size); font-weight: 200;}
+button, input, optgroup, select, textarea  {
+	font-family: var(--bs-font-sans-serif);
+}
+
 
 /* 컬러 변수 선언 */
 :root {
-	--main-color: #8BDA6C; 
+	--main-color: #4B4B4B; 
 	--black-color: #333; 
 	--white-color: #fff;
 	--gray-color: #ddd;
@@ -21,7 +25,19 @@ h2, h3, h4, h5, h6 {font-family: var(--bs-body-font-family);
 }
 
 /* 전체적 틀 */
-.main-wrap {max-width: 480px; width: 100%; min-height: 100%; 
+/*새로운 컨텐츠 영역*/
+.new-content-area {height: calc(100% - 75px);}
+.footer-area {height: 75px;}
+/* footer - 하단메뉴바 */
+.footer-manu-bar {display: flex; align-items: center; justify-content: space-between;}
+.footer-btn {min-width: 25%; height: 100%; 
+display: flex; align-items: center; flex-direction: column; justify-content: center;}
+.footer-btn > img {display: block; width: 16px; margin-bottom: 3px;}
+
+
+.main-wrap, /*content wrap*/
+.footer-manu-bar /*footer menu-bar*/
+ {max-width: 480px; width: 100%; min-height: 100%; 
 padding: 20px; 
 background-color: var(--white-color);}
 .main-wrap > div[class$="wrap"] {margin-bottom: 20px;}
@@ -53,11 +69,19 @@ padding: 0 10px; height: 40px; display: flex; align-items: center; justify-conte
 .flex-space-btween-row {
 	display: flex; align-items: center; justify-content: space-between;
 }
+.flex-space-around {
+	display: flex; flex-direction: column; align-items: center; justify-content: space-around;
+}
+.flex-space-around-row {
+	display: flex; align-items: center; justify-content: space-around;
+}
+
 /* button 디자인 */
 .text-btn {background-color: transparent; border: none;}
 .search-btn {width: 100%; height: 45px; 
 display: flex; align-items: center; justify-content: center;
-border-radius: 5px; border: none;}
+border-radius: 5px; border: none; 
+color: var(--white-color); background-color: var(--main-color);}
 
 
 /* 체크박스 디자인 */
@@ -78,10 +102,11 @@ input[type="checkbox"]:checked:before { content: "\f14a";}
 .radio-wrap {margin: 15px 0; position: relative;}
 .text-radio {width: 0; position: absolute;}
 input[type="radio"].text-radio + label {padding: 5px 15px; 
-border: 1px solid var(--gray-color);}
+border: 1px solid var(--gray-color);
+cursor: pointer;}
 input[type="radio"].text-radio:checked + label {
-	border: 1px solid var(--main-color);
-	background-color: var(--main-color); color: var(--white-color);}
+	border: 1px solid var(--gray-color);
+	background-color: var(--gray-color); }
 
 
 /* 인풋 박스 디자인 */
@@ -281,13 +306,16 @@ align-items: center; justify-content: center;}
 display: flex; align-items: center; justify-content: center;
 border-radius: 5px; border: none;}
 
+/*
 .login-btn:hover {background-color: var(--main-color); color: var(--white-color);}
+*/
 
 .login-btn:not(:last-of-type) {margin-bottom: 10px;}
 .kakao-login {background-color: #FFE900;}
 .naver-login {background-color: #1EC800; color: var(--white-color);}
-.google-login {background-color: #4285f4; color: var(--white-color);}
-.email-login {border: 1px solid var(--gray-color); background-color: var(--white-color);}
+/*.google-login {background-color: #4285f4; color: var(--white-color);}*/
+.google-login {background-color: var(--white-color); border: 1px solid var(--gray-color);}
+.email-login {color: var(--white-color); background-color: var(--main-color);}
 /*
 	로그인 end
 */
@@ -337,14 +365,16 @@ text-align: center;}
 .new-search-saju {display: flex; flex-direction: column; align-items: center; justify-content: space-between;}
 .new-search-saju > div {width: 100%;}
 .new-search-saju .title-wrap > h1 {text-align: center;}
-.new-search-saju input[type="text"] {width: 100%; height: 44px;}
+.new-search-saju input[type="text"] {width: 100%; height: 4.5vh;}
 .new-search-saju .content-wrap > div[class$="-cont"] {margin-bottom: 30px;}
-.new-search-saju label {    width: 48%;
-    height: 44px;
+.new-search-saju .select2-container {height: 4.5vh;}
+.new-search-saju label {
+	width: 48%; height: 4.5vh;
     display: flex;
     align-items: center;
     justify-content: center;
-    border-radius: 10px;}
+    border-radius: 10px;
+    cursor: pointer;}
 /*
 	사주정보 입력 end(sajuMainNew)
 */

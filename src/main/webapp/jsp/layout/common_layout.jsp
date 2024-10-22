@@ -52,11 +52,20 @@
     	<script src="${rootPath}/webjars/bootstrap/5.3.0/js/bootstrap.bundle.min.js"></script>
 		<jsp:include page="${rootPath}/static/js/common_js.jsp" />
     	
-		<!-- 컨텐츠영역 -->
-		<div class="div-flex-wrap" id="content" style="">
+		<!-- 기존 컨텐츠영역 -->
+		<%-- <div class="div-flex-wrap" id="content" style="">
+			<jsp:include page='../custom/${viewName}.jsp' flush="false"/>
+		</div> --%>
+		
+		<!-- 컨텐츠영역 new -->
+		<div class="flex-center new-content-area" id="content" style="">
 			<jsp:include page='../custom/${viewName}.jsp' flush="false"/>
 		</div>
-
+		
+    	<!-- footer 하단 버튼 바 추가 -->
+    	<footer class="flex-center footer-area">
+    		<jsp:include page='../layout/footer.jsp' flush="false"/>
+		</footer>
 	</div>
 </body>
 </html>

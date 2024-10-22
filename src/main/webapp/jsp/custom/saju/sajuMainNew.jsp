@@ -61,10 +61,17 @@
 	            <label class="text-radio-label" for="gender_w">여자</label>   
 			</div>   
         </div>
-    </div>    
-	<div class="footer">
-	   <button class="search-btn" onclick="search()">조회하기</button>
-	</div>
+       <div class="btn-cont">
+       		<button class="search-btn" onclick="search()">사주 조회하기</button>
+       </div>
+       <div class="btn-cont flex-space-around-row">
+       		<button class="text-btn" onclick="goLogin()">로그인</button>
+       		<button class="text-btn" onclick="goJoin()">회원가입</button>
+       		<button class="text-btn" onclick="">저장하기</button>
+       		<button class="text-btn" onclick="">회원목록</button>
+       </div>
+    </div>
+    
  <!--   <div class="content">
        광고 자리^^ 
    </div> -->

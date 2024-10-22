@@ -22,6 +22,21 @@ import jakarta.servlet.http.HttpServletRequest;
 @RestController
 @RequestMapping("/join")
 public class JoinCont {
+	/**
+	* Description : join
+	* @Author	: eskim
+	* @Date	 	: 2024. 10. 16
+	* @Method	: join 
+	* @return 	: ModelAndView
+	*/
+	@RequestMapping("/")
+	public ModelAndView join() {
+		ModelAndView mv = new ModelAndView();
+		mv.addObject("viewName", "join/join");
+	    mv.setViewName("layout/common_layout");
+		return mv;
+	}
+	
     /**
     	* Description : login
     	* @Author	: eskim
@@ -51,22 +66,6 @@ public class JoinCont {
 	    mv.setViewName("layout/common_layout");
 		return mv;
 	}
-	
-	/**
-	* Description : join
-	* @Author	: eskim
-	* @Date	 	: 2024. 10. 16
-	* @Method	: login 
-	* @return 	: ModelAndView
-	*/
-	@RequestMapping("/join")
-	public ModelAndView join() {
-		ModelAndView mv = new ModelAndView();
-		mv.addObject("viewName", "join/join");
-	    mv.setViewName("layout/common_layout");
-		return mv;
-	}
-	
 	
 	/**
 	* Description  사주정보 입력(임시로 조인컨트롤러에서 사용, 수정 필요함)

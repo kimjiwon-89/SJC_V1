@@ -10,17 +10,4 @@
 
 <script type="text/javascript">
 
-// 이메일 로그인 이동
-function goToEmailLogin() {
-	const currentUrl = window.location.href;
-	window.location.href = currentUrl+'Email';
-}
-
-// 회원가입 이동
-function goToJoin() {
-	const currentUrl = window.location.href;
-	const url = currentUrl.slice(0, currentUrl.lastIndexOf('/'));
-	window.location.href = url;
-}
-
 </script>
