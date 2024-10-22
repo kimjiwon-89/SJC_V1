@@ -7,18 +7,14 @@
 <%@taglib uri="http://www.springframework.org/tags" prefix="spring"%>
 <%@taglib uri="http://www.springframework.org/tags/form" prefix="form"%>
 
-<script src="https://kit.fontawesome.com/60d85a80ee.js"
-	crossorigin="anonymous"></script>
-
-
 <div class="main-wrap login-wrap">
 	<div class="login-title">
 		<h1>everysaju</h1>
-		<span>이메일로 로그</span>
+		<span>이메일로 로그인</span>
 	</div>
 	<div class="login-email-wrap">
 		<input type="text" placeholder="아이디(이메일)" autofocus />
-		<input type="password" placeholder="비밀번" />
+		<input type="password" placeholder="비밀번호" />
 	</div>
 	<div class="login-btn-wrap">
 		<button class="login-btn">로그인</button>

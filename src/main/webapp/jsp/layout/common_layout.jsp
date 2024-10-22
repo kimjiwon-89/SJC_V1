@@ -44,11 +44,14 @@
 		@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100..900&display=swap');
 	</style>
 	
-
+	<!-- fontawesome -->
+	<script src="https://kit.fontawesome.com/60d85a80ee.js"
+	crossorigin="anonymous"></script>
 
 </head>
 <body>
-	<div class="container body-wrapper">
+	<!-- <div class="container body-wrapper"> -->
+	<div class="new-container">
     	<script src="${rootPath}/webjars/bootstrap/5.3.0/js/bootstrap.bundle.min.js"></script>
 		<jsp:include page="${rootPath}/static/js/common_js.jsp" />
     	
@@ -58,12 +61,12 @@
 		</div> --%>
 		
 		<!-- 컨텐츠영역 new -->
-		<div class="flex-center new-content-area" id="content" style="">
+		<div class="new-content-area" id="content" style="">
 			<jsp:include page='../custom/${viewName}.jsp' flush="false"/>
 		</div>
 		
     	<!-- footer 하단 버튼 바 추가 -->
-    	<footer class="flex-center footer-area">
+    	<footer class="footer-area">
     		<jsp:include page='../layout/footer.jsp' flush="false"/>
 		</footer>
 	</div>

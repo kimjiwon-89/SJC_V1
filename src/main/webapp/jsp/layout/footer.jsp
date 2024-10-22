@@ -9,15 +9,19 @@
 
 <div class="footer-manu-bar">
 	<button class="text-btn footer-btn" onclick="">
+		<i class="fa fa-home" aria-hidden="true"></i>
 		<span>홈</span>
 	</button>
 	<button class="text-btn footer-btn" onclick="">
+		<i class="fa fa-search" aria-hidden="true"></i>
 		<span>사주조회</span>
 	</button>
 	<button class="text-btn footer-btn" onclick="">
+		<i class="fa fa-list-alt" aria-hidden="true"></i>
 		<span>친구목록</span>
 	</button>
 	<button class="text-btn footer-btn" onclick="">
+		<i class="fa fa-user-o" aria-hidden="true"></i>
 		<span>프로필</span>
 	</button>
 </div>

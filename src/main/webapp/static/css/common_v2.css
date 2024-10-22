@@ -25,21 +25,46 @@ button, input, optgroup, select, textarea  {
 }
 
 /* 전체적 틀 */
+/*새로운 컨테이너*/
+html, body {width: 100%; height: 100%; 
+	display: flex;
+    flex-direction: column;
+    align-items: center;}
+.new-container {
+	max-width: 480px; width: 100%; min-height: 100%; 
+	display: flex;
+    flex-direction: column;
+    align-items: center;
+	background-color: var(--white-color);}
 /*새로운 컨텐츠 영역*/
-.new-content-area {height: calc(100% - 75px);}
+.new-container > [class$="area"] {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+}
+.new-content-area {
+	overflow: auto;
+	height: calc(100% - 75px);
+	padding: 20px;}
 .footer-area {height: 75px;}
 /* footer - 하단메뉴바 */
-.footer-manu-bar {display: flex; align-items: center; justify-content: space-between;}
+.footer-manu-bar {display: flex; align-items: center; justify-content: space-between; height: 100%;}
 .footer-btn {min-width: 25%; height: 100%; 
+font-size: 18px;
 display: flex; align-items: center; flex-direction: column; justify-content: center;}
+.footer-btn > i {margin-bottom: 3px;}
+.footer-btn > span {font-size: 12px;}
 .footer-btn > img {display: block; width: 16px; margin-bottom: 3px;}
 
 
 .main-wrap, /*content wrap*/
 .footer-manu-bar /*footer menu-bar*/
- {max-width: 480px; width: 100%; min-height: 100%; 
-padding: 20px; 
-background-color: var(--white-color);}
+ {
+/*	 max-width: 480px; width: 100%; min-height: 100%; 
+padding: 20px; */
+width: 100%; }
+.main-wrap {min-height: 100%;}
 .main-wrap > div[class$="wrap"] {margin-bottom: 20px;}
 
 
@@ -362,14 +387,13 @@ text-align: center;}
 /*
 	사주정보 입력 start(sajuMainNew)
 */
-.new-search-saju {display: flex; flex-direction: column; align-items: center; justify-content: space-between;}
+.new-search-saju {display: flex; flex-direction: column; align-items: center;}
 .new-search-saju > div {width: 100%;}
 .new-search-saju .title-wrap > h1 {text-align: center;}
-.new-search-saju input[type="text"] {width: 100%; height: 4.5vh;}
+.new-search-saju input[type="text"] {width: 100%; height: 38px;}
 .new-search-saju .content-wrap > div[class$="-cont"] {margin-bottom: 30px;}
-.new-search-saju .select2-container {height: 4.5vh;}
 .new-search-saju label {
-	width: 48%; height: 4.5vh;
+	width: 48%; height: 38px;
     display: flex;
     align-items: center;
     justify-content: center;

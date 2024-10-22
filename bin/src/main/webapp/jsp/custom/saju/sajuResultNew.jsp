@@ -7,9 +7,6 @@
 <%@taglib uri="http://www.springframework.org/tags" prefix="spring"%>
 <%@taglib uri="http://www.springframework.org/tags/form" prefix="form"%>
 
-<script src="https://kit.fontawesome.com/60d85a80ee.js"
-	crossorigin="anonymous"></script>
-
 <style>
 
 /* 한자 영역 너비 */

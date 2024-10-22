@@ -7,8 +7,6 @@
 <%@taglib uri="http://www.springframework.org/tags" prefix="spring"%>
 <%@taglib uri="http://www.springframework.org/tags/form" prefix="form"%>
 
-<script src="https://kit.fontawesome.com/60d85a80ee.js"
-	crossorigin="anonymous"></script>
 
 <div class="main-wrap">
 	join
