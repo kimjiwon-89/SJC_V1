@@ -42,7 +42,7 @@
 <!-- 			<img src="https://media.istockphoto.com/id/157332035/ko/%EC%82%AC%EC%A7%84/%EC%8B%9C%ED%94%84-%EC%9E%88%EB%8F%84%EB%A1%9D-%EA%B0%84%EB%8B%A8%ED%95%9C-%EC%9E%90%EC%84%B8.jpg?s=612x612&w=is&k=20&c=N9QQdhrDllW-TrcQlwa3_1KWGSW3Vgti71mPW9Vmbws=" /> -->
 		</div>
 		<div class="user-info">
-			<span class="user-nm" id="">김댕댕</span>
+			<span class="user-nm" id="serch_name">김댕댕</span>
 			<span class="user-year" id="user-day">을미(푸른 양)</span>
 			<span class="user-birth" id="birth-info">양력 2000.01.01 00:00:00(자) 남자</span>
 		</div>

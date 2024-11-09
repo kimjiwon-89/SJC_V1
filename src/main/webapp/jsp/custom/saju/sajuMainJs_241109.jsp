@@ -21,7 +21,7 @@ $(document).ready(function(){
         const option = new Option(value, key);  // 새로운 option 생성
         birthDaySel.append(option);             	// select 박스에 추가
     });
-
+	
    	//1. select2 실행
     $('.select2').select2({
         minimumResultsForSearch: Infinity,	 			// 검색 필터 제거
@@ -57,12 +57,12 @@ function search() {
 function search2() {
 	//기본 데이터를 선택했다면 그대로 넘기도록 함
 	const dateInput = document.getElementById('birthday').value;
-	const smonth = $("input[name='smonth']").val()
+	const smonth = document.getElementById('smonth').value;
 	
 	var data = {
 		gender		: $('input[name="gender"]:checked').val(),
 		birthday	: document.getElementById('birthday').value,
-		smonth 		: $("input[name='smonth']").val()
+		smonth 		: document.getElementById('smonth').value
 	}
 	
 	formCallServer(data, "/saju/sajuChemistry");
@@ -96,7 +96,7 @@ function formatDateString(input) {
 //API 호출
 function fnCallDateInfoAPI(callback) {
 	const dateInput = document.getElementById('birthday').value;
-	const smonth = $("input[name='smonth']").val();
+	const smonth = document.getElementById('smonth').value;
 	const parts = dateInput.split("-");
 	const year = parts[0];
 	const month = parts[1];
@@ -144,9 +144,8 @@ function fnCallDateInfoAPI(callback) {
 				 param.birthday  	= $("#birthday").val();
 				 param.birthTime	= $("#birthTime").val();
 				 param.gender   	= $('input[name="gender"]:checked').val();
-				 param.smonth   	= $("input[name='smonth']").val();
-				 param.serch_name   = $("input[id='serch_name']").val();
-
+				 param.smonth   	= $('#smonth').val();
+		              
 				callback(param);
 			} else {
 				console.error('서버 응답 오류:', this.statusText);

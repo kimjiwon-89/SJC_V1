@@ -88,4 +88,10 @@
 			$(".loader-wrapper").remove();
 		}
 	}
+
+	/* 하단 탭 메뉴 구성, 페이지 이동 */
+	function selectMenu(type) {
+		if(type === "") return;
+		window.location.href = "${pageContext.request.contextPath}/"+ type;  // 해당 URL로 이동
+	}
 </script>

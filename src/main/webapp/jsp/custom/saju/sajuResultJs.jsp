@@ -53,7 +53,9 @@ function fnSetSajuName() {
 	if(bean.gender !== "M") gender = "여자";
 	
 	$("#birth-info").text(smonth + " " + bean.birthday.replaceAll("-",".") + " " + bean.birthTime + "(" + birthTimeObj.get(bean.birthTime).split(" ")[0] + ") " + gender)
-	
+
+    //이름
+    $("#serch_name").text(bean.serch_name);
 }
 
 //원하는 데이터의 아이디 값을 셋팅

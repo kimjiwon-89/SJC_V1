@@ -135,9 +135,13 @@ public class SajuCont {
         mv.setViewName("layout/common_layout");
     	return mv;
     }
-    
-    
-    @RequestMapping("/getChemiResult")
+
+	/**
+	 * 사주 궁합 결과 표출
+	 * @param req
+	 * @return
+	 */
+	@RequestMapping("/getChemiResult")
     public String getChemiResult(HttpServletRequest req) {
     	String result="";
     	try {
@@ -154,46 +158,5 @@ public class SajuCont {
     	
     	return result;
     }
-	
-	
-    
-    /**
-	* Description : 결과 페이지 이동
-	* @Author	: eskim-pc
-	* @Date	 	: 2024. 10. 10.
-	* @Method	: sajuResultNew 
-	* @return 	: ModelAndView
-	 */
-	@RequestMapping("/sajuResultNew")
-	public ModelAndView sajuResultNew(HttpServletRequest req) {
-	   ModelAndView mv = new ModelAndView();
-//	  try {
-//	     Map<String, Object> map = RequestUtil.getReqParamToMap(req);
-	     
-		 /*임시데이터*/
-		 Map<String, Object> map = new HashMap<>();
-	     map.put("birthday", "1994-16-10");
-	     map.put("yearSaju", "갑술(甲戌)");
-	     map.put("lunYear", "1994");
-	     map.put("lunIljin", "정묘(丁卯)");
-	     map.put("gender", "W");
-	     map.put("lunMonth", "05");
-	     map.put("solMonth", "06");
-	     map.put("solDay", "10");
-	     map.put("lunDay", "02");
-	     map.put("birthTime", "모");
-	     map.put("solYear", "1994");
-	     map.put("monthSaju", "경오(庚午)");
-	     
-		 mv.addObject("bean", map);
-	     
-//	  } catch (ServletException e) {
-//	     e.printStackTrace();
-//	  }
-	   
-	   mv.addObject("viewName", "saju/sajuResultNew");
-	   mv.setViewName("layout/common_layout");
-	   return mv;
-	}
-	
+
 }
