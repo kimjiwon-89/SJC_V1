@@ -3,10 +3,13 @@ package com.sjc.custom.saju;
 import java.time.LocalTime;
 import java.util.List;
 
+import com.sjc.entity.*;
 import com.sjc.entity.QChemiBean;
 import com.sjc.entity.QDailyGroundBean;
 import com.sjc.entity.QDailySkyBean;
+import com.sjc.entity.QIlgan10sinBean;
 import com.sjc.entity.QTimepillarBean;
+import com.sjc.model.Ilgan10sinDto;
 import org.springframework.stereotype.Repository;
 
 import com.querydsl.core.types.Projections;
@@ -90,6 +93,19 @@ public class SajuRepositoryImpl implements SajuRepositoryCustom{
 						)
 				.fetchFirst();
 	}
-	
-	
+
+	@Override
+	public List<Ilgan10sinDto> getIlgan10sin(char stem) {
+		QIlgan10sinBean qIlgan10sinBean = QIlgan10sinBean.ilgan10sinBean;
+		return queryFactory
+				.select(Projections.fields(Ilgan10sinDto.class,
+							qIlgan10sinBean.ilgan,
+							qIlgan10sinBean.cheonganjiji,
+							qIlgan10sinBean.match))
+				.from(qIlgan10sinBean)
+				.where(qIlgan10sinBean.ilgan.eq(stem))
+				.fetch();
+	}
+
+
 }

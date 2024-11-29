@@ -9,6 +9,7 @@
 
 <script>
 const bean = JSON.parse('${ bean }');
+const ilgan10sinList = JSON.parse('${ ilgan10sinList }');
 
 $(document).ready(function(){
 
@@ -56,6 +57,8 @@ function fnSetSajuName() {
 
     //이름
     $("#serch_name").text(bean.serch_name);
+
+    console.log(ilgan10sinList)
 }
 
 //원하는 데이터의 아이디 값을 셋팅
@@ -71,6 +74,14 @@ function fnSetSajuInfo(id, data) {
 	
 	$("#"+id+"1").text(data1 + "(" + data1_kr +  ")").addClass(data1_class);
 	$("#"+id+"2").text(data2 + "(" + data2_kr +  ")").addClass(data2_class);
+
+    //십신 구성
+    let sky10Sin    = ilgan10sinList.filter(v => v.cheonganjiji === data1_kr)[0]?.match
+    let ground10Sin = ilgan10sinList.filter(v => v.cheonganjiji === data2_kr)[0]?.match
+    $("#"+id+"10sin1").text(sky10Sin);
+    $("#"+id+"10sin2").text(ground10Sin);
+
+
 }
 
 //지간 순대로 인덱스 추출하여 이미지 셋팅, 이후에 CSS로 수정할 것
@@ -444,7 +455,8 @@ function fnSetHolidayInfo(year, month ) {
 function fnSetHolidaySet(dataArr) {
 	$.each(dataArr, function(idx, data){
 		$("."+ data.locdate + " .locdate").addClass("holiday");
-		
+
+        if(data.dateName === "기독탄신일") data.dateName = "성탄절";
 		$("."+ data.locdate).append('<span class="dateName holiday">' + data.dateName  + ' </span>');
 		
 		$("."+ data.locdate + " .dateName").text(data.dateName);

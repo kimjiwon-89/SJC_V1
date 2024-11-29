@@ -5,6 +5,7 @@ import java.util.List;
 
 import com.sjc.model.DailyGroundDto;
 import com.sjc.model.DailySkyDto;
+import com.sjc.model.Ilgan10sinDto;
 import com.sjc.model.TimePillarDto;
 
 public interface SajuRepositoryCustom {
@@ -17,4 +18,6 @@ public interface SajuRepositoryCustom {
 	public String findChemiResult(String r1, String r2);
 	//시주 조회
 	public TimePillarDto getTimePillarInfo(LocalTime birthTime, char stem);
+	//십신 조회
+	public List<Ilgan10sinDto> getIlgan10sin(char stem);
 }

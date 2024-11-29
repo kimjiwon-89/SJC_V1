@@ -65,29 +65,29 @@
 							<th scope="row">월주(생월)</th>
 							<th scope="row">년주(생년)</th>
 						</tr>
-						<tr class="lunar_cont_top">
-							<td class="" id="time_saju1">丙(임)</td>
-							<td class="" id="day_saju1">丙(무)</td>
-							<td class="" id="month_saju1">丙(병)</td>
-							<td class="" id="year_saju1">丙(기)</td>
-						</tr>
-						<tr class="lunar_cont_bottom">
-							<td>편재</td>
+						<tr id="sky10got">
+							<td id="time_saju10sin1"></td>
 							<td>일간(나)</td>
-							<td>편인</td>
-							<td>겁재</td>
+							<td id="month_saju10sin1"></td>
+							<td id="year_saju10sin1"></td>
 						</tr>
 						<tr class="lunar_cont_top">
-							<td class="" id="time_saju2">丙(임)</td>
-							<td class="" id="day_saju2">丙(무)</td>
-							<td class="" id="month_saju2">丙(병)</td>
-							<td class="" id="year_saju2">丙(기)</td>
+							<td class="" id="time_saju1"></td>
+							<td class="" id="day_saju1"></td>
+							<td class="" id="month_saju1"></td>
+							<td class="" id="year_saju1"></td>
 						</tr>
-						<tr class="lunar_cont_bottom">
-							<td class="text_black">편재</td>
-							<td class="text_yellow">정인</td>
-							<td>편인</td>
-							<td>겁재</td>
+						<tr class="lunar_cont_top">
+							<td class="" id="time_saju2"></td>
+							<td class="" id="day_saju2"></td>
+							<td class="" id="month_saju2"></td>
+							<td class="" id="year_saju2"></td>
+						</tr>
+						<tr id="ground10got">
+							<td id="time_saju10sin2"></td>
+							<td id="day_saju10sin2"></td>
+							<td id="month_saju10sin2"></td>
+							<td id="year_saju10sin2"></td>
 						</tr>
 					</tbody>
 				</table>
