@@ -269,7 +269,8 @@ input.ipt , select.ipt {
 
 /* 스크롤 색상 */
 ::-webkit-scrollbar {
-    width: 12px;
+   /* width: 12px; */
+    width: 0;
     height: 12px;
 }
 ::-webkit-scrollbar-thumb:hover {

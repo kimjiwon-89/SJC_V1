@@ -15,19 +15,34 @@ $(window).on("load", function() { /* 로직 추가 */ });
 
 /* HTML 요소가 등록 된 후에 실행, 주 사용 이벤트 */
 $(document).ready(function(){
-	//0. 태어난 시간 셋팅
-	const birthDaySel = $("#birthTime");
-	birthTimeObj.forEach((value, key) => {
-        const option = new Option(value, key);  // 새로운 option 생성
-        birthDaySel.append(option);             	// select 박스에 추가
-    });
+// 	//0. 태어난 시간 셋팅 -> input으로 변경(24.12.09)
+// 	const birthDaySel = $("#birthTime");
+// 	birthTimeObj.forEach((value, key) => {
+//         const option = new Option(value, key);  // 새로운 option 생성
+//         birthDaySel.append(option);             	// select 박스에 추가
+//     });
 
-   	//1. select2 실행
-    $('.select2').select2({
-        minimumResultsForSearch: Infinity,	 			// 검색 필터 제거
-        dropdownCssClass: 'custom-select2-dropdown', 	// 커스텀 CSS 클래스 지정
-//         dropdownAutoWidth: true, 						// 드롭다운 너비 자동 설정
-        width: 'resolve', // 자동으로 부모의 너비를 따르게 설정
+//    	//1. select2 실행
+//     $('.select2').select2({
+//         minimumResultsForSearch: Infinity,	 			// 검색 필터 제거
+//         dropdownCssClass: 'custom-select2-dropdown', 	// 커스텀 CSS 클래스 지정
+// //         dropdownAutoWidth: true, 						// 드롭다운 너비 자동 설정
+//         width: 'resolve', // 자동으로 부모의 너비를 따르게 설정
+// 	});
+	
+	//시간모름 체크 시 birthTime 블록처리
+	const knowBirthTimeEl = document.getElementById("knowBirthTimeYn");
+	knowBirthTimeEl.addEventListener("change", function() {
+		const birthTime = document.getElementById("birthTime");
+		const knowBirthTimeYn = knowBirthTimeEl.checked ? true : false;
+		birthTime.disabled = knowBirthTimeYn;
+    });
+	
+	// birthTime 이벤트 추가
+	const birthTime = document.getElementById("birthTime");
+	birthTime.addEventListener("input", function (event) {
+		const value = setFormatTimeString(event);
+		birthTime.value = value;
 	});
    
 	//input 이벤트 추가
@@ -36,7 +51,7 @@ $(document).ready(function(){
 		let formattedDate = formatDateString(input);
 		$(this).val(formattedDate);
 	});
-
+	
 });
 
 /* 조회, 결과 페이지 이동 */
@@ -95,6 +110,11 @@ function formatDateString(input) {
 
 //API 호출
 function fnCallDateInfoAPI(callback) {
+	
+	// 호출 전 birthTime값 확인(241209)
+	const birthTimeValue = getBirthTimeValue();
+	if(birthTimeValue=="false") return;
+	
 	const dateInput = document.getElementById('birthday').value;
 	const smonth = $("input[name='smonth']").val();
 	const parts = dateInput.split("-");
@@ -142,7 +162,8 @@ function fnCallDateInfoAPI(callback) {
 				 param.monthSaju   	= lunWolgeon;
 				 param.yearSaju   	= lunSecha;
 				 param.birthday  	= $("#birthday").val();
-				 param.birthTime	= $("#birthTime").val();
+				 param.birthTime	= birthTimeValue;
+// 				 param.birthTime	= $("#birthTime").val();
 				 param.gender   	= $('input[name="gender"]:checked').val();
 				 param.smonth   	= $("input[name='smonth']").val();
 				 param.serch_name   = $("input[id='serch_name']").val();
@@ -155,5 +176,57 @@ function fnCallDateInfoAPI(callback) {
 		}
 	};
 	xhr.send('');
+}
+
+function getBirthTimeValue() {
+	let birthTime = "false";
+	
+	// checkbox 확인
+	if(knowBirthTimeYnCheck()) {
+		return birthTime = ""; 
+	}
+	
+	if(birthTimeValidation()) { 
+		return document.getElementById("birthTime").value+":00";
+	} else {
+		return birthTime;
+	} 
+}
+
+function knowBirthTimeYnCheck() {
+	return document.getElementById("knowBirthTimeYn").checked;
+}
+
+function birthTimeValidation() {
+	const birthTime = document.getElementById("birthTime").value;
+	
+	// 정규식 패턴: HH:mm 형식 (00:00 ~ 59:59)
+    const regex = /^([01][0-9]|2[0-3]):([0-5]?[0-9])$/;
+
+    // 정규식 검사
+    const result = regex.test(birthTime);
+    
+    if(!result) alert("태어난 시간 값이 00:00~23:59의 형태가 맞는지 확인해주세요.");
+    
+    return result;
+}
+
+function setFormatTimeString(event) {
+	let value = event.target.value.replace(/\D/g, ''); // 숫자 외의 모든 문자 제거
+	
+	  // 입력값 길이에 맞게 HH:mm 포맷으로 변환
+	  if (value.length > 4) {
+	    value = value.slice(0, 4); // 최대 4자리까지 입력
+	  }
+	
+	  // HH:mm 형식으로 포맷
+	  if (value.length <= 2) {
+	    // 시간 부분 (최대 2자리)
+	    value = value.replace(/(\d{2})/, '$1');
+	  } else if (value.length <= 4) {
+	    // 분 부분 (최대 2자리)
+	    value = value.replace(/(\d{2})(\d{2})/, '$1:$2');
+	  }
+		return value;
 }
 </script>
