@@ -32,7 +32,7 @@
 
 </style>
 
-<div class="main-wrap new-result-saju">
+<div class="content-layout new-result-saju">
 	<div class="title-wrap">
 		<h1>everysaju</h1>
 	</div>

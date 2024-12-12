@@ -7,8 +7,8 @@
 <%@taglib uri="http://www.springframework.org/tags" prefix="spring"%>
 <%@taglib uri="http://www.springframework.org/tags/form" prefix="form"%>
 
-<div class="main-wrap new-search-saju pd-lr-20">
-	<div class="title-wrap">
+<div class="content-layout pd new-search-saju">
+	<div class="title-wrap center">
 		<h1>everysaju</h1>
 <!-- 		<h2>사주 정보 입력</h2> -->
 	</div>

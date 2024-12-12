@@ -15,19 +15,23 @@
 </style>
 <div class="footer-manu-bar">
 	<button class="text-btn footer-btn" onclick="selectMenu('')">
-		<i class="fa fa-home" aria-hidden="true"></i>
-		<span>홈</span>
+<!-- 		<i class="fa fa-home" aria-hidden="true"></i> -->
+<!-- 		<span>홈</span> -->
+		<img src="/static/img/icon/Home.png" />
 	</button>
 	<button class="text-btn footer-btn active" onclick="selectMenu('saju/main')">
-		<i class="fa fa-search" aria-hidden="true"></i>
-		<span>사주조회</span>
+<!-- 		<i class="fa fa-search" aria-hidden="true"></i> -->
+<!-- 		<span>사주조회</span> -->
+		<img src="/static/img/icon/Search.png" />
 	</button>
 	<button class="text-btn footer-btn" onclick="selectMenu('')">
-		<i class="fa fa-list-alt" aria-hidden="true"></i>
-		<span>친구목록</span>
+<!-- 		<i class="fa fa-list-alt" aria-hidden="true"></i> -->
+<!-- 		<span>친구목록</span> -->
+		<img src="/static/img/icon/List.png" />
 	</button>
 	<button class="text-btn footer-btn" onclick="selectMenu('')">
-		<i class="fa fa-user-o" aria-hidden="true"></i>
-		<span>프로필</span>
+<!-- 		<i class="fa fa-user-o" aria-hidden="true"></i> -->
+<!-- 		<span>프로필</span> -->
+		<img src="/static/img/icon/User.png" />
 	</button>
 </div>

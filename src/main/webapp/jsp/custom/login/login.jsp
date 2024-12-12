@@ -8,10 +8,8 @@
 <%@taglib uri="http://www.springframework.org/tags/form" prefix="form"%>
 
 
-
-
-<div class="main-wrap login-wrap">
-	<div class="login-title">
+<div class="content-layout pd login-wrap">
+	<div class="title-wrap center">
 		<h1>everysaju</h1>
 	</div>
 	<div class="login-select-wrap">

@@ -11,11 +11,11 @@
 	crossorigin="anonymous"></script>
 
 
-<div class="main-wrap login-wrap">
-	<div class="login-title">
+<div class="content-layout pd login-wrap">
+	<div class="title-wrap center">
 		<h1>everysaju</h1>
-		<span>이메일로 로그인</span>
 	</div>
+	<h2>이메일로 로그인</h2>
 	<div class="login-email-wrap">
 		<input type="text" placeholder="아이디(이메일)" autofocus />
 		<input type="password" placeholder="비밀번호" />
