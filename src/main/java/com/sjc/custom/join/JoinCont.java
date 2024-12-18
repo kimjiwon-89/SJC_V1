@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.google.gson.Gson;
 import com.sjc.model.DailyGroundDto;
 import com.sjc.model.DailySkyDto;
 import com.sjc.model.TimePillarDto;
@@ -78,6 +79,28 @@ public class JoinCont {
 	public ModelAndView sajuMainNew() {
 		ModelAndView mv = new ModelAndView();
 		mv.addObject("viewName", "saju/sajuMainNew");
+	    mv.setViewName("layout/common_layout");
+		return mv;
+	}
+	
+	/**
+	* Description  개인정보처리방침, 이용약관 등 설명 페이
+	* @Author	: eskim
+	* @Date	 	: 2024. 12. 18
+	* @Method	: sajuMainNew 
+	* @return 	: ModelAndView
+	*/
+	@RequestMapping("/serviceDescription")
+	public ModelAndView serviceDescription(HttpServletRequest req) {
+		ModelAndView mv = new ModelAndView();
+		mv.addObject("viewName", "join/serviceDescription");
+		Map<String, Object> map;
+		try {
+			map = RequestUtil.getReqParamToMap(req);
+	        mv.addObject("descType", map.get("descType").toString());
+		} catch (ServletException e) {
+			e.printStackTrace();
+		}
 	    mv.setViewName("layout/common_layout");
 		return mv;
 	}

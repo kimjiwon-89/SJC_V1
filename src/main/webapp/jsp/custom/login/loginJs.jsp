@@ -19,8 +19,7 @@ function goToEmailLogin() {
 // 회원가입 이동
 function goToJoin() {
 	const currentUrl = window.location.href;
-	const url = currentUrl.slice(0, currentUrl.lastIndexOf('/'));
+	const url = currentUrl.slice(0, currentUrl.lastIndexOf('/'))+'/';
 	window.location.href = url;
 }
-
 </script>

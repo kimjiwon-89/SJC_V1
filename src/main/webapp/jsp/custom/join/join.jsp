@@ -7,31 +7,38 @@
 <%@taglib uri="http://www.springframework.org/tags" prefix="spring"%>
 <%@taglib uri="http://www.springframework.org/tags/form" prefix="form"%>
 
-<script src="https://kit.fontawesome.com/60d85a80ee.js"
-	crossorigin="anonymous"></script>
 
-
-<div class="main-wrap login-wrap">
-	<div class="login-title">
-		<h1>everysaju</h1>
-		<h>회원가입</h2>
+<div class="content-layout pd login-wrap join-wrap">
+	<div class="title-wrap back-title big">
+		<button class="back-btn" onclick="goToback()">
+			<i class="fa fa-angle-left" aria-hidden="true"></i>
+		</button>
+		<h1>회원가입 하기</h1>
 	</div>
-	<!-- <div class="login-select-wrap">
-		<button class="login-btn kakao-login" onclick="">카카오로 로그인</button>
-		<button class="login-btn naver-login" onclick="">네이버로 로그인</button>
-		<button class="login-btn google-login" onclick="">구글계정으로 로그인</button>
-		<button class="login-btn email-login" onclick="goToEmailLogin()">이메일 로그인</button>
+	
+	<div class="join-check-wrap">
+		<div class="all-check">
+			<input type="checkbox" id="allCheck" />
+			<label for="allCheck">전체 약관 동의</label>
+		</div>
+		<div class="">
+			<input type="checkbox" id="tosCheck" />
+			<label for="tosCheck">서비스 이용약관(필수)</label>
+			<button class="text-btn" onclick="goToDesc('termsOfService')">내용보기</button>
+		</div>
+		<div class="">
+			<input type="checkbox" id="ppCheck" />
+			<label for="ppCheck">개인정보 수집 및 이용(필수)</label>
+			<button class="text-btn" onclick="goToDesc('privacyPolicy')">내용보기</button>
+		</div>
 	</div>
-	<div class="login-bottom-wrap">
-		<div class="stay-logged-in-cont">
-			<input type="checkbox" id="stayLoggedIn" />
-			<label for="stayLoggedIn">로그인 상태 유지</label>
-		</div>
-		<div class="join-cont">
-			<span>아직 회원이 아니신가요?</span>
-			<button class="text-btn" onclick="goToJoin()">회원가입</button>
-		</div>
-	</div> -->
+	
+	<div class="login-select-wrap">
+		<button class="login-btn kakao-login" onclick="">카카오로 간편 가입하기</button>
+		<button class="login-btn naver-login" onclick="">네이버로 간편 가입하기</button>
+		<button class="login-btn google-login" onclick="">구글계정으로 간편 가입하기</button>
+		<button class="login-btn email-login" onclick="">이메일로 가입하기</button>
+	</div>
 </div>
 
 <!-- JS파일 분리 -->

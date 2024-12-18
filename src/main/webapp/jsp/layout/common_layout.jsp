@@ -94,4 +94,10 @@
 		if(type === "") return;
 		window.location.href = "${pageContext.request.contextPath}/"+ type;  // 해당 URL로 이동
 	}
+	
+
+	// 이전페이지 이동
+	function goToback() {
+		window.history.back();
+	}
 </script>

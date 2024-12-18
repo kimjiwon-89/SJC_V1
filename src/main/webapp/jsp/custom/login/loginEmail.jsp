@@ -17,8 +17,8 @@
 	</div>
 	<h2>이메일로 로그인</h2>
 	<div class="login-email-wrap">
-		<input type="text" placeholder="아이디(이메일)" autofocus />
-		<input type="password" placeholder="비밀번호" />
+		<input type="text" placeholder="아이디(이메일)을 입력해주세요" autofocus />
+		<input type="password" placeholder="비밀번호를 입력해주세요" />
 	</div>
 	<div class="login-btn-wrap">
 		<button class="login-btn email-login">로그인</button>

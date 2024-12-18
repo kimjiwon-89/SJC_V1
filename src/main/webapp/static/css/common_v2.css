@@ -17,6 +17,7 @@
 /* 공통 */
 * {margin: 0; padding: 0; box-sizing: border-box; word-break: keep-all; font-size: var(--saju-body-font-size);}
 a, a:visited {color: var(--black-color);}
+h1 {font-family: var(--bs-body-font-family);}
 h2, h3, h4, h5, h6 {font-family: var(--bs-body-font-family);
     font-size: var(--saju-body-font-size); font-weight: 200;}
 button, input, optgroup, select, textarea  {
@@ -55,7 +56,9 @@ button, input, optgroup, select, textarea  {
 display: flex; align-items: center; justify-content: center;
 border-radius: 5px; border: none; 
 color: var(--white-color); background-color: var(--main-color);}
-
+.back-btn {border: 0; background-color: var(--main-color); border-radius: 50%; color: #fff; text-align: center;}
+.back-btn > i {display: flex ; width: 20px; height: 20px; align-items: center; justify-content: center;}
+.big .back-btn > i {width: 30px; height: 30px;}
 
 /* 체크박스 디자인 */
 input[type="checkbox"] {position: relative;
@@ -67,7 +70,7 @@ input[type="checkbox"]:before {
     
     content: "\f0c8";
     position: absolute; 
-    top: 50%; left: -13px; transform: translateY(-50%);
+    top: calc(50% + 1px); left: -13px; transform: translateY(-50%);
 }
 input[type="checkbox"]:checked:before { content: "\f14a";}
 
@@ -156,7 +159,7 @@ padding: 0 10px; height: 40px; display: flex; align-items: center; justify-conte
 
 
 /*
-	사주 조회 결
+	사주 조회 결과
 */
 /* 상단 영역(타이틀, 사용자 정보) */
 .user-wrap {display: flex; align-items: center; width: 100%; padding: 0 20px 20px 20px;}
@@ -410,3 +413,18 @@ text-align: center;}
 /*
 	사주정보 입력 end(sajuMainNew)
 */
+
+/*회원가입	*/
+.content-layout .title-wrap.back-title {padding: 0; flex-direction: row; justify-content: space-between; 
+font-size: 20px; position: relative;}
+.content-layout .title-wrap.back-title > h1 {font-size: 20px; text-align: center;}
+.content-layout .title-wrap.back-title.big,
+.content-layout .title-wrap.back-title.big > h1 {font-size: 30px;}
+.back-title .back-btn {position: absolute; top: 50%; left: 0; transform: translateY(-50%);}
+.join-wrap {justify-content: flex-start;}
+.join-check-wrap {width: 100%; margin-bottom: 15%;}
+.join-check-wrap .all-check label {font-size: 15px; font-weight: 400; margin-bottom: 5px;}
+.join-check-wrap .text-btn {color: #c5c5c5;}
+
+/*개인정보 처리방침, 서비스 이용약관*/
+.description-wrap > pre {text-wrap: auto; font-size: var(--saju-body-font-size); word-break: normal;}
