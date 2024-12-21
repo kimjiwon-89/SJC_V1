@@ -6,6 +6,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import com.sjc.model.Ilgan10sinDto;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -72,7 +73,15 @@ public class SajuCont {
         	 
         	 TimePillarDto timePillar = sajuService.getTimePillarInfo(birthTime, stem);  
         	 mv.addObject("timePillar", timePillar);
-         }
+
+			 // 십신 조회, 기본적으로 내 일간 천간값으로 비교하기에 내 천간의 모든 값을 가져온다.
+			 List<Ilgan10sinDto> ilgan10sin = sajuService.getIlgan10sin(stem);
+
+			 gson = new Gson();
+			 mv.addObject("ilgan10sinList", gson.toJson(ilgan10sin));
+		 }
+
+
          
       } catch (ServletException e) {
          e.printStackTrace();

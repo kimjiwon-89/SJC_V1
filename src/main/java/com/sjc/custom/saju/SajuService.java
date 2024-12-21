@@ -3,6 +3,7 @@ package com.sjc.custom.saju;
 import java.time.LocalTime;
 import java.util.List;
 
+import com.sjc.model.Ilgan10sinDto;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -33,5 +34,9 @@ public class SajuService {
 
 	public TimePillarDto getTimePillarInfo(LocalTime birthTime, char stem) {
 		return sajuRepository.getTimePillarInfo(birthTime, stem);
+	}
+
+	public List<Ilgan10sinDto> getIlgan10sin(char stem) {
+		return  sajuRepository.getIlgan10sin(stem);
 	}
 }

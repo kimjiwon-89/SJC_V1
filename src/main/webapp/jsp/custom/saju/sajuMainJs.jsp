@@ -140,16 +140,16 @@ function fnCallDateInfoAPI(callback) {
 				var xmlDoc = parser.parseFromString(xmlString, "text/xml");
 				
 				// XML 문서에서 필요한 데이터 추출
-				var lunIljin = xmlDoc.getElementsByTagName("lunIljin")[0].childNodes[0].nodeValue;	//간지
-				var lunYear = xmlDoc.getElementsByTagName("lunYear")[0].childNodes[0].nodeValue;	//음력 년도
-				var lunMonth = xmlDoc.getElementsByTagName("lunMonth")[0].childNodes[0].nodeValue;	//음력 월
-				var lunDay = xmlDoc.getElementsByTagName("lunDay")[0].childNodes[0].nodeValue;		//음력 일
-				var solYear = xmlDoc.getElementsByTagName("solYear")[0].childNodes[0].nodeValue;	//양력 년도
-				var solMonth = xmlDoc.getElementsByTagName("solMonth")[0].childNodes[0].nodeValue;	//양력 월
-				var solDay = xmlDoc.getElementsByTagName("solDay")[0].childNodes[0].nodeValue;		//양력 일
+				var lunIljin = xmlDoc.getElementsByTagName("lunIljin")[0]?.childNodes[0]?.nodeValue;	//간지
+				var lunYear = xmlDoc.getElementsByTagName("lunYear")[0]?.childNodes[0]?.nodeValue;	//음력 년도
+				var lunMonth = xmlDoc.getElementsByTagName("lunMonth")[0]?.childNodes[0]?.nodeValue;	//음력 월
+				var lunDay = xmlDoc.getElementsByTagName("lunDay")[0]?.childNodes[0]?.nodeValue;		//음력 일
+				var solYear = xmlDoc.getElementsByTagName("solYear")[0]?.childNodes[0]?.nodeValue;	//양력 년도
+				var solMonth = xmlDoc.getElementsByTagName("solMonth")[0]?.childNodes[0]?.nodeValue;	//양력 월
+				var solDay = xmlDoc.getElementsByTagName("solDay")[0]?.childNodes[0]?.nodeValue;		//양력 일
 				
-				var lunWolgeon = xmlDoc.getElementsByTagName("lunWolgeon")[0].childNodes[0].nodeValue;	//양력 월주
-				var lunSecha = xmlDoc.getElementsByTagName("lunSecha")[0].childNodes[0].nodeValue;		//양력 년주
+				var lunWolgeon = xmlDoc.getElementsByTagName("lunWolgeon")[0]?.childNodes[0]?.nodeValue;	//양력 월주
+				var lunSecha = xmlDoc.getElementsByTagName("lunSecha")[0]?.childNodes[0]?.nodeValue;		//양력 년주
 				
 				 var param={};
 				 param.lunIljin    	= lunIljin;

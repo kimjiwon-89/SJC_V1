@@ -3,10 +3,14 @@ package com.sjc.custom.saju;
 import java.time.LocalTime;
 import java.util.List;
 
+import com.querydsl.core.types.dsl.BooleanExpression;
+import com.sjc.entity.*;
 import com.sjc.entity.QChemiBean;
 import com.sjc.entity.QDailyGroundBean;
 import com.sjc.entity.QDailySkyBean;
+import com.sjc.entity.QIlgan10sinBean;
 import com.sjc.entity.QTimepillarBean;
+import com.sjc.model.Ilgan10sinDto;
 import org.springframework.stereotype.Repository;
 
 import com.querydsl.core.types.Projections;
@@ -76,20 +80,45 @@ public class SajuRepositoryImpl implements SajuRepositoryCustom{
 	public TimePillarDto getTimePillarInfo(LocalTime birthTime, char stem) {
 		QTimepillarBean timepillarBean = QTimepillarBean.timepillarBean;
 		return queryFactory
-				.select(Projections.fields(TimePillarDto.class, 
+				.select(Projections.fields(TimePillarDto.class,
 						timepillarBean.stem1_c,
 						timepillarBean.stem1_k,
 						timepillarBean.stem2_c,
-						timepillarBean.stem2_k ))
+						timepillarBean.stem2_k))
 				.from(timepillarBean)
-				.where(timepillarBean.stime.eq(birthTime)
-						.and(
-								timepillarBean.daystem1.eq(stem)
-								.or(timepillarBean.daystem2.eq(stem))
-							)
-						)
+				.where(timepillarBean.daystem1.eq(stem)
+						.or(timepillarBean.daystem2.eq(stem))
+						.and(isTimeWithinRange(timepillarBean, birthTime))) // 시간 조건 추가
 				.fetchFirst();
 	}
-	
-	
+
+	private BooleanExpression isTimeWithinRange(QTimepillarBean timepillarBean, LocalTime birthTime) {
+
+		// 일반적인 시간값 기준
+		//	birthTime : 11:00, 09:30:00~11:29:59
+		BooleanExpression withinNormalRange = timepillarBean.stime.loe(birthTime)
+				.and(timepillarBean.etime.goe(birthTime));
+
+		// 자정 넘어가는 시간 값 기준
+		//	birthTime : 11:00, 23:30:00	01:29:59
+		BooleanExpression withinCrossMidnightRange = timepillarBean.stime.goe(timepillarBean.etime)
+				.and(timepillarBean.stime.loe(birthTime).or(timepillarBean.etime.goe(birthTime)));
+
+		return withinNormalRange.or(withinCrossMidnightRange);
+	}
+
+	@Override
+	public List<Ilgan10sinDto> getIlgan10sin(char stem) {
+		QIlgan10sinBean qIlgan10sinBean = QIlgan10sinBean.ilgan10sinBean;
+		return queryFactory
+				.select(Projections.fields(Ilgan10sinDto.class,
+							qIlgan10sinBean.ilgan,
+							qIlgan10sinBean.cheonganjiji,
+							qIlgan10sinBean.match))
+				.from(qIlgan10sinBean)
+				.where(qIlgan10sinBean.ilgan.eq(stem))
+				.fetch();
+	}
+
+
 }
