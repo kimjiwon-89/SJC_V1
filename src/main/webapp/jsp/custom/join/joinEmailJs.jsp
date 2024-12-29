@@ -9,15 +9,6 @@
 <%@taglib uri="http://www.springframework.org/tags/form" prefix="form"%>
 
 <script type="text/javascript">
-function goToDesc(_descType) {
-	const currentUrl = window.location.href;
-	const url = currentUrl + "serviceDescription?descType=" + _descType;
-	window.location.href = url;
-}
 
-// 이메일 회원가입 이동
-function goToEmailJoin() {
-    const currentUrl = window.location.href;
-    window.location.href = currentUrl+'joinEmail';
-}
+
 </script>

@@ -20,6 +20,7 @@ import com.sjc.util.RequestUtil;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServletRequest;
 
+
 @RestController
 @RequestMapping("/join")
 public class JoinCont {
@@ -54,7 +55,7 @@ public class JoinCont {
     }
     
     /**
-	* Description : login
+	* Description : loginEmail
 	* @Author	: eskim
 	* @Date	 	: 2024. 10. 16
 	* @Method	: loginEmail 
@@ -84,7 +85,7 @@ public class JoinCont {
 	}
 	
 	/**
-	* Description  개인정보처리방침, 이용약관 등 설명 페이
+	* Description  개인정보처리방침, 이용약관 등 설명 페이지
 	* @Author	: eskim
 	* @Date	 	: 2024. 12. 18
 	* @Method	: sajuMainNew 
@@ -102,6 +103,67 @@ public class JoinCont {
 			e.printStackTrace();
 		}
 	    mv.setViewName("layout/common_layout");
+		return mv;
+	}
+
+	/**
+	 * Description : JoinEmail
+	 * @Author	: eskim
+	 * @Date	 	: 2024. 12. 29
+	 * @Method	: JoinEmail
+	 * @return 	: ModelAndView
+	 */
+	@RequestMapping("/joinEmail")
+	public ModelAndView joinEmail() {
+		ModelAndView mv = new ModelAndView();
+		mv.addObject("viewName", "join/joinEmail");
+		mv.setViewName("layout/common_layout");
+		return mv;
+	}
+
+	/**
+	 * Description : 이메일확인 완료 팝업
+	 * @Author	: eskim
+	 * @Date	 	: 2024. 12. 29
+	 * @Method	: checkEmailModal
+	 * @return 	: ModelAndView
+	 */
+	@RequestMapping("/checkEmailModal")
+	public ModelAndView checkEmailModal(HttpServletRequest req) {
+		ModelAndView mv = new ModelAndView();
+		Gson gson = new Gson();
+		try {
+			Map<String, Object> paramData = RequestUtil.getReqParamToMap(req);
+			if(paramData != null) mv.addObject("data", gson.toJson(paramData));
+
+		} catch (ServletException e) {
+			e.printStackTrace();
+		}
+		mv.addObject("modalName", "join/checkEmailModal");
+		mv.setViewName("layout/common_modal");
+		return mv;
+	}
+
+	/**
+	 * Description : 회원가입 완료 팝업
+	 * @Author	: eskim
+	 * @Date	 	: 2024. 12. 29
+	 * @Method	: joinCompleteModal
+	 * @return 	: ModelAndView
+	 */
+	@RequestMapping("/joinCompleteModal")
+	public ModelAndView joinCompleteModal(HttpServletRequest req) {
+		ModelAndView mv = new ModelAndView();
+		Gson gson = new Gson();
+		try {
+			Map<String, Object> paramData = RequestUtil.getReqParamToMap(req);
+			if(paramData != null) mv.addObject("data", gson.toJson(paramData));
+
+		} catch (ServletException e) {
+			e.printStackTrace();
+		}
+		mv.addObject("modalName", "join/joinCompleteModal");
+		mv.setViewName("layout/common_modal");
 		return mv;
 	}
 }

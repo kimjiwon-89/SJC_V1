@@ -12,6 +12,7 @@
 	--saju-yellow: #D0AF00; 
 	
 	--saju-body-font-size: 14px;
+	--saju-small-font-size: 8px;
 }
 
 /* 공통 */
@@ -43,6 +44,8 @@ button, input, optgroup, select, textarea  {
 	display: flex; align-items: center; justify-content: start;
 }
 
+.display-none {display: none;}
+
 /* 텍스트 디자인 */
 .text_black {color: var(--black-color)!important;}
 .text_red {color: var(--saju-red)!important;}
@@ -53,9 +56,15 @@ button, input, optgroup, select, textarea  {
 /* button 디자인 */
 .text-btn {background-color: transparent; border: none;}
 .search-btn {width: 100%; height: 45px; 
-display: flex; align-items: center; justify-content: center;
-border-radius: 5px; border: none; 
-color: var(--white-color); background-color: var(--main-color);}
+	display: flex; align-items: center; justify-content: center;
+	border-radius: 5px; border: none;
+	color: var(--white-color); background-color: var(--main-color);}
+.black-btn {width: 100%; height: 45px;
+	display: flex; align-items: center; justify-content: center;
+	border-radius: 5px; border: none;
+	background-color: var(--black-color);
+	color: var(--white-color);
+}
 .back-btn {border: 0; background-color: var(--main-color); border-radius: 50%; color: #fff; text-align: center;}
 .back-btn > i {display: flex ; width: 20px; height: 20px; align-items: center; justify-content: center;}
 .big .back-btn > i {width: 30px; height: 30px;}
@@ -108,13 +117,36 @@ html, body {width: 100%; height: 100%;
 	display: flex;
     flex-direction: column;
     align-items: center;
-	background-color: var(--white-color);}
+	background-color: var(--white-color);
+	position: relative;
+}
 /*레이아웃 내 영역 구분*/
 .new-container > [class$="area"] {
     display: flex;
     flex-direction: column;
     align-items: center;
     width: 100%;
+}
+
+/*모달*/
+.modal-layout {
+	position: absolute;
+	top: 0; left: 0;
+	width: 100%;
+	height: 100%;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+
+	background-color: rgba(255,255,255, 0.5);
+}
+.modal-content-layout {
+	width: 80%;
+	background-color: var(--white-color);
+	border-radius: 20px;
+	padding: 20px;
+	box-shadow: 0px 0px 10px var(--gray-color);
+	min-height: 100px;
 }
 
 /* footer - 하단메뉴바 */
@@ -201,7 +233,7 @@ padding: 0 10px; height: 40px; display: flex; align-items: center; justify-conte
 .palja-cont .content-area td {text-align: center; vertical-align: middle; border: 1px solid #ccc; border-width: 1px;} 
 .palja-cont .info-table .lunar_title {height: 20px;}
 .palja-cont .info-table .lunar_title th {font-weight: 400; font-family: initial;}
-.palja-cont .info-table .lunar_title th:not(:farst-of-type),
+.palja-cont .info-table .lunar_title th:not(:first-of-type),
 .palja-cont .info-table .lunar_title th:not(:last-of-type) {border-color: transparent; border: none;}
 
 .palja-cont .info-table .lunar_cont_top td {height: 80px; font-size: 24px; font-weight: 600;}
@@ -333,7 +365,7 @@ padding: 0 10px; height: 40px; display: flex; align-items: center; justify-conte
 	로그인
 */
 .login-wrap {display: flex; flex-direction: column;
-align-items: center; justify-content: center;}
+align-items: center; justify-content: space-around;}
 .login-wrap h2 {width: 100%; font-size: 18px; margin-bottom: 30px;}
 .login-select-wrap {width: 100%; margin-bottom: 10%;}
 .login-btn {width: 100%; height: 45px; 
@@ -367,15 +399,7 @@ border-radius: 5px; border: none;}
 
 .login-title > span {display: block; width: 100%; 
 text-align: center;}
-.login-email-wrap {width: 100%;
-	margin-bottom: 10% !important;}
-/*.login-email-wrap > input {*/
-/*	display: block;*/
-/*    width: 100%;*/
-/*    height: 45px;}*/
-.login-email-wrap > input[type="text"],
-.login-email-wrap > input[type="password"]{height: 45px;}
-.login-email-wrap > input:not(:last-of-type) {margin-bottom: 10px;}
+
 .login-btn-wrap {width: 100%; margin-bottom: 10% !important;}
 .login-btn-wrap .login-btn {margin-bottom: 10px;}
 
@@ -414,7 +438,7 @@ text-align: center;}
 	사주정보 입력 end(sajuMainNew)
 */
 
-/*회원가입	*/
+/*회원가입*/
 .content-layout .title-wrap.back-title {padding: 0; flex-direction: row; justify-content: space-between; 
 font-size: 20px; position: relative;}
 .content-layout .title-wrap.back-title > h1 {font-size: 20px; text-align: center;}
@@ -428,3 +452,160 @@ font-size: 20px; position: relative;}
 
 /*개인정보 처리방침, 서비스 이용약관*/
 .description-wrap > pre {text-wrap: auto; font-size: var(--saju-body-font-size); word-break: normal;}
+
+/*자체 회원가입(이메일)*/
+.border-box {
+	display: flex;
+	align-items: center;
+	border: 1px solid var(--gray-color);
+	border-radius: 5px;
+	position: relative;
+}
+.border-box:not(last-of-type) {
+	margin-bottom: 10px;
+}
+.border-box .icon {
+	width: 10%;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
+.border-box .text-btn {
+	position: absolute;
+	top: 49%;
+	transform: translateY(-50%);
+	right: 10px;
+	text-align: center;
+}
+.border-box input[type="text"],
+.border-box input[type="password"] {
+	border: none;
+}
+.join-email-wrap .select-gender {margin-bottom: 10px;}
+.join-email-wrap .select-gender > label{
+	width: 30%;
+	text-align: center;
+	border-radius: 5px;
+}
+.join-email-wrap .nation-num {
+	white-space: nowrap;
+	padding: 0 10px;
+}
+
+.err-msg {
+	color: var(--saju-red);
+	font-size: var(--saju-small-font-size);
+}
+
+/* 사용가능 이메일 확인 팝업 */
+.useableCheckEmail .center-content {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	margin-top: 10%;
+}
+.useableCheckEmail .roundChecked {
+	background-color: var(--black-color);
+	border-radius: 50%;
+	width: 70px;
+	height: 70px;
+	color: var(--white-color);
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
+.useableCheckEmail .roundChecked  > i {
+	font-size: 30px;
+}
+
+.useableCheckEmail .text-desc {
+	margin-top: 10%;
+	margin-bottom: 30%;
+}
+.useableCheckEmail .text-desc .top-desc {
+	text-align: center;
+	font-size: 24px;
+	font-weight: 600;
+}
+
+.useableCheckEmail .text-desc .bottom-desc {
+	text-align: center;
+}
+
+/* 친구목록 */
+.friend-list-wrap {padding: 20px;}
+.friend-list-wrap .user-wrap {
+	height: 60px;
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	padding: 0;
+	margin-bottom: 30px;
+}
+.friend-list-wrap .user-wrap .user-info {
+	width: auto;
+	padding: 0;
+	display: flex;
+	align-items: center;
+}
+
+.friend-list-wrap .user-wrap .user-info .user-img {
+	width: 55px;
+	height: 55px;
+	text-align: center;
+	margin-right: 10px;
+	box-shadow: 0 0 10px var(--gray-color);
+}
+.friend-list-wrap .user-wrap .user-info .user-img i {
+	font-size: 55px;
+}
+
+.friend-list-wrap .user-wrap .text-btn i {
+	font-size: 18px;
+}
+.friend-list .user-wrap {
+	height: 45px;
+	margin-bottom: 10px;
+}
+
+.friend-list-wrap .user-wrap .user-info .user-img {
+	width: 40px;
+	height: 40px;
+}
+.friend-list-wrap .user-wrap .user-info .user-img i {
+	font-size: 40px;
+}
+
+.friend-list .user-wrap .user-info .user-nm,
+.friend-list .score {
+	font-size: var(--saju-body-font-size);
+}
+
+/* 정보 수정 모달 */
+.modal-title-wrap {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	position: relative;
+}
+
+.modal-title-wrap > h2 {
+	font-size: 18px;
+	font-weight: 600;
+}
+
+.modal-title-wrap .close-btn {
+	position: absolute;
+	top: 50%;
+	transform: translateY(-50%);
+	right: 10px;
+}
+
+.modal-title-wrap .close-btn > i {
+	font-size: 20px;
+}
+
+.change-user-wrap input[type="text"] {
+	width: 100%;
+	height: 35px;
+}

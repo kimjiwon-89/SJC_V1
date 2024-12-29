@@ -51,7 +51,7 @@
 </head>
 <body>
 	<!-- <div class="container body-wrapper"> -->
-	<div class="new-container">
+	<div class="new-container" id="container">
     	<script src="${rootPath}/webjars/bootstrap/5.3.0/js/bootstrap.bundle.min.js"></script>
 		<jsp:include page="${rootPath}/static/js/common_js.jsp" />
     	
@@ -94,10 +94,22 @@
 		if(type === "") return;
 		window.location.href = "${pageContext.request.contextPath}/"+ type;  // 해당 URL로 이동
 	}
-	
 
-	// 이전페이지 이동
+	// history back
 	function goToback() {
 		window.history.back();
+	}
+
+	let modalIdx = 0;
+	// open modal
+	function openModal(_modalName) {
+		modalIdx++;
+		document.querySelector("#container").innerHTML += '<div class="modal-layout" id="modal_'+modalIdx+'" tabindex="-1" role="dialog" aria-labelledby="commonModalLabel" aria-hidden="true"></div>';
+		$('#modal_'+modalIdx).load(_modalName);
+	}
+
+	// close modal
+	function closeModal(_this) {
+		$(_this).parents(".modal-layout")[0].remove();
 	}
 </script>

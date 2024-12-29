@@ -37,7 +37,7 @@
 		<button class="login-btn kakao-login" onclick="">카카오로 간편 가입하기</button>
 		<button class="login-btn naver-login" onclick="">네이버로 간편 가입하기</button>
 		<button class="login-btn google-login" onclick="">구글계정으로 간편 가입하기</button>
-		<button class="login-btn email-login" onclick="">이메일로 가입하기</button>
+		<button class="login-btn email-login" onclick="goToEmailJoin()">이메일로 가입하기</button>
 	</div>
 </div>
 
