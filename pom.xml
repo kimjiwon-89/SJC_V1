@@ -18,57 +18,31 @@
 		<java.version>21</java.version>
 	</properties>
 	<dependencies>
-		
-	    <!-- Querydsl APT (Annotation Processing) -->
-		<dependency>
-			<groupId>com.querydsl</groupId>
-			<artifactId>querydsl-jpa</artifactId>
-			<version>5.0.0</version>
-			<classifier>jakarta</classifier>
-		</dependency>
-		<dependency>
-			<groupId>com.querydsl</groupId>
-			<artifactId>querydsl-apt</artifactId>
-			<version>5.0.0</version>
-			<classifier>jakarta</classifier>
-		</dependency>
-		<dependency>
-			<groupId>com.querydsl</groupId>
-			<artifactId>querydsl-core</artifactId>
-			<version>5.0.0</version>
-		</dependency>
-	    <!-- JPA 관련 의존성 -->
-	    <dependency>
-	        <groupId>jakarta.persistence</groupId>
-	        <artifactId>jakarta.persistence-api</artifactId>
-	        <version>3.1.0</version>
-	    </dependency>
-	    <!-- EntityManager 추가 JPA -->
+
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
-			<artifactId>spring-boot-starter-data-jpa</artifactId>
+			<artifactId>spring-boot-starter</artifactId>
 		</dependency>
-		
 		<!--스프링부트-->
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-test</artifactId>
 			<scope>test</scope>
 		</dependency>
-		
+
 		<!--WEB-->
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-web</artifactId>
 		</dependency>
-		
+
 		<!--JSP 바로 반영 안되어서 추가 -->
 	    <dependency>
 	        <groupId>org.springframework.boot</groupId>
 	        <artifactId>spring-boot-devtools</artifactId>
 	        <optional>true</optional>
 	    </dependency>
-		
+
 		<!--Tomcat-->
 		<dependency>
 		    <groupId>org.springframework.boot</groupId>
@@ -82,21 +56,21 @@
 			<artifactId>postgresql</artifactId>
 			<scope>runtime</scope>
 		</dependency>
-		
+
 		<!-- JSP -->
 		<dependency>
 		    <groupId>org.apache.tomcat.embed</groupId>
 		    <artifactId>tomcat-embed-jasper</artifactId>
 		    <scope>provided</scope>
 		</dependency>
-		
+
 		<!--JSTL-->
 		<dependency>
 			<groupId>jakarta.servlet.jsp.jstl</groupId>
 			<artifactId>jakarta.servlet.jsp.jstl-api</artifactId>
 			<version>3.0.0</version>
 		</dependency>
-		
+
 		<!-- JSON -->
 	    <dependency>
 	        <groupId>com.google.code.gson</groupId>
@@ -116,7 +90,7 @@
 			<groupId>org.glassfish.web</groupId>
 			<artifactId>jakarta.servlet.jsp.jstl</artifactId>
 			<version>3.0.1</version>
-		</dependency>		
+		</dependency>
 
 		<!-- 반응형 웹 -->
 		<dependency>
@@ -125,8 +99,55 @@
 		    <version>5.3.0</version> <!-- 사용하고자 하는 버전으로 변경 -->
 		</dependency>
 
+
+
+		<!-- JPA 관련 의존성 -->
+		<dependency>
+			<groupId>jakarta.persistence</groupId>
+			<artifactId>jakarta.persistence-api</artifactId>
+			<version>3.1.0</version>
+		</dependency>
+		<!-- EntityManager 추가 JPA -->
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-data-jpa</artifactId>
+		</dependency>
+		<!-- Querydsl APT (Annotation Processing) -->
+		<dependency>
+			<groupId>com.querydsl</groupId>
+			<artifactId>querydsl-jpa</artifactId>
+			<version>5.0.0</version>
+			<classifier>jakarta</classifier>
+		</dependency>
+		<dependency>
+			<groupId>com.querydsl</groupId>
+			<artifactId>querydsl-apt</artifactId>
+			<version>5.0.0</version>
+			<classifier>jakarta</classifier>
+		</dependency>
+		<dependency>
+			<groupId>com.querydsl</groupId>
+			<artifactId>querydsl-core</artifactId>
+			<version>5.0.0</version>
+		</dependency>
+
+		<!--LOG-->
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-logging</artifactId>
+			<scope>runtime</scope>
+			<exclusions>
+				<exclusion>
+					<groupId>ch.qos.logback</groupId>
+					<artifactId>logback-classic</artifactId>
+				</exclusion>
+			</exclusions>
+		</dependency>
+
+
+
 	</dependencies>
-	
+
 	<build>
 	    <plugins>
 	        <!-- Maven Compiler Plugin -->
@@ -170,8 +191,26 @@
 	                </execution>
 	            </executions>
 	        </plugin>
-	
-	    </plugins>
+
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-jar-plugin</artifactId>
+				<configuration>
+					<archive>
+						<manifest>
+							<addClasspath>true</addClasspath>
+							<classpathPrefix>libs/</classpathPrefix>
+							<mainClass>
+								com.sjc.RunApplication
+							</mainClass>
+						</manifest>
+					</archive>
+					<finalName>${project.artifactId}</finalName>
+				</configuration>
+			</plugin>
+
+
+		</plugins>
 	</build>
 
 	
