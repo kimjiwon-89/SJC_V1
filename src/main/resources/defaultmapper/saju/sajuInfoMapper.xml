@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<!-- namespace 명은 dao 와 일치하게 작성하면 됨 -->
+<mapper namespace="com.sjc.saju.sajuinfo.SajuInfoMapper">
+
+    <!-- 시주 정보 조회 -->
+    <select id="getTimePillarInfo" resultType="TimePillarVo">
+        <![CDATA[
+            SELECT stem1_c, stem1_k, stem2_c, stem2_k
+            FROM timepillar_info
+            WHERE (daystem1 = #{stem} OR daystem2 = #{stem})
+            AND (
+                (stime <= etime AND #{birthTime} BETWEEN stime AND etime)
+                OR (stime > etime AND (
+                    #{birthTime} >= stime OR #{birthTime} < etime
+                ))
+            )
+            LIMIT 1
+        ]]>
+    </select>
+
+    <!-- 10신정보 조회 -->
+    <select id="getIlgan10sin" resultType="Ilgan10sinVo">
+        select ilgan, cheonganjiji, match
+        from ilgan10god
+        where ilgan = #{stem}
+    </select>
+
+    <!-- 일간 천간 조회 -->
+    <select id="findSkyMatch" resultType="DailySkyVo">
+        select daystem1, daystem2, matchscore
+        from daily_sky_match
+        where daystem1=#{mySky}
+    </select>
+
+    <!-- 일간 지지 조회 -->
+    <select id="findGroundMatch" resultType="DailyGroundVo">
+        select daystem1, daystem2, matchscore
+        from daily_ground_match
+        where daystem1=#{mySky}
+    </select>
+
+    <!-- 궁합정보 조회 -->
+    <select id="findChemiResult" resultType="string">
+        select matchscore
+        from chemistry_match
+        where daystem1 = #{lunIljin1}
+            and daystem2 = #{lunIljin2}
+    </select>
+</mapper>

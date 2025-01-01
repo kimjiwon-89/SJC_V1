@@ -20,24 +20,6 @@
 		</encoder>
 	</appender>
 
-	<!-- Hibernate SQL 로그 설정 -->
-	<logger name="org.hibernate.SQL" level="DEBUG" additivity="false">
-		<appender-ref ref="CONSOLE" />
-		<appender-ref ref="FILE" />
-	</logger>
-
-	<!-- Hibernate SQL 타입 관련 로그 -->
-	<logger name="org.hibernate.type.descriptor.sql" level="TRACE" additivity="false">
-		<appender-ref ref="CONSOLE" />
-		<appender-ref ref="FILE" />
-	</logger>
-
-	<!-- Hibernate 매개변수 바인딩 로그 -->
-	<logger name="org.hibernate.type" level="TRACE" additivity="false">
-		<appender-ref ref="CONSOLE" />
-		<appender-ref ref="FILE" />
-	</logger>
-
 	<root level="INFO">
 		<appender-ref ref="CONSOLE" />
 		<appender-ref ref="FILE" />
