@@ -2,12 +2,11 @@ package com.sjc.saju.sajuinfo;
 
 import com.google.gson.Gson;
 import com.sjc.common.util.RequestUtil;
-import com.sjc.model.DailyGroundVo;
-import com.sjc.model.DailySkyVo;
-import com.sjc.model.Ilgan10sinVo;
-import com.sjc.model.TimePillarVo;
+import com.sjc.model.*;
+import com.sjc.system.code.CodeService;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServletRequest;
+import org.eclipse.tags.shaded.org.apache.bcel.classfile.Code;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -18,6 +17,7 @@ import org.springframework.web.servlet.ModelAndView;
 
 import java.time.LocalTime;
 import java.time.format.DateTimeFormatter;
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -30,6 +30,9 @@ public class SajuInfoCont {
 
     @Autowired
     private SajuInfoService sajuInfoService;
+
+	@Autowired
+	private CodeService codeService;
     
     /**
     	* Description : 메인 JSP 이동
@@ -56,41 +59,54 @@ public class SajuInfoCont {
     */
     @RequestMapping("/sajuResult")
     public ModelAndView sajuResult(HttpServletRequest req) {
-       ModelAndView mv = new ModelAndView();
+		ModelAndView mv = new ModelAndView();
+		Gson gson = new Gson();
 
-      try {
-         Map<String, Object> map = RequestUtil.getReqParamToMap(req);
-         Gson gson = new Gson();
-         mv.addObject("bean", gson.toJson(map));
+		CodeVo codeVo 			= new CodeVo();
+		List<CodeVo> ganjiList	= new ArrayList<>();
+		List<CodeVo> tenganList = new ArrayList<>();
 
-         //시주 정보 조회
-         //SajuMain에서 Value값이 Stime이기에 일치하는 정보를 우선 전부 불러옴
-         String strBirthTime = (String) map.get("birthTime");
-         if(!strBirthTime.isEmpty()) {
-        	 DateTimeFormatter formatter = DateTimeFormatter.ofPattern("HH:mm:ss");
-        	 LocalTime birthTime = LocalTime.parse(strBirthTime, formatter);
-        	 
-        	 String str_stem = (String) map.get("lunIljin");
-        	 char stem = str_stem.charAt(0);
-        	 
-			 // 시주 조회
-        	 TimePillarVo timePillar = sajuInfoService.getTimePillarInfo(birthTime, stem);
-        	 mv.addObject("timePillar", timePillar);
+		try {
+			Map<String, Object> map = RequestUtil.getReqParamToMap(req);
+         	mv.addObject("bean", gson.toJson(map));
 
-			 // 십신 조회, 기본적으로 내 일간 천간값으로 비교하기에 내 천간의 모든 값을 가져온다.
-			 List<Ilgan10sinVo> ilgan10sin = sajuInfoService.getIlgan10sin(stem);
+			 // 기본 사주정보 조회
+			codeVo.setCode("GANJI");
+			codeVo.setUse_yn("Y");
+			ganjiList = codeService.getCodeList(codeVo);
+			codeVo.setCode("TENGAN");
+			tenganList = codeService.getCodeList(codeVo);
 
-			 gson = new Gson();
-			 mv.addObject("ilgan10sinList", gson.toJson(ilgan10sin));
-		 }
+			//시주 정보 조회
+			//SajuMain에서 Value값이 Stime이기에 일치하는 정보를 우선 전부 불러옴
+			String strBirthTime = (String) map.get("birthTime");
+			if(!strBirthTime.isEmpty()) {
+				DateTimeFormatter formatter = DateTimeFormatter.ofPattern("HH:mm:ss");
+				LocalTime birthTime = LocalTime.parse(strBirthTime, formatter);
 
-      } catch (ServletException e) {
-         e.printStackTrace();
-      }
-       
-       mv.addObject("viewName", "saju/sajuResult");
-       mv.setViewName("layout/common_layout");
-       return mv;
+				String str_stem = (String) map.get("lunIljin");
+				char stem = str_stem.charAt(0);
+
+				// 시주 조회
+				TimePillarVo timePillar = sajuInfoService.getTimePillarInfo(birthTime, stem);
+				mv.addObject("timePillar", timePillar);
+
+				// 십신 조회, 기본적으로 내 일간 천간값으로 비교하기에 내 천간의 모든 값을 가져온다.
+				List<Ilgan10sinVo> ilgan10sin = sajuInfoService.getIlgan10sin(stem);
+
+				gson = new Gson();
+				mv.addObject("ilgan10sinList", gson.toJson(ilgan10sin));
+			}
+
+		} catch (ServletException e) {
+		 e.printStackTrace();
+		}
+
+		mv.addObject("ganjiList", gson.toJson(ganjiList));
+		mv.addObject("tenganList", gson.toJson(tenganList));
+		mv.addObject("viewName", "saju/sajuResult");
+		mv.setViewName("layout/common_layout");
+		return mv;
     }
     
 	/**

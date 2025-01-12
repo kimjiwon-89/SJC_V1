@@ -9,6 +9,9 @@
 
 <script>
 const bean = JSON.parse('${ bean }');
+const ganjiList = JSON.parse('${ ganjiList }');
+const tenganList = JSON.parse('${ tenganList }');
+
 const ilgan10sinList = JSON.parse('${ ilgan10sinList }');
 
 $(document).ready(function(){
@@ -44,8 +47,13 @@ function fnSetSajuName() {
 	}
 	
 	//일주는 프로필에 한 번 더 추가됨
-	$("#user-day").text(daySaju.substring(0,2) + "(" + skyColorobj[daySaju.substring(0,1)] + " " + groundColorObj[daySaju.substring(1,2)] + ")");	
-	
+    // 동물 컬러 조회
+    let animal_color = tenganList.filter(v => v.cd === daySaju.substring(0,1) || v.attr1 === daySaju.substring(0,1))[0]?.attr3;
+    let animal       = ganjiList.filter(v => v.cd === daySaju.substring(1,2) || v.attr1 === daySaju.substring(1,2))[0]?.attr3;
+
+    // $("#user-day").text(daySaju.substring(0,2) + "(" + skyColorobj[daySaju.substring(0,1)] + " " + groundColorObj[daySaju.substring(1,2)] + ")");
+    $("#user-day").text(daySaju.substring(0,2) + "(" + animal_color + " " + animal + ")");
+
 	//양음력
 	var smonth = "양력";
 	if(bean.smonth !== "sol") smonth = "음력";
@@ -67,9 +75,12 @@ function fnSetSajuInfo(id, data) {
 	let data2 = data.substring(4, 5);
 	let data2_kr = data.substring(1, 2);
 
-	let data1_class = skyobkj[data1];
-	let data2_class = groundObj[data2];
-	
+	// let data1_class = skyobkj[data1];
+    // let data2_class = groundObj[data2];
+	let data1_class = tenganList.filter(v => v.cd === data1 || v.attr1 === data1)[0]?.attr2;
+	let data2_class = ganjiList.filter(v => v.cd === data2 || v.attr1 === data2)[0]?.attr2;
+
+
 	$("#"+id+"1").text(data1 + "(" + data1_kr +  ")").addClass(data1_class);
 	$("#"+id+"2").text(data2 + "(" + data2_kr +  ")").addClass(data2_class);
 
