@@ -22,7 +22,7 @@
 
     <!-- 10신정보 조회 -->
     <select id="getIlgan10sin" resultType="Ilgan10sinVo">
-        select ilgan, cheonganjiji, match
+        select ilgan, cheonganjiji, matchscore
         from ilgan10god
         where ilgan = #{stem}
     </select>

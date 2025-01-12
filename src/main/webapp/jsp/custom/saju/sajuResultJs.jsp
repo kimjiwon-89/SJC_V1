@@ -74,8 +74,8 @@ function fnSetSajuInfo(id, data) {
 	$("#"+id+"2").text(data2 + "(" + data2_kr +  ")").addClass(data2_class);
 
     //십신 구성
-    let sky10Sin    = ilgan10sinList.filter(v => v.cheonganjiji === data1_kr)[0]?.match
-    let ground10Sin = ilgan10sinList.filter(v => v.cheonganjiji === data2_kr)[0]?.match
+    let sky10Sin    = ilgan10sinList.filter(v => v.cheonganjiji === data1_kr)[0]?.matchscore
+    let ground10Sin = ilgan10sinList.filter(v => v.cheonganjiji === data2_kr)[0]?.matchscore
     $("#"+id+"10sin1").text(sky10Sin);
     $("#"+id+"10sin2").text(ground10Sin);
 

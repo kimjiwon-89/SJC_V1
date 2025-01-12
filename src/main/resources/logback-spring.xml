@@ -1,5 +1,6 @@
 <configuration>
 	<property name="LOG_PATH" value="D:/logs" />
+<!--	<property name="LOG_PATH" value="/home/ec2-user/apps/logs" />-->
 	<property name="LOG_FILE" value="${LOG_PATH}/everysaju.log" />
 
 	<appender name="CONSOLE" class="ch.qos.logback.core.ConsoleAppender">

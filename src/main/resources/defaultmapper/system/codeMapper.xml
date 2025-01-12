@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<!-- namespace 명은 dao 와 일치하게 작성하면 됨 -->
+<mapper namespace="com.sjc.system.code.CodeMapper">
+
+    <!-- 기본 코드리스트 조회 -->
+    <select id="getCodeList" resultType="CodeVo" parameterType="CodeVo">
+        select code, cd, code_desc, code_ord, attr1
+            , attr2, attr3, attr4, attr5
+            , use_yn ,gen_by, gen_dt, mdfy_by, mdfy_dt
+        from t_code_info TCI
+        <where>
+            <if test='code != null and !"".equals(code)'>
+                and code = #{code}
+            </if>
+            <if test='cd != null and !"".equals(cd)'>
+                and cd = #{cd}
+            </if>
+            <if test='use_yn != null and !"".equals(use_yn)'>
+                and use_yn = #{use_yn}
+            </if>
+        </where>
+    </select>
+</mapper>

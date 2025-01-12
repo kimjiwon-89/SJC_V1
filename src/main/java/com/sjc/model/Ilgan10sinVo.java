@@ -6,6 +6,6 @@ import lombok.Data;
 public class Ilgan10sinVo {
 	private char ilgan;
 	private String cheonganjiji;
-	private String match;
+	private String matchscore;
 
 }
