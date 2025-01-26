@@ -19,7 +19,8 @@
 	<meta http-equiv="Expires" content="-1">
 	<meta http-equiv="Pragma" content="no-cache">
 	<meta http-equiv="Cache-Control" content="No-Cache">
-	
+	<meta name="csrf-token" content="${_csrf.token}">
+
 	<c:set var="rootPath" value="${pageContext.request.contextPath}" scope="application"/>
 	<c:set var="pageHash" value="<%=System.currentTimeMillis()%>" scope="request" />
 	
@@ -54,11 +55,11 @@
 	<div class="new-container" id="container">
     	<script src="${rootPath}/webjars/bootstrap/5.3.0/js/bootstrap.bundle.min.js"></script>
 		<jsp:include page="${rootPath}/static/js/common_js.jsp" />
-    	
-		<!-- 기존 컨텐츠영역 -->
-		<%-- <div class="div-flex-wrap" id="content" style="">
-			<jsp:include page='../custom/${viewName}.jsp' flush="false"/>
-		</div> --%>
+
+		<%-- Header Title --%>
+		<div class="title-wrap center">
+			<img src="${rootPath}/static/img/icon/logo.svg">
+		</div>
 		
 		<!-- 컨텐츠영역 new -->
 		<div class="new-content-area" id="content" style="">
@@ -87,12 +88,6 @@
 		} else {
 			$(".loader-wrapper").remove();
 		}
-	}
-
-	/* 하단 탭 메뉴 구성, 페이지 이동 */
-	function selectMenu(type) {
-		if(type === "") return;
-		window.location.href = "${pageContext.request.contextPath}/"+ type;  // 해당 URL로 이동
 	}
 
 	// history back

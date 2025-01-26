@@ -12,9 +12,6 @@
 
 
 <div class="content-layout pd login-wrap">
-	<div class="title-wrap center">
-		<h1>everysaju</h1>
-	</div>
 	<div class="content-wrap">
 		<h2>이메일로 로그인</h2>
 

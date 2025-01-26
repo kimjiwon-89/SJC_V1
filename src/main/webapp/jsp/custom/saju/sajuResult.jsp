@@ -33,9 +33,6 @@
 </style>
 
 <div class="content-layout new-result-saju">
-	<div class="title-wrap">
-		<h1>everysaju</h1>
-	</div>
 	<div class="user-wrap">
 		<div class="user-img">
 			<i class="fa-solid fa-user" style="font-size: 80px;"></i>

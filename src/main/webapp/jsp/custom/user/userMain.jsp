@@ -8,9 +8,6 @@
 <%@taglib uri="http://www.springframework.org/tags/form" prefix="form"%>
 
 <div class="content-layout">
-	<div class="title-wrap">
-		<h1>everysaju</h1>
-	</div>
 	<div class="user-wrap">
 		<div class="user-img">
 			<i class="fa-solid fa-user" style="font-size: 80px;"></i>

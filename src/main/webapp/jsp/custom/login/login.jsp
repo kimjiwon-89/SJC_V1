@@ -9,9 +9,6 @@
 
 
 <div class="content-layout pd login-wrap">
-	<div class="title-wrap center">
-		<h1>everysaju</h1>
-	</div>
 	<div class="login-select-wrap">
 		<button class="login-btn kakao-login" onclick="">카카오로 로그인</button>
 		<button class="login-btn naver-login" onclick="">네이버로 로그인</button>

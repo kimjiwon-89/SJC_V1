@@ -21,7 +21,29 @@ $(document).ready(function(){
 	//2. 캘린더 셋팅 및 공휴일 셋팅
  	fnSetCalendar();
 
+    //3. 대운 조회
+    fnSetDaeun();
 });
+
+/* 이벤트 추가 */
+// 자세히보기
+$("#daeun_detail").click(function() {
+    const detailTarget = "daeun";
+    const status = $("#daeun_cont").hasClass("on");
+    const iconNode = $("#daeun_detail").find("i");
+    const contTarget = $("#daeun_cont");
+
+    let updown = "";
+    if(status) {
+        updown = "down";
+        contTarget.removeClass("on");
+    } else {
+        updown = "up";
+        contTarget.addClass("on");
+    }
+
+    iconNode.addClass("fa-angle-"+ updown);
+})
 
 //Parameter로 받아온 사주 정보를 추출하여 셋팅한다.
 //시주를 제외한 나머지는 split 작업이 필요함

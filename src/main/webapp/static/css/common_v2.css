@@ -18,12 +18,12 @@
 /* 공통 */
 * {margin: 0; padding: 0; box-sizing: border-box; word-break: keep-all; font-size: var(--saju-body-font-size);}
 a, a:visited {color: var(--black-color);}
-h1 {font-family: var(--bs-body-font-family);}
-h2, h3, h4, h5, h6 {font-family: var(--bs-body-font-family);
-    font-size: var(--saju-body-font-size); font-weight: 200;}
-button, input, optgroup, select, textarea  {
+/*h1 {font-family: var(--bs-body-font-family);}*/
+/*h2, h3, h4, h5, h6 {font-family: var(--bs-body-font-family);*/
+/*    font-size: var(--saju-body-font-size); font-weight: 200;}*/
+/*button, input, optgroup, select, textarea  {
 	font-family: var(--bs-font-sans-serif);
-}
+}*/
 .div-flex-wrap {align-items: flex-start;}
 .flex-center {
 	display: flex; align-items: center; justify-content: center;
@@ -65,6 +65,10 @@ button, input, optgroup, select, textarea  {
 	background-color: var(--black-color);
 	color: var(--white-color);
 }
+.small-back-warp {
+	width: 100%;
+	text-align: left;
+}
 .back-btn {border: 0; background-color: var(--main-color); border-radius: 50%; color: #fff; text-align: center;}
 .back-btn > i {display: flex ; width: 20px; height: 20px; align-items: center; justify-content: center;}
 .big .back-btn > i {width: 30px; height: 30px;}
@@ -76,7 +80,6 @@ input[type="checkbox"]:before {
 	font-family: "Font Awesome 6 Free";
     font-weight: 400;
     font-size: 12px;
-    
     content: "\f0c8";
     position: absolute; 
     top: calc(50% + 1px); left: -13px; transform: translateY(-50%);
@@ -167,7 +170,7 @@ display: flex; align-items: center; flex-direction: column; justify-content: cen
 
 /* 컨텐츠 영역의 full layout(defualt) */
 .content-layout {width: 100%; min-height: 100%; display: flex; flex-direction: column; align-items: center;}
-.content-layout.pd {width: 95%; padding: 0 20px; box-sizing: border-box;}
+.content-layout.pd { width: 100%; padding: 0 20px; box-sizing: border-box; gap: 30px; }
 
 /* 컨텐츠 타이틀 영역 */
 .content-layout .title-wrap {display: flex; align-items: center; flex-direction: column; padding: 0 20px; 
@@ -232,7 +235,7 @@ padding: 0 10px; height: 40px; display: flex; align-items: center; justify-conte
 .palja-cont .content-area th,
 .palja-cont .content-area td {text-align: center; vertical-align: middle; border: 1px solid #ccc; border-width: 1px;} 
 .palja-cont .info-table .lunar_title {height: 20px;}
-.palja-cont .info-table .lunar_title th {font-weight: 400; font-family: initial;}
+.palja-cont .info-table .lunar_title th {font-weight: 400;}
 .palja-cont .info-table .lunar_title th:not(:first-of-type),
 .palja-cont .info-table .lunar_title th:not(:last-of-type) {border-color: transparent; border: none;}
 
@@ -364,8 +367,7 @@ padding: 0 10px; height: 40px; display: flex; align-items: center; justify-conte
 /*
 	로그인
 */
-.login-wrap {display: flex; flex-direction: column;
-align-items: center; justify-content: space-around;}
+.login-wrap {display: flex; flex-direction: column; align-items: center; justify-content: flex-start;}
 .login-wrap h2 {width: 100%; font-size: 18px; margin-bottom: 30px;}
 .login-select-wrap {width: 100%; margin-bottom: 10%;}
 .login-btn {width: 100%; height: 45px; 
