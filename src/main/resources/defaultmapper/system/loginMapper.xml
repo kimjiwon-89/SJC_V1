@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<!-- namespace 명은 dao 와 일치하게 작성하면 됨 -->
+<mapper namespace="com.sjc.system.login.LoginMapper">
+    <select id="getPassword" resultType="string">
+        select user_pwd
+        from t_user_info a
+        where user_id = #{userId}
+    </select>
+
+    <select id="getUserInfo" resultType="UserInfo">
+        select user_id as "userId"
+             , user_name as "userName"
+             , user_pwd as "userPwd"
+             , role_id as "roleId"
+        from t_user_info a
+        where user_id = #{userId}
+    </select>
+
+    <insert id="signupUser" parameterType="UserInfo">
+        insert into t_user_info (user_id, user_pwd)
+        values(#{userId}, #{userPwd})
+    </insert>
+</mapper>

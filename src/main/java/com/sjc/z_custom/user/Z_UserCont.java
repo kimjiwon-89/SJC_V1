@@ -13,7 +13,7 @@ import java.util.Map;
 
 @RestController
 @RequestMapping("/user")
-public class UserCont {
+public class Z_UserCont {
 	/**
 	* Description : user
 	* @Author	: eskim

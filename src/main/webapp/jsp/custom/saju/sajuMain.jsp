@@ -6,12 +6,9 @@
 <%@taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
 <%@taglib uri="http://www.springframework.org/tags" prefix="spring"%>
 <%@taglib uri="http://www.springframework.org/tags/form" prefix="form"%>
+<%@ taglib prefix="sec" uri="http://www.springframework.org/security/tags" %>
 
 <div class="content-layout pd new-search-saju">
-	<div class="title-wrap center">
-		<h1>everysaju</h1>
-<!-- 		<h2>사주 정보 입력</h2> -->
-	</div>
 	<div class="content-wrap">
 		<div class="name-cont">
 			<h5 class="cont-title">이름</h5>
@@ -73,12 +70,16 @@
 		</div>
        <div class="btn-cont">
 			<button class="search-btn" onclick="search()">사주 조회하기</button>
-       		
 			<div class="flex-space-around-row">
-				<button class="text-btn" onclick="goLogin()">로그인</button>
-				<button class="text-btn" onclick="goJoin()">회원가입</button>
+				<sec:authorize access="isAnonymous()">
+					<button class="text-btn" onclick="window.location.href='<c:url value="/loginPage"/>'">로그인</button>
+					<button class="text-btn" onclick="window.location.href='<c:url value="/joinPage"/>'">회원가입</button>
+				</sec:authorize>
+
+				<sec:authorize access="hasRole('ROLE_USER')">
 				<button class="text-btn" onclick="">저장하기</button>
 				<button class="text-btn" onclick="">회원목록</button>
+				</sec:authorize>
 			</div>
        </div>
     </div>

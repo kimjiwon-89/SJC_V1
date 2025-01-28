@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE configuration PUBLIC "-//mybatis.org//DTD MyBatis Configuration 3.0//EN" "http://mybatis.org/dtd/mybatis-3-config.dtd">
+
+<configuration>
+
+	<!-- MyBatis 캐시 설정 -->
+	<settings>
+		<!-- MyBatis 전역 캐시 활성화 -->
+		<setting name="cacheEnabled" value="true"/>
+	</settings>
+
+
+</configuration>

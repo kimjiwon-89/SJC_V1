@@ -1,84 +1,39 @@
 @charset "UTF-8";
 
-/* 얇은 글씨 */
+/*EverySaju Common Font*/
 @font-face {
-    font-family: 'LeferiPoint-WhiteA';
-    src: url('https://fastly.jsdelivr.net/gh/projectnoonnu/noonfonts_2201-2@1.0/LeferiPoint-WhiteA.woff') format('woff');
-    font-weight: normal;
-    font-style: normal;
+    font-family: 'MoneygraphyRounded';
+    /*src: url('../fonts/Moneygraphy-Rounded.ttf') format('truetype');*/
+    src: url('../fonts/Moneygraphy-Pixel.ttf') format('truetype');
 }
-
-/* 굵은 글씨 */
+/*EverySaju Logo Font*/
 @font-face {
-    font-family: 'LeferiPoint-BlackA';
-    src: url('https://fastly.jsdelivr.net/gh/projectnoonnu/noonfonts_2201-2@1.0/LeferiPoint-BlackA.woff') format('woff');
-    font-weight: normal;
-    font-style: normal;
-}
-
-
-/* 잠실 글씨 */
-
-@font-face {
-    font-family: 'TheJamsil1Thin';
-    src: url('https://fastly.jsdelivr.net/gh/projectnoonnu/noonfonts_2302_01@1.0/TheJamsil1Thin.woff2') format('woff2');
-    font-weight: 100;
-    font-style: normal;
-}
-@font-face {
-    font-family: 'TheJamsil2Light';
-    src: url('https://fastly.jsdelivr.net/gh/projectnoonnu/noonfonts_2302_01@1.0/TheJamsil2Light.woff2') format('woff2');
-    font-weight: 300;
-    font-style: normal;
-}
-@font-face {
-    font-family: 'TheJamsil3Regular';
-    src: url('https://fastly.jsdelivr.net/gh/projectnoonnu/noonfonts_2302_01@1.0/TheJamsil3Regular.woff2') format('woff2');
-    font-weight: 400;
-    font-style: normal;
-}
-@font-face {
-    font-family: 'TheJamsil4Medium';
-    src: url('https://fastly.jsdelivr.net/gh/projectnoonnu/noonfonts_2302_01@1.0/TheJamsil4Medium.woff2') format('woff2');
-    font-weight: 500;
-    font-style: normal;
-}
-@font-face {
-    font-family: 'TheJamsil5Bold';
-    src: url('https://fastly.jsdelivr.net/gh/projectnoonnu/noonfonts_2302_01@1.0/TheJamsil5Bold.woff2') format('woff2');
-    font-weight: 700;
-    font-style: normal;
-}
-@font-face {
-    font-family: 'TheJamsil6ExtraBold';
-    src: url('https://fastly.jsdelivr.net/gh/projectnoonnu/noonfonts_2302_01@1.0/TheJamsil6ExtraBold.woff2') format('woff2');
-    font-weight: 800;
-    font-style: normal;
-}
-@font-face {
-    font-family: 'TheJamsil5Bold';
-    src: url('https://fastly.jsdelivr.net/gh/projectnoonnu/noonfonts_2302_01@1.0/TheJamsil5Bold.woff2') format('woff2');
-    font-weight: 700;
-    font-style: normal;
+    font-family: 'Recipekorea';
+    /*src: url('../fonts/Moneygraphy-Rounded.ttf') format('truetype');*/
+    src: url('../fonts/Recipekorea.ttf') format('truetype');
 }
 
 
 body {
     background-color: #f7f7f7 !important;
-	font-family: 'TheJamsil3Regular !important';
-    overflow-x: hidden; 
+    font-family: '나눔고딕' !important;
+    overflow-x: hidden;
     overflow-y: scroll; 
-    font-weight: 200 !important;
+    /*font-weight: 200 !important;*/
     font-style: normal !important;
+}
+
+.title-wrap {
+    margin-top: 30px;
 }
 
 .container {
 	padding : 0 !important;
 }
-
+/*
 .h1, .h2, .h3, .h4, .h5, .h6, h1, h2, h3, h4, h5, h6, th, button, .btn, .bold {
     font-family: 'TheJamsil5Bold';
-}
+}*/
 
 .container {
     height: 100vh;
