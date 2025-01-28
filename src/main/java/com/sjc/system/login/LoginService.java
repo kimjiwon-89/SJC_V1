@@ -3,13 +3,16 @@ package com.sjc.system.login;
 import com.sjc.model.UserInfo;
 import org.springframework.security.core.userdetails.UserDetails;
 
+import java.util.Map;
+
 public interface LoginService {
 
-    boolean validateUser(String userId, String userPwd);
+    Integer validateUser(String userId, String userPwd);
 
-    Object getUserInfo(String userId);
-
-    UserDetails loadUserByUsername(String userId);
+    UserInfo getUserInfo(String userId);
 
     boolean signupUser(UserInfo userInfo);
+
+    Integer duplCheckUser(UserInfo userInfo);
+
 }

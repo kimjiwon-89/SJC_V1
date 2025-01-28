@@ -229,9 +229,4 @@ function setFormatTimeString(event) {
 	  }
 		return value;
 }
-
-// 로그인 페이지 이동
-function goLogin() {
-    window.location.href = '<c:url value="/loginPage"/>';
-}
 </script>

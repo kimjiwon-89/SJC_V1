@@ -12,15 +12,7 @@ public class UserInfo {
 
     private String userId;
     private String userPwd;
-    private List<String> authIds;
-    
-    // 여러 권한을 반환하는 메소드
-    public List<GrantedAuthority> getAuthorities() {
-        return authIds.stream()
-                .map(authId -> new SimpleGrantedAuthority("ROLE_" + authId)) // "ROLE_" 접두어를 붙여서 권한 설정
-                .collect(Collectors.toList());
-    }
-
+    private String roleId;
     private String userName;
     private String userEmail;
     private String userPhone;

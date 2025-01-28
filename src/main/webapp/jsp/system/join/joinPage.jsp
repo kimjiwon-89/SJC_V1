@@ -9,30 +9,26 @@
 
 
 <div class="content-layout pd login-wrap join-wrap join-email-wrap">
-	<div class="title-wrap back-title big">
+	<div class="small-back-warp">
 		<button class="back-btn" onclick="goToback()">
 			<i class="fa fa-angle-left" aria-hidden="true"></i>
 		</button>
-		<h1>정보 입력</h1>
 	</div>
 
 	<%--	이메일 입력 영역 --%>
 	<div class="join-check-wrap">
 		<div class="border-box">
-			<div class="icon" >
-				<i class="fa fa-envelope-o" aria-hidden="true"></i>
-			</div>
-			<input type="text" id="userId" name="userId" placeholder="ID를 입력해주세요." />
-<%--			<button class="text-btn" onclick="openModal('checkEmailModal')">이메일 중복확인</button>--%>
+			<input class="form-control" type="text" id="userId" name="userId" placeholder="아이디를 입력해주세요." />
+			<button class="text-btn" onclick="fnDuplIdCheck();">아이디 중복확인</button>
 		</div>
 
 		<div class="border-box">
 			<div class="icon">
 				<i class="fa fa-lock" aria-hidden="true"></i>
 			</div>
-			<input type="password" id="userPwd" name="userPwd" placeholder="비밀번호" />
-			<button class="text-btn">
-				<i class="fa fa-eye" aria-hidden="true"></i>
+			<input class="form-control" type="password" id="userPwd" name="userPwd" placeholder="비밀번호" />
+			<button class="text-btn" onclick="showPwd(this);">
+				<i class="fa fa-eye-slash" aria-hidden="true"></i>
 			</button>
 		</div>
 
@@ -40,25 +36,19 @@
 			<div class="icon" >
 				<i class="fa fa-lock" aria-hidden="true"></i>
 			</div>
-			<input type="password" placeholder="비밀번호 확인" />
-			<button class="text-btn">
+			<input class="form-control" type="password" id="userPwdCheck" placeholder="비밀번호 확인" />
+			<button class="text-btn" onclick="showPwd(this);">
 				<i class="fa fa-eye-slash" aria-hidden="true"></i>
 			</button>
 		</div>
 
+		<div id="alertText" class="text-danger mb-3"></div>
 
-		<div class="err-msg" id="email-err-msg">
-			<div>
-				이메일: 필수정보 입니다.
-			</div>
-			<div>
-				비밀번호: 필수정보 입니다.
-			</div>
-		</div>
 	</div>
 
+<%--
 
-	<%--	사용자 개인정보 입력 영역--%>
+	&lt;%&ndash;	사용자 개인정보 입력 영역&ndash;%&gt;
 	<div class="join-check-wrap">
 		<div class="border-box">
 			<div class="icon" >
@@ -101,6 +91,7 @@
 			</div>
 		</div>
 	</div>
+--%>
 
 	<div class="login-select-wrap">
 		<button class="login-btn email-login" type="button" onclick="userSave()">가입하기</button>

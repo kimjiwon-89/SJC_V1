@@ -10,29 +10,70 @@
 
 <script type="text/javascript">
 
+    function goLogin() {
+        if(!vaildation() ) return;
+        $('#loginForm').submit();
+    }
+
+    function vaildation() {
+        let userId = $("#userId").val();
+        let userPwd = $("#userPwd").val();
+
+        if (!userId) {
+            $("#userId").addClass("is-invalid").focus();
+            $("#alertText").text("아이디를 입력해주세요.");
+            return false;
+        }
+
+        if (/[^a-zA-Z]/.test(userId)) {
+            $("#userId").addClass("is-invalid").focus();
+            $("#alertText").text("아이디는 영문으로만 입력해주세요.").show();
+            return false;
+        } else {
+            $("#userIdAlert").hide();
+        }
+
+        if (!userPwd) {
+            $("#userPwd").addClass("is-invalid").focus();
+            $("#alertText").text("비밀번호를 입력해주세요.");
+            return false;
+        }
+
+        return true;
+    }
+
+    // ID 입력 필드 키업 이벤트
+    $("#userId").on("keyup", function () {
+        $(this).removeClass("is-invalid");
+        if (!$("#userPwd").hasClass("is-invalid")) {
+            $("#alertText").text("");
+        }
+    });
+
+    // Password 입력 필드 키업 이벤트
+    $("#userPwd").on("keyup", function () {
+        $(this).removeClass("is-invalid");
+        if (!$("#userPwd").hasClass("is-invalid")) {
+            $("#alertText").text("");
+        }
+    });
+
     // 로그인 구현
     $('#loginForm').submit(function(e) {
         e.preventDefault(); // 폼 제출을 막고 AJAX로 처리
-
-        var userId = $('#userId').val();
-        var userPwd = $('#userPwd').val();
-        var csrfToken = $('meta[name="csrf-token"]').attr('content');
 
         $.ajax({
             url: "<c:url value="/login"/>",
             type: 'POST',
             data: {
-                userId: userId,
-                userPwd: userPwd
-            },
-            headers: {
-                'X-CSRF-TOKEN': csrfToken // CSRF 토큰을 헤더에 추가
+                userId: $('#userId').val(),
+                userPwd: $('#userPwd').val()
             },
             success: function(response) {
                 if (response.success) {
                     window.location.href = '<c:url value="/saju/main"/>'; // 로그인 성공 시 페이지 이동
                 } else {
-                    alert('로그인 실패! 아이디나 비밀번호를 확인해주세요.');
+                    alert(response.message);
                 }
             },
             error: function(xhr, status, error) {
@@ -41,8 +82,5 @@
         });
     });
 
-    function goToJoin() {
-        window.location.href = "<c:url value="/joinPage"/>";
-    }
 
 </script>

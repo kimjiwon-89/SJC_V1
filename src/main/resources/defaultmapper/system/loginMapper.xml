@@ -19,7 +19,7 @@
     </select>
 
     <insert id="signupUser" parameterType="UserInfo">
-        insert into t_user_info (user_id, user_name, user_pwd)
-        values(#{userId}, #{userName}, #{userPwd})
+        insert into t_user_info (user_id, user_pwd)
+        values(#{userId}, #{userPwd})
     </insert>
 </mapper>

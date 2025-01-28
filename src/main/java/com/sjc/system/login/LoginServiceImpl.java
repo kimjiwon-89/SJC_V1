@@ -2,6 +2,8 @@ package com.sjc.system.login;
 
 import com.sjc.model.UserInfo;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.authority.SimpleGrantedAuthority;
+import org.springframework.security.core.userdetails.User;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
@@ -18,49 +20,56 @@ public class LoginServiceImpl implements LoginService, UserDetailsService {
 	@Autowired
 	private LoginMapper loginMapper;
 
+
 	@Override
-	public boolean validateUser(String userId, String userPwd) {
+	public Integer validateUser(String userId, String userPwd) {
 		String storedPassword = loginMapper.getPassword(userId);
-		return storedPassword != null && passwordEncoder.matches(userPwd, storedPassword);
+
+		if(storedPassword == null) {
+			return 1;
+		} else if(passwordEncoder.matches(userPwd, storedPassword)) {
+			return 0;
+		} else {
+			return 2;
+		}
 	}
 
 	@Override
 	public UserInfo getUserInfo(String userId) {
-
 		return loginMapper.getUserInfo(userId);
-	}
-
-
-
-	@Override
-	public UserDetails loadUserByUsername(String userId) throws UsernameNotFoundException {
-		UserInfo user = loginMapper.getUserInfo(userId);
-
-		if (user == null) {
-			throw new UsernameNotFoundException("User not found");
-		}
-
-		// User 객체를 UserDetails 객체로 변환하여 반환
-		return new org.springframework.security.core.userdetails.User(
-				user.getUserId(),
-				user.getUserPwd(),
-				user.getAuthorities() // 권한 정보 (예: ROLE_USER, ROLE_ADMIN 등)
-		);
 	}
 
 	@Override
 	public boolean signupUser(UserInfo userInfo) {
-		UserInfo user = loginMapper.getUserInfo(userInfo.getUserId());
-
-		if (user != null) {
-			return false;
-		}
-
 		String encodedPassword = passwordEncoder.encode(userInfo.getUserPwd());
 		userInfo.setUserPwd(encodedPassword);
 
 		return loginMapper.signupUser(userInfo);
 	}
 
+	@Override
+	public Integer duplCheckUser(UserInfo userInfo) {
+		UserInfo user = loginMapper.getUserInfo(userInfo.getUserId());
+		if (user != null) {
+			return 0;
+		} else {
+			return 1;
+		}
+	}
 
+	@Override
+	public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
+		// DB에서 사용자 정보 조회 (예: UserInfo 객체)
+		UserInfo userInfo = loginMapper.getUserInfo(username);
+
+		// roleId가 하나일 경우 이를 GrantedAuthority로 변환
+		SimpleGrantedAuthority authority = new SimpleGrantedAuthority(userInfo.getRoleId());
+
+		// UserDetails 객체 반환
+		return User.builder()
+				.username(userInfo.getUserId()) // userId는 username으로 사용
+				.password(userInfo.getUserPwd())
+				.authorities(authority) // 권한 부여
+				.build();
+	}
 }

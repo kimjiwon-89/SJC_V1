@@ -17,27 +17,28 @@
 	</div>
 	<div class="content-wrap">
 		<form id="loginForm">
-			<input type="hidden" name="_csrf" value="${_csrf.token}">
-			<div class="email-cont">
+			<div class="content-area">
 				<h5 class="cont-title">아이디</h5>
 				<div class="cont-area">
-					<input type="text" id="userId" name="userId" placeholder="아이디를 입력해주세요" autofocus/>
+					<input class="form-control" type="text" id="userId" name="userId" placeholder="아이디를 입력해주세요" autofocus/>
 				</div>
 			</div>
 
-			<div class="password-cont">
+			<div class="content-area">
 				<h5 class="cont-title">비밀번호</h5>
 				<div class="cont-area">
-					<input type="password" id="userPwd" name="userPwd" placeholder="비밀번호를 입력해주세요" />
+					<input class="form-control" type="password" id="userPwd" name="userPwd" placeholder="비밀번호를 입력해주세요" />
 				</div>
 			</div>
 
-			<div class="login-btn-wrap">
-				<button type="submit" class="login-btn email-login">로그인</button>
+			<div id="alertText" class="text-danger mb-3"></div>
+
+			<div class="content-area">
+				<button type="button" class="login-btn email-login" onclick="goLogin();">로그인</button>
 				<div class="flex-space-btween-row">
 					<div class="flex-center find-id-pw-cont">
-						<button class="text-btn find-id-btn" onclick="">아이디 찾기</button>
-						<button class="text-btn" onclick="">비밀번호 찾기</button>
+						<button type="button" class="text-btn find-id-btn" onclick="">아이디 찾기</button>
+						<button type="button" class="text-btn" onclick="">비밀번호 찾기</button>
 					</div>
 					<div class="stay-logged-in-cont">
 						<input type="checkbox" id="stayLoggedIn" />
@@ -51,7 +52,7 @@
 	<div class="login-bottom-wrap">
 		<div class="join-cont">
 			<span>아직 회원이 아니신가요?</span>
-			<button class="text-btn" onclick="goToJoin()">회원가입</button>
+			<button type="button" class="text-btn" onclick="window.location.href='<c:url value="/joinPage"/>'">회원가입</button>
 		</div>
 	</div>
 </div>
