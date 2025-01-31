@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<!-- namespace 명은 dao 와 일치하게 작성하면 됨 -->
+<mapper namespace="com.sjc.system.visitor.VisitorMapper">
+
+    <insert id="saveYesterDayCnt">
+        INSERT INTO T_VISIT_DATA (visit_day, count)
+        VALUES(#{yesterday}, #{count})
+    </insert>
+
+</mapper>

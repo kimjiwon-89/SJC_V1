@@ -17,17 +17,17 @@
 <div class="footer-manu-bar">
 
 	<%-- HOME --%>
-	<button type="button" class="text-btn footer-btn active" onclick="selectMenu(this, 'saju/main')">
+	<button type="button" class="text-btn footer-btn" onclick="selectMenu(this, '')">
 		<img src="/static/img/icon/Home.png" />
 	</button>
 
 	<%-- ? --%>
-	<button type="button" class="text-btn footer-btn" onclick="selectMenu(this, '')">
+	<button type="button" class="text-btn footer-btn active" onclick="selectMenu(this, 'saju/main')">
 		<img src="/static/img/icon/Search.png" />
 	</button>
 
 	<%-- List --%>
-	<button type="button" class="text-btn footer-btn" onclick="selectMenu(this, '')">
+	<button type="button" class="text-btn footer-btn" onclick="selectMenu(this, 'user/friendList')">
 		<img src="/static/img/icon/List.png" />
 	</button>
 

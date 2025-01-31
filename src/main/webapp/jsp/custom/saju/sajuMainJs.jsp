@@ -15,6 +15,9 @@ $(window).on("load", function() { /* 로직 추가 */ });
 
 /* HTML 요소가 등록 된 후에 실행, 주 사용 이벤트 */
 $(document).ready(function(){
+    fnAddVisitCount();
+
+
 // 	//0. 태어난 시간 셋팅 -> input으로 변경(24.12.09)
 // 	const birthDaySel = $("#birthTime");
 // 	birthTimeObj.forEach((value, key) => {
@@ -51,8 +54,22 @@ $(document).ready(function(){
 		let formattedDate = formatDateString(input);
 		$(this).val(formattedDate);
 	});
-	
 });
+
+/**
+ * 방문자수 증가 로직
+ */
+function fnAddVisitCount() {
+    $.ajax({
+        url: "<c:url value="/visit"/>",
+        type: 'POST',
+        data: {},
+        success: function(response) {
+        },
+        error: function(xhr, status, error) {
+        }
+    });
+}
 
 /* 조회, 결과 페이지 이동 */
 function search() {
