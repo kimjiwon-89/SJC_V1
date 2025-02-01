@@ -40,8 +40,8 @@ public class LoginCont {
 
 	// 로그인 폼 화면
 	@RequestMapping(value = "/loginPage", method = RequestMethod.GET)
-	public ModelAndView loginPage(HttpSession session) {
-		ModelAndView mv = new ModelAndView();
+	public String loginPage(HttpSession session) {
+/*		ModelAndView mv = new ModelAndView();
 		// 세션에 "userInfo"가 있는지 확인
 		if (session.getAttribute("userInfo") != null) {
 			mv.addObject("viewName", "/saju/main");
@@ -51,7 +51,8 @@ public class LoginCont {
 			mv.setViewName("layout/system_layout");
 		}
 
-		return mv;
+		return mv;*/
+		return "layout/common_layout";
 	}
 
 	/**

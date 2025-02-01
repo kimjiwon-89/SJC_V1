@@ -1,14 +1,18 @@
 package com.sjc.saju;
 
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.servlet.ModelAndView;
+import jakarta.servlet.http.HttpServletRequest;
+import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.GetMapping;
 
+@Controller
 public class HomeCont {
      
-    @RequestMapping("/")
-    public ModelAndView home() {
-        ModelAndView mv = new ModelAndView();
-        mv.setViewName("layout/common_layout");
-        return mv;
+    @GetMapping("/")
+    public String home(HttpServletRequest request, Model model) {
+        model.addAttribute("request", request);
+        System.out.println("home");
+//        return "index";
+        return "layout/common_layout";
     }
 }

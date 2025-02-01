@@ -60,7 +60,7 @@ public class SecurityConfig {
                         .authenticationEntryPoint((request, response, authException) -> {
                             // 로그인한 사용자가 로그인 페이지로 접근할 경우 /saju/main으로 리다이렉트
                             if (request.getRequestURI().equals("/loginPage")) {
-                                response.sendRedirect("/index.jsp");
+                                response.sendRedirect("/index.html");
                             }
                         })
                 );
